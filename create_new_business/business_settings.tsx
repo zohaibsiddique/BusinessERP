@@ -7,63 +7,63 @@ export default function BusinessSettings() {
   return (
     <>
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Steeing Here'/>
       </Input>
     </>
     

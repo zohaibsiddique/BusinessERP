@@ -7,63 +7,63 @@ export default function OwnerInformation() {
   return (
     <>
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
     
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
 
       <Input variant="outline" size="md" isDisabled={false} isInvalid={false} isReadOnly={false} >
-        <InputField placeholder='Enter Text here'/>
+        <InputField placeholder='Enter Owner Info'/>
       </Input>
     </>
     
