@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Center, GluestackUIProvider, Heading } from '@gluestack-ui/themed';
 import BusinessSettings from './create_new_business/business_settings';
 import OwnerInformation from './create_new_business/owner_information';
-import BusinessInformation from './create_new_business/business_information';
+import BusinessInformation from './create_new_business/BusinessInformation';
 import { config } from "@gluestack-ui/config" 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import HomeCreateNewBusiness from './create_new_business/home_create_new_business';
