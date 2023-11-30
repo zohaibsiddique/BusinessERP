@@ -12,7 +12,7 @@ export default function HomeCreateBusiness() {
   const Tab = createMaterialTopTabNavigator();
 
   return (
-    <Box>
+    <>
       <Tab.Navigator>
         <Tab.Screen name="business_information" component={BusinessInformation} options={{title: "Business Info"}}/>
         <Tab.Screen name="business_settings" component={BusinessSettings}  options={{title: "Settings"}}/>
@@ -27,7 +27,7 @@ export default function HomeCreateBusiness() {
           <ButtonText>SAVE</ButtonText>
         </Button>
       </HStack>
-    </Box>
+    </>
     
     );
 }

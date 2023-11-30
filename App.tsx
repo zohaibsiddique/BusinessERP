@@ -6,7 +6,7 @@ import OwnerInformation from './create_business/OwnerInformation';
 import BusinessInformation from './create_business/BusinessInformation';
 import { config } from "@gluestack-ui/config" 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import HomeCreateNewBusiness from './create_business/HomeCreateBusiness;
+import HomeCreateBusiness from './create_business/HomeCreateBusiness';
 
 export default function App() {
 
@@ -16,7 +16,7 @@ export default function App() {
     <GluestackUIProvider config={config}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="home_create_new_business" component={HomeCreateNewBusiness} options={{title: "Create Business"}}/>
+          <Stack.Screen name="home_create_new_business" component={HomeCreateBusiness} options={{title: "Create Business"}}/>
         </Stack.Navigator>
       </NavigationContainer>
     </GluestackUIProvider>
