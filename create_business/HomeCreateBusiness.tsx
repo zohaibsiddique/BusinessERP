@@ -4,10 +4,10 @@ import { AddIcon, Box, Button, ButtonIcon, ButtonText, Center, GluestackUIProvid
 import { config } from "@gluestack-ui/config" 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import BusinessInformation from './BusinessInformation';
-import BusinessSettings from './business_settings';
-import OwnerInformation from './owner_information';
+import BusinessSettings from './BusinessSettings';
+import OwnerInformation from './OwnerInformation';
 
-export default function HomeCreateNewBusiness() {
+export default function HomeCreateBusiness() {
 
   const Tab = createMaterialTopTabNavigator();
 
