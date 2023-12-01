@@ -5,7 +5,6 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import React, { useState } from "react";
 import { Platform, TouchableOpacity } from 'react-native';
 import DatePicker from '../components/DatePicker';
-import CustomDropDown from '../components/CustomDropDown';
 
 export default function BusinessInformation() {
   const countries = ["Egypt", "Canada", "Australia", "Ireland"]
