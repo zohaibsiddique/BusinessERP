@@ -1,7 +1,8 @@
-import { TextInput, TouchableOpacity } from "react-native";
+import { Platform, TextInput, TouchableOpacity } from "react-native";
 import { DatePickerModal } from "react-native-paper-dates";
 import FormInput from './FormInput';
 import React from "react";
+import { Box, FormControl, FormControlLabel, FormControlLabelText, Heading, Text } from "@gluestack-ui/themed";
 
 export default function DatePicker() {
     const [date, setDate] = React.useState(undefined);
@@ -20,7 +21,15 @@ export default function DatePicker() {
     );
     return (
       <>
-        <FormInput focus={() => setOpen(true)} type={"text"} isRequired={true} label={"Start Date"} error={"This field is required"}/>
+       <FormControl isRequired={true} >
+        <FormControlLabel mt="$4.5">
+            <FormControlLabelText>Start Date</FormControlLabelText>
+          </FormControlLabel>
+       </FormControl>
+       
+        <TouchableOpacity  onPress={() => {setOpen(true);}}>
+            <Text p="$2" borderWidth="$1" borderColor="$secondary200" borderRadius="$md" color="$secondary300">Start Date</Text>
+        </TouchableOpacity>
         <DatePickerModal
           locale="en"
           mode="single"
