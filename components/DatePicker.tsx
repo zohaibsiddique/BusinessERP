@@ -26,7 +26,6 @@ export default function DatePicker() {
             <FormControlLabelText>Start Date</FormControlLabelText>
           </FormControlLabel>
        </FormControl>
-       
         <TouchableOpacity  onPress={() => {setOpen(true);}}>
             <Text p="$2" borderWidth="$1" borderColor="$secondary200" borderRadius="$md" color="$secondary300">Start Date</Text>
         </TouchableOpacity>
