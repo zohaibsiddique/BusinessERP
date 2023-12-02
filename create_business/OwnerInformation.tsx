@@ -1,5 +1,5 @@
 
-import { Box} from '@gluestack-ui/themed';
+import { Box, Button, ButtonText, Center} from '@gluestack-ui/themed';
 import FormInput from '../components/FormInput';
 
 export default function OwnerInformation() {
@@ -68,6 +68,9 @@ export default function OwnerInformation() {
         disabled={false}
         focus={null}
       />
+        <Button mt="$4.5" h="$40" variant="outline" action="secondary">
+          <ButtonText>Add Signature</ButtonText>
+        </Button>
     </Box>
 
   );

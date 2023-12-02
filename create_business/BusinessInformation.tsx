@@ -11,7 +11,6 @@ import DatePicker from "../components/DatePicker";
 
 export default function BusinessInformation() {
   return (
-    <ScrollView>
       <Box p="$2" bg="$white">
         <Center>
           <Button w="$32" h="$32" variant="outline" action="secondary">
@@ -118,12 +117,6 @@ export default function BusinessInformation() {
           disabled={false}
           focus={null}
         />
-        <Center>
-          <Button w="$40" h="$40" variant="outline" action="secondary">
-            <ButtonText>Add Signature</ButtonText>
-          </Button>
-        </Center>
       </Box>
-    </ScrollView>
   );
 }
