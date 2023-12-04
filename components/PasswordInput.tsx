@@ -41,10 +41,7 @@ export default function FormInput({
           onFocus={focus}
         />
         <InputSlot pr="$3" onPress={handleState}>
-          <InputIcon
-            as={showPassword ? EyeIcon : EyeOffIcon}
-            color="$darkBlue500"
-          />
+          <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} color="$red600" />
         </InputSlot>
       </Input>
       <FormControlError>
