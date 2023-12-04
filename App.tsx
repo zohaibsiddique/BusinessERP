@@ -5,7 +5,6 @@ import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
 
 import HomeCreateBusiness from "./create_business/HomeCreateBusiness";
-import PasswordInput from "./components/PasswordInput";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
