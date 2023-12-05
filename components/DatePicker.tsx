@@ -1,28 +1,33 @@
-import { TouchableOpacity } from "react-native";
-import { DatePickerModal } from "react-native-paper-dates";
-import React from "react";
+import { Pressable, TouchableOpacity } from "react-native";
+
+import React, { useState } from "react";
 import {
+  ButtonText,
+  CloseIcon,
   FormControl,
   FormControlLabel,
   FormControlLabelText,
+  Heading,
+  Button,
+  Icon,
+  ModalBackdrop,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
   Text,
+  Modal,
+  View,
 } from "@gluestack-ui/themed";
+import DateTimePicker, { DateType } from "react-native-ui-datepicker";
+import dayjs from "dayjs";
 
 export default function DatePicker() {
-  const [date, setDate] = React.useState(undefined);
-  const [open, setOpen] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [value, setValue] = useState(dayjs());
+  const ref = React.useRef(null);
 
-  const onDismissSingle = React.useCallback(() => {
-    setOpen(false);
-  }, [setOpen]);
-
-  const onConfirmSingle = React.useCallback(
-    (params) => {
-      setOpen(false);
-      setDate(params.date);
-    },
-    [setOpen, setDate]
-  );
   return (
     <>
       <FormControl isRequired={true}>
@@ -30,10 +35,11 @@ export default function DatePicker() {
           <FormControlLabelText>Start Datee</FormControlLabelText>
         </FormControlLabel>
       </FormControl>
-      <TouchableOpacity
+      <Pressable
         onPress={() => {
-          setOpen(true);
+          setShowModal(true);
         }}
+        ref={ref}
       >
         <Text
           p="$2"
@@ -44,8 +50,8 @@ export default function DatePicker() {
         >
           Start Date
         </Text>
-      </TouchableOpacity>
-      <DatePickerModal
+      </Pressable>
+      {/* <DatePickerModal
         locale="en"
         mode="single"
         label="Select Date"
@@ -53,7 +59,35 @@ export default function DatePicker() {
         onDismiss={onDismissSingle}
         date={date}
         onConfirm={onConfirmSingle}
-      />
+      /> */}
+      <Modal
+        isOpen={showModal}
+        onClose={() => {
+          setShowModal(false);
+        }}
+        finalFocusRef={ref}
+      >
+        <ModalBackdrop />
+        <ModalContent>
+          <ModalHeader>
+            <Heading size="lg" color="$red600">
+              Select Date
+            </Heading>
+            <ModalCloseButton>
+              <Icon as={CloseIcon} />
+            </ModalCloseButton>
+          </ModalHeader>
+          <ModalBody>
+            <View>
+              <DateTimePicker
+                value={value}
+                onValueChange={(date) => setValue(date)}
+                selectedItemColor="#dc2626"
+              />
+            </View>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 }

@@ -10,9 +10,54 @@ import BusinessSettings from "./BusinessSettings";
 import OwnerInformation from "./OwnerInformation";
 import { Platform } from "react-native";
 import React from "react";
+import { useFonts } from "expo-font";
+import {
+  Roboto_100Thin,
+  Roboto_100Thin_Italic,
+  Roboto_300Light,
+  Roboto_300Light_Italic,
+  Roboto_400Regular,
+  Roboto_400Regular_Italic,
+  Roboto_500Medium,
+  Roboto_500Medium_Italic,
+  Roboto_700Bold,
+  Roboto_700Bold_Italic,
+  Roboto_900Black,
+  Roboto_900Black_Italic,
+} from "@expo-google-fonts/roboto";
 
 export default function HomeCreateBusiness() {
   const Tab = createMaterialTopTabNavigator();
+  const [fontsLoaded] = useFonts({
+    Roboto_100Thin,
+    Roboto_100Thin_Italic,
+    Roboto_300Light,
+    Roboto_300Light_Italic,
+    Roboto_400Regular,
+    Roboto_400Regular_Italic,
+    Roboto_500Medium,
+    Roboto_500Medium_Italic,
+    Roboto_700Bold,
+    Roboto_700Bold_Italic,
+    Roboto_900Black,
+    Roboto_900Black_Italic,
+  });
+
+  // const config = createConfig({
+  //   ...defaultConfig,
+  //   tokens: {
+  //     ...defaultConfig.tokens,
+  //     fontSizes: {
+  //       ...defaultConfig.tokens.fontSizes,
+  //       newFontSize: 90,
+  //     },
+  //     fonts: {
+  //       heading: "roboto", // Heading component uses this by default
+  //       body: "roboto", // Text component uses this by default
+  //       mono: "monospace",
+  //     },
+  //   },
+  // });
 
   return (
     <>
@@ -25,6 +70,10 @@ export default function HomeCreateBusiness() {
             tabBarActiveTintColor: "#dc2626",
             tabBarInactiveTintColor: "#525252",
             tabBarIndicatorStyle: { backgroundColor: "#dc2626" },
+            tabBarLabelStyle: {
+              fontSize: 14,
+              fontFamily: "Roboto_900Black",
+            },
           })}
         >
           <Tab.Screen

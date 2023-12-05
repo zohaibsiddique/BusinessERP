@@ -1,4 +1,4 @@
-import { Box, KeyboardAvoidingView, ScrollView } from "@gluestack-ui/themed";
+import { Box, Button, ButtonText, Center, KeyboardAvoidingView, ScrollView } from "@gluestack-ui/themed";
 import FormInput from "../components/FormInput";
 import PasswordInput from "../components/PasswordInput";
 import { Platform } from "react-native";
@@ -69,6 +69,11 @@ export default function OwnerInformation() {
           disabled={false}
           focus={null}
         />
+        <Center mt='$4.5'>
+            <Button w="$40" h="$40" variant="outline" action="secondary">
+              <ButtonText>Add Signature</ButtonText>
+            </Button>
+          </Center>
       </Box>
     </ScrollView>
   );
