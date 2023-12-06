@@ -1,7 +1,6 @@
 import {
   Button,
   ButtonText,
-  GluestackUIProvider,
   HStack,
   KeyboardAvoidingView,
 } from "@gluestack-ui/themed";
