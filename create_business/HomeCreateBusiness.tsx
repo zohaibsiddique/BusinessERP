@@ -3,6 +3,7 @@ import {
   ButtonText,
   HStack,
   KeyboardAvoidingView,
+  ScrollView,
 } from "@gluestack-ui/themed";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import BusinessInformation from "./BusinessInformation";
@@ -47,7 +48,7 @@ export default function HomeCreateBusiness() {
 
   return (
     <> 
-      <KeyboardAvoidingView
+      <ScrollView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1, zIndex: 999 }}
       >
@@ -93,7 +94,7 @@ export default function HomeCreateBusiness() {
             <ButtonText>SAVE</ButtonText>
           </Button>
         </HStack>
-      </KeyboardAvoidingView>
+      </ScrollView>
       
     </>
   );
