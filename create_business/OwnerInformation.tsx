@@ -5,7 +5,6 @@ import { Platform } from "react-native";
 
 export default function OwnerInformation() {
   return (
-    <ScrollView>
       <Box p="$2" bg="$white">
         <FormInput
           type={"text"}
@@ -75,6 +74,5 @@ export default function OwnerInformation() {
             </Button>
           </Center>
       </Box>
-    </ScrollView>
   );
 }

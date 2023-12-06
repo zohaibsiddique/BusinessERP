@@ -4,8 +4,7 @@ import FormInput from '../components/FormInput';
 export default function BusinessSettings() {
   return (
     <Box p="$2" bg="$white">
-      <Box p='$2' bg="$white">
-         <FormInput
+      <FormInput
         type={'text'}
         isRequired={false}
         label={'Tax 1 Name'}
@@ -59,7 +58,6 @@ export default function BusinessSettings() {
         disabled={false}
         focus={null}
       />
-        </Box>
     </Box>
   );
   }
