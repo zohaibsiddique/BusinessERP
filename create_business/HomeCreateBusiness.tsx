@@ -1,6 +1,7 @@
 import {
   Button,
   ButtonText,
+  GluestackUIProvider,
   HStack,
   KeyboardAvoidingView,
 } from "@gluestack-ui/themed";
@@ -11,8 +12,7 @@ import OwnerInformation from "./OwnerInformation";
 import { Platform } from "react-native";
 import React from "react";
 import { useFonts } from "expo-font";
-import { createConfig } from "@gluestack-ui/themed";
-import { config as defaultConfig } from "@gluestack-ui/config";
+
 import {
   Roboto_100Thin,
   Roboto_100Thin_Italic,
@@ -27,6 +27,7 @@ import {
   Roboto_900Black,
   Roboto_900Black_Italic,
 } from "@expo-google-fonts/roboto";
+import { config } from "@gluestack-ui/config";
 
 export default function HomeCreateBusiness() {
   const Tab = createMaterialTopTabNavigator();
@@ -46,7 +47,7 @@ export default function HomeCreateBusiness() {
   });
 
   return (
-    <>
+    <> 
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1, zIndex: 999 }}
@@ -94,6 +95,7 @@ export default function HomeCreateBusiness() {
           </Button>
         </HStack>
       </KeyboardAvoidingView>
+      
     </>
   );
 }
