@@ -3,11 +3,13 @@ import {
   Button,
   ButtonText,
   Center,
+  KeyboardAvoidingView,
   ScrollView,
 } from "@gluestack-ui/themed";
 import FormInput from "../components/FormInput";
 import React from "react";
 import DatePicker from "../components/DatePicker";
+import { Platform } from "react-native";
 
 export default function BusinessInformation() {
   return (
