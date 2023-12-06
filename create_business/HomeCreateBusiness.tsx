@@ -11,6 +11,8 @@ import OwnerInformation from "./OwnerInformation";
 import { Platform } from "react-native";
 import React from "react";
 import { useFonts } from "expo-font";
+import { createConfig } from "@gluestack-ui/themed";
+import { config as defaultConfig } from "@gluestack-ui/config";
 import {
   Roboto_100Thin,
   Roboto_100Thin_Italic,
@@ -43,22 +45,6 @@ export default function HomeCreateBusiness() {
     Roboto_900Black_Italic,
   });
 
-  // const config = createConfig({
-  //   ...defaultConfig,
-  //   tokens: {
-  //     ...defaultConfig.tokens,
-  //     fontSizes: {
-  //       ...defaultConfig.tokens.fontSizes,
-  //       newFontSize: 90,
-  //     },
-  //     fonts: {
-  //       heading: "roboto", // Heading component uses this by default
-  //       body: "roboto", // Text component uses this by default
-  //       mono: "monospace",
-  //     },
-  //   },
-  // });
-
   return (
     <>
       <KeyboardAvoidingView
@@ -72,7 +58,7 @@ export default function HomeCreateBusiness() {
             tabBarIndicatorStyle: { backgroundColor: "#dc2626" },
             tabBarLabelStyle: {
               fontSize: 14,
-              fontFamily: "Roboto_900Black",
+              fontFamily: "Roboto_400Regular_Italic",
             },
           })}
         >
