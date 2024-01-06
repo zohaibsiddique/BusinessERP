@@ -32,7 +32,9 @@ export default function DatePicker() {
     <>
       <FormControl isRequired={true}>
         <FormControlLabel mt="$4.5">
-          <FormControlLabelText>Start Datee</FormControlLabelText>
+          <FormControlLabelText fontFamily="$heading">
+            Start Date
+          </FormControlLabelText>
         </FormControlLabel>
       </FormControl>
       <Pressable
@@ -51,15 +53,7 @@ export default function DatePicker() {
           Start Date
         </Text>
       </Pressable>
-      {/* <DatePickerModal
-        locale="en"
-        mode="single"
-        label="Select Date"
-        visible={open}
-        onDismiss={onDismissSingle}
-        date={date}
-        onConfirm={onConfirmSingle}
-      /> */}
+
       <Modal
         isOpen={showModal}
         onClose={() => {

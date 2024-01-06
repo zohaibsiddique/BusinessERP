@@ -22,7 +22,7 @@ export default function FormInput({
   return (
     <FormControl isRequired={isRequired} isDisabled={disabled}>
       <FormControlLabel mt="$4.5">
-        <FormControlLabelText>{label}</FormControlLabelText>
+        <FormControlLabelText fontFamily="$heading">{label}</FormControlLabelText>
       </FormControlLabel>
       <Input>
         <InputField type={type} placeholder={placeholder} onFocus={focus} />

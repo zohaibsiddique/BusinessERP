@@ -1,65 +1,26 @@
-import {
-  Button,
-  ButtonText,
-  HStack,
-  KeyboardAvoidingView,
-} from "@gluestack-ui/themed";
+import { Box, Button, ButtonText, HStack } from "@gluestack-ui/themed";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import BusinessInformation from "./BusinessInformation";
 import BusinessSettings from "./BusinessSettings";
 import OwnerInformation from "./OwnerInformation";
-import { Platform } from "react-native";
-import React from "react";
-import { useFonts } from "expo-font";
-
-import {
-  Roboto_100Thin,
-  Roboto_100Thin_Italic,
-  Roboto_300Light,
-  Roboto_300Light_Italic,
-  Roboto_400Regular,
-  Roboto_400Regular_Italic,
-  Roboto_500Medium,
-  Roboto_500Medium_Italic,
-  Roboto_700Bold,
-  Roboto_700Bold_Italic,
-  Roboto_900Black,
-  Roboto_900Black_Italic,
-} from "@expo-google-fonts/roboto";
-import { config } from "@gluestack-ui/config";
 
 export default function HomeCreateBusiness() {
   const Tab = createMaterialTopTabNavigator();
-  const [fontsLoaded] = useFonts({
-    Roboto_100Thin,
-    Roboto_100Thin_Italic,
-    Roboto_300Light,
-    Roboto_300Light_Italic,
-    Roboto_400Regular,
-    Roboto_400Regular_Italic,
-    Roboto_500Medium,
-    Roboto_500Medium_Italic,
-    Roboto_700Bold,
-    Roboto_700Bold_Italic,
-    Roboto_900Black,
-    Roboto_900Black_Italic,
-  });
 
   return (
-    <> 
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={{ flex: 1, zIndex: 999 }}
+    <>
+      <Box
+        h="$full"
+        sx={{
+          _web: { w: "$1/2", mr: "$1/4", ml: "$1/4" },
+        }}
       >
         <Tab.Navigator
           screenOptions={({ route }) => ({
             tabBarActiveTintColor: "#dc2626",
             tabBarInactiveTintColor: "#525252",
             tabBarIndicatorStyle: { backgroundColor: "#dc2626" },
-            tabBarLabelStyle: {
-              fontSize: 14,
-              fontFamily: "Roboto_400Regular_Italic",
-            },
+            tabBarLabelStyle: { fontFamily: "habibFont" },
           })}
         >
           <Tab.Screen
@@ -83,18 +44,17 @@ export default function HomeCreateBusiness() {
           <Button
             width="50%"
             variant="outline"
-            sx={{ borderRadius: "$none", borderWidth: "$0" }}
+            rounded={"$none"}
+            borderWidth={"$0"}
+            bg="$white"
           >
-            <ButtonText sx={{ color: "$backgroundLight700" }}>
-              CANCEL
-            </ButtonText>
+            <ButtonText color="$backgroundLight700">CANCEL</ButtonText>
           </Button>
-          <Button width="50%" bg="$red600" sx={{ borderRadius: "$none" }}>
+          <Button width="50%" bg="$red600" rounded={"$none"}>
             <ButtonText>SAVE</ButtonText>
           </Button>
         </HStack>
-      </KeyboardAvoidingView>
-      
+      </Box>
     </>
   );
 }
