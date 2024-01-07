@@ -14,8 +14,9 @@ export default function App() {
  
   const loadFonts = async () => {
     await Font.loadAsync({
-      habibFont: require("./assets/fonts/Bung.ttf"),
-      secFont: require("./assets/fonts/Gar.otf"),
+      habibFont: require("./assets/fonts/Roboto-Bold.ttf"),
+      secFont: require("./assets/fonts/Roboto-Regular.ttf")
+
     });
     setLoading(false);
   };

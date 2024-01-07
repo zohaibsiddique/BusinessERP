@@ -20,7 +20,7 @@ export default function HomeCreateBusiness() {
             tabBarActiveTintColor: "#dc2626",
             tabBarInactiveTintColor: "#525252",
             tabBarIndicatorStyle: { backgroundColor: "#dc2626" },
-            tabBarLabelStyle: { fontFamily: "habibFont" },
+            tabBarLabelStyle: { fontFamily: "habibFont",fontSize:14 },
           })}
         >
           <Tab.Screen
