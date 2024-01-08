@@ -1,20 +1,17 @@
-import { Pressable, TouchableOpacity } from "react-native";
+import { Pressable } from "react-native";
 
 import React, { useState } from "react";
 import {
-  ButtonText,
   CloseIcon,
   FormControl,
   FormControlLabel,
   FormControlLabelText,
   Heading,
-  Button,
   Icon,
   ModalBackdrop,
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   Text,
   Modal,
