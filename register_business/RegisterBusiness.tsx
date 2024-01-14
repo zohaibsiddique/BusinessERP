@@ -18,12 +18,15 @@ import React from "react";
 import DatePicker from "../components/DatePicker";
 import SearchDropDown from "../components/SearchDropDown";
 import { GetCountryList, GetCurrencyList, GetStockAccountMethodList, GetTimeZoneList, GetYearList } from "../utils/Utils";
+import { useNavigation } from "@react-navigation/native";
 
 export default function RegisterBusiness() {
 
   const [isLargeScreen] = useMediaQuery({
     minWidth: 720
   });
+  const navigation = useNavigation()
+
 
   return (
       <Box  p="$2" bg="$white"  width = {isLargeScreen ?  "$1/2" : "$full" }  marginRight="auto" marginLeft="auto">
@@ -177,7 +180,7 @@ export default function RegisterBusiness() {
           
         </Box>
         <HStack paddingTop="$6" justifyContent="space-between">
-            <Button
+            <Button onPress={() => navigation.navigate("Signup")}
               width="50%"
               size="sm"
               variant="outline"
@@ -185,11 +188,12 @@ export default function RegisterBusiness() {
               sx={{ borderRadius: "$none", borderWidth: "$0" }}
             >
               <ButtonText  sx={{ color: "$backgroundLight700" }}>
-                CANCEL
+                Back
               </ButtonText>
             </Button>
-            <Button size="sm" width="50%" bg="$red600" sx={{ borderRadius: "$none" }}>
-              <ButtonText>SAVE</ButtonText>
+            <Button onPress={() => navigation.navigate("Dashboard")}
+              size="sm" width="50%" bg="$red600" sx={{ borderRadius: "$none" }}>
+              <ButtonText>Register</ButtonText>
             </Button>
           </HStack>
       </Box>
