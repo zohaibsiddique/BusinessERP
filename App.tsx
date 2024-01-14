@@ -37,7 +37,7 @@ function MyStack() {
       />
       <Stack.Screen name="RegisterBusiness" component={RegisterBusiness} 
          options={{
-          title: "",
+          title: "Register Business",
           headerStyle: {
             backgroundColor: "white"
           }

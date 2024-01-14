@@ -31,60 +31,14 @@ import {
     const navigation = useNavigation()
   
     return (
-        <Box mt="$2" bg="white" borderWidth="$1" borderColor="lightgray" p="$2" width="30%" marginRight="auto" marginLeft="auto">
+        <Box mt="$2" bg="white" borderWidth="$1" borderColor="lightgray" p="$2" width="60%" marginRight="auto" marginLeft="auto">
           
-          <h1>Signup</h1>
-          <Link>Already have an account?</Link>
-          <Divider mt="$4" mb="$4"/>
-  
-          <Box>
-            <FormInput
-              type={"text"}
-              isRequired={true}
-              label={"Email address"}
-              placeholder={"Email address"}
-              error={"Please specify your Email address"}
-              disabled={false}
-              focus={null}
-              responsiveWidth="$full"
-            />
-                      
-            <FormInput
-              type={"text"}
-              isRequired={false}
-              label={"First name"}
-              placeholder={"First name"}
-              error={"Please specify your First name"}
-              disabled={false}
-              focus={null}
-              responsiveWidth="$full"
-            />
-  
-            <FormInput
-              type={"text"}
-              isRequired={false}
-              label={"Last name"}
-              placeholder={"Last name"}
-              error={"Please specify your Last name"}
-              disabled={false}
-              focus={null}
-              responsiveWidth="$full"
-            />
-            
-            <PasswordInput
-              isRequired={false}
-              label={"Password"}
-              placeholder={"Password"}
-              error={"Please specify Password"}
-              disabled={false}
-              focus={null}
-              responsiveWidth="$full"
-            />
-            <Button onPress={() => navigation.navigate("RegisterBusiness")}
-               mt="$6" size="sm" width="100%" bg="$red600" sx={{ borderRadius: "$none" }}>
-                <ButtonText>START</ButtonText>
-            </Button>
-          </Box>
+          <h1>Welcome to Dashboard</h1>
+
+          <Button onPress={() => navigation.navigate('Signup')}
+             mt="$6" size="sm" width="30%" bg="$red600" sx={{ borderRadius: "$none" }}>
+              <ButtonText>SignOut</ButtonText>
+          </Button>
         </Box>
     );
   }
