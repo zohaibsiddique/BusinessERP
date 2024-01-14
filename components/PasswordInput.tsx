@@ -16,7 +16,7 @@ import {
 } from "@gluestack-ui/themed";
 import { useState } from "react";
 
-export default function FormInput({
+export default function PasswordInput({
   isRequired,
   label,
   placeholder,

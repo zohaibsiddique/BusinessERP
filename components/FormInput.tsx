@@ -27,14 +27,14 @@ export default function FormInput({
     <Box width={responsiveWidth} p="$1">
       <FormControl isRequired={isRequired} isDisabled={disabled}>
         <FormControlLabel mt="$2.5">
-          <FormControlLabelText size="xs">{label}</FormControlLabelText>
+          <FormControlLabelText size="sm">{label}</FormControlLabelText>
         </FormControlLabel>
         <Input sx={{height: 30}}>
           <InputField size="sm" type={type}  onFocus={focus} />
         </Input>
         <FormControlError>
           <FormControlErrorIcon as={AlertCircleIcon} />
-          <FormControlErrorText size="xs">{error}</FormControlErrorText>
+          <FormControlErrorText size="sm">{error}</FormControlErrorText>
         </FormControlError>
       </FormControl>
     </Box>

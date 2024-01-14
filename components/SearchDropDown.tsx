@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Dropdown } from 'react-native-searchable-dropdown-kj';
 import { View,FormControlLabel,FormControlLabelText } from "@gluestack-ui/themed";
-import { GetCountryList } from './Utils/Utils';
 
 const DropdownComponent = ({list, keyLabel, values, responsiveWidth, label}) => {
 
@@ -12,7 +11,7 @@ const DropdownComponent = ({list, keyLabel, values, responsiveWidth, label}) => 
   return (
     <View  width={responsiveWidth} p="$1">
       <FormControlLabel mt="$2.5">
-          <FormControlLabelText size="xs">{label}</FormControlLabelText>
+          <FormControlLabelText size="sm">{label}</FormControlLabelText>
       </FormControlLabel>
       <Dropdown
         style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
@@ -31,7 +30,7 @@ const DropdownComponent = ({list, keyLabel, values, responsiveWidth, label}) => 
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={item => {
-          setValue(item.value);
+          setValue(item[keyLabel]);
           setIsFocus(false);
         }}
       />
