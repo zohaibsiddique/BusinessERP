@@ -1,8 +1,13 @@
+export function GetTimeZoneList() {
+    var timezones = require('timezones-list');
+    return timezones["default"];
+}
+
+export function GetCurrencyList() {
+    var currencyList = require('country-currency-list');
+    return currencyList();
+}
 export function GetCountryList() {
-    const countryCodes = require('country-codes-list')
-    const myCountryCodesObject = countryCodes.customList('countryCode', '{countryNameEn}')
-    return Object.keys(myCountryCodesObject).map(key => ({
-    ["value"]: myCountryCodesObject[key],
-    ['key']: myCountryCodesObject[key]
-    }))
+    var list = require('country-currency-list');
+    return list();
 }

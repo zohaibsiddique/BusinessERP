@@ -17,7 +17,7 @@ import React from "react";
 import DatePicker from "../components/DatePicker";
 import { Platform, TextInput } from "react-native";
 import SearchDropDown from "../components/SearchDropDown";
-import { GetCountryList } from "../components/Utils/Utils";
+import { GetCountryList, GetCurrencyList, GetTimeZoneList } from "../components/Utils/Utils";
 
 export default function BusinessInformation() {
 
@@ -78,7 +78,7 @@ export default function BusinessInformation() {
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
 
-          <SearchDropDown list={GetCountryList()} label={"Country"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
+          <SearchDropDown list={GetCountryList()} keyLabel={"countryName"} values={"countryName"} label={"Country"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
 
           <FormInput
             type={"text"}
@@ -120,26 +120,10 @@ export default function BusinessInformation() {
             focus={null}
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
-          <FormInput
-            type={"text"}
-            isRequired={true}
-            label={"Time Zone"}
-            placeholder={"Time Zone"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
-            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
-          />
-          <FormInput
-            type={"text"}
-            isRequired={true}
-            label={"Currency"}
-            placeholder={"Currency"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
-            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
-          />
+
+          <SearchDropDown list={GetTimeZoneList()} keyLabel={"label"} values={"label"} label={"TimeZone"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
+
+          <SearchDropDown list={GetCurrencyList()} keyLabel={"currency"} values={"currency"} label={"Currency"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
         </Box>
       </Box>
   );

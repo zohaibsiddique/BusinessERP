@@ -4,7 +4,7 @@ import { Dropdown } from 'react-native-searchable-dropdown-kj';
 import { View,FormControlLabel,FormControlLabelText } from "@gluestack-ui/themed";
 import { GetCountryList } from './Utils/Utils';
 
-const DropdownComponent = ({list, responsiveWidth, label}) => {
+const DropdownComponent = ({list, keyLabel, values, responsiveWidth, label}) => {
 
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
@@ -23,8 +23,8 @@ const DropdownComponent = ({list, responsiveWidth, label}) => {
         data={list}
         search
         maxHeight={300}
-        labelField="key"
-        valueField="value"
+        labelField={keyLabel}
+        valueField={values}
         placeholder={!isFocus ? 'Select' : '...'}
         searchPlaceholder="Search..."
         value={value}
