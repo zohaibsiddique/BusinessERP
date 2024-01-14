@@ -1,11 +1,18 @@
-import { Box, Button, ButtonText, Center, KeyboardAvoidingView, ScrollView } from "@gluestack-ui/themed";
+import { Box, Button, ButtonText, Center, KeyboardAvoidingView, ScrollView, useMediaQuery } from "@gluestack-ui/themed";
 import FormInput from "../components/FormInput";
 import PasswordInput from "../components/PasswordInput";
 import { Platform } from "react-native";
 
 export default function OwnerInformation() {
+
+  const [isLargeScreen] = useMediaQuery({
+    minWidth: 720
+  });
+  
   return (
       <Box p="$2" bg="$white">
+        <Box flexDirection={isLargeScreen ?  "row" : "column" } flexWrap="wrap" flex={1} alignItems="flex-start">
+
         <FormInput
           type={"text"}
           isRequired={false}
@@ -14,6 +21,7 @@ export default function OwnerInformation() {
           error={"Please specify your business name"}
           disabled={false}
           focus={null}
+          responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
         />
         <FormInput
           type={"text"}
@@ -23,6 +31,7 @@ export default function OwnerInformation() {
           error={"Please specify your business name"}
           disabled={false}
           focus={null}
+          responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
         />
         <FormInput
           type={"text"}
@@ -32,6 +41,7 @@ export default function OwnerInformation() {
           error={"Please specify your business name"}
           disabled={false}
           focus={null}
+          responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
         />
         <FormInput
           type={"text"}
@@ -41,6 +51,7 @@ export default function OwnerInformation() {
           error={"Please specify your business name"}
           disabled={false}
           focus={null}
+          responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
         />
         <FormInput
           type={"text"}
@@ -50,6 +61,7 @@ export default function OwnerInformation() {
           error={"Please specify your business name"}
           disabled={false}
           focus={null}
+          responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
         />
 
         <PasswordInput
@@ -59,6 +71,7 @@ export default function OwnerInformation() {
           error={"Please specify your business name"}
           disabled={false}
           focus={null}
+          responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
         />
         <PasswordInput
           isRequired={true}
@@ -67,9 +80,11 @@ export default function OwnerInformation() {
           error={"Please specify your business name"}
           disabled={false}
           focus={null}
+          responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
         />
+        </Box>
         <Center mt='$4.5'>
-            <Button w="$40" h="$40" variant="outline" action="secondary">
+            <Button size="sm" variant="outline" action="secondary">
               <ButtonText>Add Signature</ButtonText>
             </Button>
           </Center>

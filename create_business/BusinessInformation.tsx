@@ -3,122 +3,144 @@ import {
   Button,
   ButtonText,
   Center,
+  HStack,
+  Image,
   KeyboardAvoidingView,
   ScrollView,
+  VStack,
+  Text, 
+  useMediaQuery,
+  View,
 } from "@gluestack-ui/themed";
 import FormInput from "../components/FormInput";
 import React from "react";
 import DatePicker from "../components/DatePicker";
-import { Platform } from "react-native";
+import { Platform, TextInput } from "react-native";
+import SearchDropDown from "../components/SearchDropDown";
+import { GetCountryList } from "../components/Utils/Utils";
 
 export default function BusinessInformation() {
+
+  const [isLargeScreen] = useMediaQuery({
+    minWidth: 720
+  });
+
   return (
       <Box p="$2" bg="$white">
-        <Center>
-          <Button w="$32" h="$32" variant="outline" action="secondary">
-            <ButtonText>Add Logo</ButtonText>
-          </Button>
+        
+        <Center mt="$2.5">
+          <Image size="xs" source={require('../assets/image.png')}/>
         </Center>
-        <FormInput
-          type={"text"}
-          isRequired={true}
-          label={"Business Name"}
-          placeholder={"Business Name"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <DatePicker />
-        <FormInput
-          type={"text"}
-          isRequired={false}
-          label={"Website"}
-          placeholder={"Website"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <FormInput
-          type={"text"}
-          isRequired={false}
-          label={"Business Contact Number"}
-          placeholder={"Business Contact Number"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <FormInput
-          type={"text"}
-          isRequired={false}
-          label={"Alternate Contact Number"}
-          placeholder={"Alternate Contact Number"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <FormInput
-          type={"text"}
-          isRequired={false}
-          label={"Country"}
-          placeholder={"Country"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <FormInput
-          type={"text"}
-          isRequired={true}
-          label={"State"}
-          placeholder={"State"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <FormInput
-          type={"text"}
-          isRequired={true}
-          label={"City"}
-          placeholder={"City"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <FormInput
-          type={"text"}
-          isRequired={true}
-          label={"Zip Code"}
-          placeholder={"Zip Code"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <FormInput
-          type={"text"}
-          isRequired={true}
-          label={"Land Mark"}
-          placeholder={"Land Mark"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <FormInput
-          type={"text"}
-          isRequired={true}
-          label={"Time Zone"}
-          placeholder={"Time Zone"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
-        <FormInput
-          type={"text"}
-          isRequired={true}
-          label={"Currency"}
-          placeholder={"Currency"}
-          error={"Please specify your business name"}
-          disabled={false}
-          focus={null}
-        />
+
+        <Box flexDirection={isLargeScreen ?  "row" : "column" } flexWrap="wrap" flex={1} alignItems="flex-start">
+          
+          <FormInput
+            type={"text"}
+            isRequired={true}
+            label={"Business Name"}
+            placeholder={"Business Name"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          
+          <DatePicker responsiveWidthh={isLargeScreen ?  "$1/2" : "$full" }/>
+          
+          <FormInput
+            type={"text"}
+            isRequired={false}
+            label={"Website"}
+            placeholder={"Website"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            type={"text"}
+            isRequired={false}
+            label={"Business Contact Number"}
+            placeholder={"Business Contact Number"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            type={"text"}
+            isRequired={false}
+            label={"Alternate Contact Number"}
+            placeholder={"Alternate Contact Number"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+
+          <SearchDropDown list={GetCountryList()} label={"Country"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
+
+          <FormInput
+            type={"text"}
+            isRequired={true}
+            label={"State"}
+            placeholder={"State"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            type={"text"}
+            isRequired={true}
+            label={"City"}
+            placeholder={"City"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            type={"text"}
+            isRequired={true}
+            label={"Zip Code"}
+            placeholder={"Zip Code"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            type={"text"}
+            isRequired={true}
+            label={"Land Mark"}
+            placeholder={"Land Mark"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            type={"text"}
+            isRequired={true}
+            label={"Time Zone"}
+            placeholder={"Time Zone"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            type={"text"}
+            isRequired={true}
+            label={"Currency"}
+            placeholder={"Currency"}
+            error={"Please specify your business name"}
+            disabled={false}
+            focus={null}
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+        </Box>
       </Box>
   );
 }

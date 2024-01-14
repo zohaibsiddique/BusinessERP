@@ -12,6 +12,7 @@ import {
   InputIcon,
   EyeOffIcon,
   EyeIcon,
+  Box,
 } from "@gluestack-ui/themed";
 import { useState } from "react";
 
@@ -22,6 +23,7 @@ export default function FormInput({
   error,
   disabled = false,
   focus = null,
+  responsiveWidth
 }) {
   const [showPassword, setShowPassword] = useState(false);
   const handleState = () => {
@@ -30,24 +32,26 @@ export default function FormInput({
     });
   };
   return (
+    <Box width={responsiveWidth} p="$1">
     <FormControl isRequired={isRequired} isDisabled={disabled}>
-      <FormControlLabel mt="$4.5">
-        <FormControlLabelText>{label}</FormControlLabelText>
+      <FormControlLabel mt="$2.5">
+        <FormControlLabelText size="xs">{label}</FormControlLabelText>
       </FormControlLabel>
-      <Input>
-        <InputField
+      <Input sx={{height: 30}}>
+        <InputField size="xs"
           type={showPassword ? "text" : "password"}
-          placeholder={placeholder}
+          
           onFocus={focus}
         />
         <InputSlot pr="$3" onPress={handleState}>
-          <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} color="$red600" />
+          <InputIcon size="xs" as={showPassword ? EyeIcon : EyeOffIcon}/>
         </InputSlot>
       </Input>
       <FormControlError>
         <FormControlErrorIcon as={AlertCircleIcon} />
-        <FormControlErrorText>{error}</FormControlErrorText>
+        <FormControlErrorText size="xs">{error}</FormControlErrorText>
       </FormControlError>
     </FormControl>
+    </Box>
   );
 }

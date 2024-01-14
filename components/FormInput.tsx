@@ -1,6 +1,7 @@
 import {
   Input,
   InputField,
+  Box,
   FormControl,
   FormControlError,
   FormControlLabel,
@@ -8,6 +9,7 @@ import {
   FormControlErrorIcon,
   FormControlErrorText,
   AlertCircleIcon,
+  useMediaQuery,
 } from "@gluestack-ui/themed";
 
 export default function FormInput({
@@ -18,19 +20,24 @@ export default function FormInput({
   error,
   disabled = false,
   focus = null,
+  responsiveWidth
 }) {
+  
   return (
-    <FormControl isRequired={isRequired} isDisabled={disabled}>
-      <FormControlLabel mt="$4.5">
-        <FormControlLabelText>{label}</FormControlLabelText>
-      </FormControlLabel>
-      <Input>
-        <InputField type={type} placeholder={placeholder} onFocus={focus} />
-      </Input>
-      <FormControlError>
-        <FormControlErrorIcon as={AlertCircleIcon} />
-        <FormControlErrorText>{error}</FormControlErrorText>
-      </FormControlError>
-    </FormControl>
+    <Box width={responsiveWidth} p="$1">
+      <FormControl isRequired={isRequired} isDisabled={disabled}>
+        <FormControlLabel mt="$2.5">
+          <FormControlLabelText size="xs">{label}</FormControlLabelText>
+        </FormControlLabel>
+        <Input sx={{height: 30}}>
+          <InputField size="sm" type={type}  onFocus={focus} />
+        </Input>
+        <FormControlError>
+          <FormControlErrorIcon as={AlertCircleIcon} />
+          <FormControlErrorText size="xs">{error}</FormControlErrorText>
+        </FormControlError>
+      </FormControl>
+    </Box>
+    
   );
 }

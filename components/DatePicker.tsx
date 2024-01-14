@@ -10,6 +10,7 @@ import {
   Heading,
   Button,
   Icon,
+  Box,
   ModalBackdrop,
   ModalBody,
   ModalCloseButton,
@@ -22,44 +23,33 @@ import {
 } from "@gluestack-ui/themed";
 import DateTimePicker, { DateType } from "react-native-ui-datepicker";
 import dayjs from "dayjs";
+import FormInput from "./FormInput";
 
-export default function DatePicker() {
+export default function DatePicker({responsiveWidthh}) {
   const [showModal, setShowModal] = useState(false);
   const [value, setValue] = useState(dayjs());
   const ref = React.useRef(null);
 
   return (
     <>
-      <FormControl isRequired={true}>
-        <FormControlLabel mt="$4.5">
-          <FormControlLabelText>Start Datee</FormControlLabelText>
-        </FormControlLabel>
-      </FormControl>
-      <Pressable
+      <FormInput
+          type={"text"}
+          isRequired={true}
+          label={"Starting Date"}
+          placeholder={"Date"}
+          error={"Please specify date"}
+          disabled={false}
+          focus={null}
+          responsiveWidth={responsiveWidthh}
+        />
+    <Pressable
         onPress={() => {
           setShowModal(true);
         }}
         ref={ref}
-      >
-        <Text
-          p="$2"
-          borderWidth="$1"
-          borderColor="$secondary200"
-          borderRadius="$md"
-          color="$secondary300"
-        >
-          Start Date
-        </Text>
+      > 
+        
       </Pressable>
-      {/* <DatePickerModal
-        locale="en"
-        mode="single"
-        label="Select Date"
-        visible={open}
-        onDismiss={onDismissSingle}
-        date={date}
-        onConfirm={onConfirmSingle}
-      /> */}
       <Modal
         isOpen={showModal}
         onClose={() => {
@@ -87,7 +77,8 @@ export default function DatePicker() {
             </View>
           </ModalBody>
         </ModalContent>
-      </Modal>
+      </Modal>   
     </>
+    
   );
 }
