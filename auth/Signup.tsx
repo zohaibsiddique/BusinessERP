@@ -70,12 +70,20 @@ export default function RegisterBusiness() {
             focus={null}
             responsiveWidth="$full"
           />
-          
           <PasswordInput
             isRequired={false}
             label={"Password"}
             placeholder={"Password"}
             error={"Please specify Password"}
+            disabled={false}
+            focus={null}
+            responsiveWidth="$full"
+          />
+           <PasswordInput
+            isRequired={false}
+            label={"Confirm Password"}
+            placeholder={"Confirm Password"}
+            error={"Please specify Confirm Password"}
             disabled={false}
             focus={null}
             responsiveWidth="$full"
