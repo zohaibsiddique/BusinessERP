@@ -33,7 +33,7 @@ import {
     return (
         <Box mt="$2" bg="white" borderWidth="$1" borderColor="lightgray" p="$2" width="60%" marginRight="auto" marginLeft="auto">
           
-          <h1>Welcome to Dashboard</h1>
+          <Text>Welcome to Dashboard</Text>
 
           <Button onPress={() => navigation.navigate('Signup')}
              mt="$6" size="sm" width="30%" bg="$red600" sx={{ borderRadius: "$none" }}>

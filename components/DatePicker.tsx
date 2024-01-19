@@ -20,6 +20,7 @@ import {
   Text,
   Modal,
   View,
+  VStack,
 } from "@gluestack-ui/themed";
 import DateTimePicker, { DateType } from "react-native-ui-datepicker";
 import dayjs from "dayjs";
@@ -29,34 +30,24 @@ export default function DatePicker({responsiveWidthh}) {
   const [showModal, setShowModal] = useState(false);
   const [value, setValue] = useState(dayjs());
   const ref = React.useRef(null);
-
+ 
   return (
     <>
-      <FormInput
-          type={"text"}
-          isRequired={true}
-          label={"Starting Date"}
-          placeholder={"Date"}
-          error={"Please specify date"}
-          disabled={false}
-          focus={null}
-          responsiveWidth={responsiveWidthh}
-        />
-    <Pressable
-        onPress={() => {
-          setShowModal(true);
-        }}
-        ref={ref}
-      > 
-        
-      </Pressable>
-      <Modal
-        isOpen={showModal}
-        onClose={() => {
-          setShowModal(false);
-        }}
-        finalFocusRef={ref}
-      >
+    <VStack width={responsiveWidthh} p="$1" >
+      <FormControl isRequired={true}>
+
+        <FormControlLabel mt="$2.5">
+          <FormControlLabelText size="sm">Starting Date</FormControlLabelText>
+        </FormControlLabel>
+        <Button  variant="outline" onPress={() => {setShowModal(true);}} ref={ref}
+          size="sm" sx={{padding: -2, borderColor:"lightgrey", height: 30, justifyContent: "flex-start"}}>
+          <ButtonText sx={{  color: "black"}}>../../..</ButtonText>
+        </Button>
+      </FormControl>
+
+    </VStack>
+     
+      <Modal isOpen={showModal} onClose={() => { setShowModal(false);}} finalFocusRef={ref}>
         <ModalBackdrop />
         <ModalContent>
           <ModalHeader>

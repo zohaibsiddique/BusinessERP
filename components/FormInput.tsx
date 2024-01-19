@@ -9,7 +9,6 @@ import {
   FormControlErrorIcon,
   FormControlErrorText,
   AlertCircleIcon,
-  useMediaQuery,
 } from "@gluestack-ui/themed";
 
 export default function FormInput({

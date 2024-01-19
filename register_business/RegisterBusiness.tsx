@@ -15,7 +15,7 @@ import {
 } from "@gluestack-ui/themed";
 import FormInput from "../components/FormInput";
 import React from "react";
-import DatePicker from "../components/DatePicker";
+import CustomDatePicker from "../components/DatePicker";
 import SearchDropDown from "../components/SearchDropDown";
 import { GetBusinessCategory, GetCountryList, GetCurrencyList, GetStockAccountMethodList, GetTimeZoneList, GetYearList } from "../utils/Utils";
 import { useNavigation } from "@react-navigation/native";
@@ -32,9 +32,10 @@ export default function RegisterBusiness() {
 
 
   return (
+    <ScrollView>
       <Box  p="$2" bg="$white"  width = {isLargeScreen ?  "$1/2" : "$full" }  marginRight="auto" marginLeft="auto">
         
-        <h1>{t('register_business')}</h1>
+        <Text>{t('register_business')}</Text>
         <Text>Welcome to Invenup - A comprehensive Business ERP to automate your business processes</Text>
         <Divider mt="$4"/>
 
@@ -57,7 +58,7 @@ export default function RegisterBusiness() {
           
           <SearchDropDown list={GetBusinessCategory()} keyLabel={"category"} values={"category"} label={"Business Category"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
 
-          <DatePicker responsiveWidthh={isLargeScreen ?  "$1/2" : "$full" }/>
+          <CustomDatePicker responsiveWidthh={isLargeScreen ?  "$1/2" : "$full" }/>
           
           <FormInput
             type={"text"}
@@ -202,5 +203,7 @@ export default function RegisterBusiness() {
             </Button>
           </HStack>
       </Box>
+    </ScrollView>
+      
   );
 }

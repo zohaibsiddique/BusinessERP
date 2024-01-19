@@ -16,25 +16,27 @@ import {
 } from "@gluestack-ui/themed";
 import FormInput from "../components/FormInput";
 import React from "react";
-import DatePicker from "../components/DatePicker";
 import SearchDropDown from "../components/SearchDropDown";
 import { GetCountryList, GetCurrencyList, GetStockAccountMethodList, GetTimeZoneList, GetYearList } from "../utils/Utils";
 import PasswordInput from "../components/PasswordInput";
 import { useNavigation } from "@react-navigation/native";
+import { useTranslation } from 'react-i18next';
+import '../translation/i18n';
 
 export default function RegisterBusiness() {
 
   const [isLargeScreen] = useMediaQuery({
     minWidth: 720
   });
+  const { t, i18n } = useTranslation();
 
   const navigation = useNavigation()
 
   return (
-      <Box mt="$2" bg="white" borderWidth="$1" borderColor="lightgray" p="$2" width="30%" marginRight="auto" marginLeft="auto">
+      <Box mt="$2" bg="white" borderWidth="$1" borderColor="lightgray" p="$2" width = {isLargeScreen ?  "$1/2" : "$full" }  marginRight="auto" marginLeft="auto">
         
-        <h1>Signup</h1>
-        <Link>Already have an account?</Link>
+        <Text>{t('signup')}</Text>
+        <Link><Text>Already have an account?</Text></Link>
         <Divider mt="$4" mb="$4"/>
 
         <Box>
