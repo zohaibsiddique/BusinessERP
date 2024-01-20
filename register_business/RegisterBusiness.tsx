@@ -21,6 +21,7 @@ import { GetBusinessCategory, GetCountryList, GetCurrencyList, GetStockAccountMe
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from 'react-i18next';
 import '../translation/i18n';
+import SignatureCanvas from "../components/SignatureCanvas";
 
 export default function RegisterBusiness() {
   const { t, i18n } = useTranslation();
@@ -40,7 +41,7 @@ export default function RegisterBusiness() {
         <Divider mt="$4"/>
 
         <Center mt="$8" mb="$6">
-          <Image size="sm" source={require('../assets/business.png')}/>
+          <Image alt="Image" size="sm" source={require('../assets/business.png')}/>
         </Center>
 
         <Box flexDirection={isLargeScreen ?  "row" : "column" } flexWrap="wrap" alignItems="flex-start">
@@ -183,7 +184,7 @@ export default function RegisterBusiness() {
           
           <SearchDropDown list={GetYearList()} keyLabel={"label"} values={"label"} label={"Financial year start month"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
 
-          
+          <SignatureCanvas/>
         </Box>
         <HStack paddingTop="$6" justifyContent="space-between">
             <Button onPress={() => navigation.navigate("Signup")}

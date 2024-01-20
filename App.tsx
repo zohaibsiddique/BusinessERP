@@ -11,12 +11,9 @@ import SignUp from "./auth/Signup";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from "@react-navigation/native";
 import Dashboard from "./home/Dashboard";
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import 'react-native-gesture-handler';
 
 
 
-const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -24,20 +21,13 @@ export default function App() {
     <GluestackUIProvider config={config}>
       
        <NavigationContainer>
-          <MyDrawer/>
+          <MyStack/>
        </NavigationContainer>
       
     </GluestackUIProvider>
   );
 }
 
-function MyDrawer() {
-  return (
-    <Drawer.Navigator useLegacyImplementation>
-      <Drawer.Screen name="Feed" component={SignUp} />
-    </Drawer.Navigator>
-  );
-}
 
 function MyStack() {
   return (
