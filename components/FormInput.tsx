@@ -12,6 +12,7 @@ import {
 } from "@gluestack-ui/themed";
 
 export default function FormInput({
+  stateValue = "",
   type,
   isRequired,
   label,
@@ -29,7 +30,9 @@ export default function FormInput({
           <FormControlLabelText size="sm">{label}</FormControlLabelText>
         </FormControlLabel>
         <Input sx={{height: 30}}>
-          <InputField size="sm" type={type}  onFocus={focus} />
+          <InputField value={stateValue} size="sm" type={type}  onFocus={focus} 
+             onChangeText={newValue => set(newValue)}
+          />
         </Input>
         <FormControlError>
           <FormControlErrorIcon as={AlertCircleIcon} />

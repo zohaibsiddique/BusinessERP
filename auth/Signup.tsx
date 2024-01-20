@@ -15,7 +15,7 @@ import {
   Link,
 } from "@gluestack-ui/themed";
 import FormInput from "../components/FormInput";
-import React from "react";
+import React, { useState } from "react";
 import SearchDropDown from "../components/SearchDropDown";
 import { GetCountryList, GetCurrencyList, GetStockAccountMethodList, GetTimeZoneList, GetYearList } from "../utils/Utils";
 import PasswordInput from "../components/PasswordInput";
@@ -32,6 +32,8 @@ export default function RegisterBusiness() {
 
   const navigation = useNavigation()
 
+  const [email, setEmail] = useState('');
+
   return (
       <Box mt="$2" bg="white" borderWidth="$1" borderColor="lightgray" p="$2" width = {isLargeScreen ?  "$1/2" : "$full" }  marginRight="auto" marginLeft="auto">
         
@@ -41,6 +43,7 @@ export default function RegisterBusiness() {
 
         <Box>
           <FormInput
+            stateValue={email}
             type={"text"}
             isRequired={true}
             label={"Email address"}
