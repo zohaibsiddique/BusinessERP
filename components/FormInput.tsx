@@ -10,9 +10,12 @@ import {
   FormControlErrorText,
   AlertCircleIcon,
 } from "@gluestack-ui/themed";
+import { Controller, useForm } from "react-hook-form";
+import { TextInput } from "react-native";
+
 
 export default function FormInput({
-  stateValue = "",
+  control,watch,errors,rules, name,
   type,
   isRequired,
   label,
@@ -23,20 +26,39 @@ export default function FormInput({
   responsiveWidth
 }) {
   
+  const watcher = watch(name)
+
   return (
+
     <Box width={responsiveWidth} p="$1">
-      <FormControl isRequired={isRequired} isDisabled={disabled}>
+      <FormControl isRequired={isRequired} isDisabled={disabled}  
+        isInvalid={errors.firstName?.message != null ? true : (watcher != null ?  (watcher?.length > rules.minLength.value ? false: true) : false)}
+      >
         <FormControlLabel mt="$2.5">
           <FormControlLabelText size="sm">{label}</FormControlLabelText>
         </FormControlLabel>
-        <Input sx={{height: 30}}>
-          <InputField value={stateValue} size="sm" type={type}  onFocus={focus} 
-             onChangeText={newValue => set(newValue)}
-          />
-        </Input>
+        <Controller
+          control={control}
+          rules={rules}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input sx={{height: 30}} >
+               <InputField 
+                onBlur={onBlur} 
+                onChangeText={onChange} 
+                value={value} 
+                size="sm" 
+                type={type}  
+                onFocus={focus} 
+               />
+             </Input> 
+          )}
+          name={name}
+        />
         <FormControlError>
           <FormControlErrorIcon as={AlertCircleIcon} />
-          <FormControlErrorText size="sm">{error}</FormControlErrorText>
+          <FormControlErrorText size="sm">
+              {rules.minLength.message}
+          </FormControlErrorText>
         </FormControlError>
       </FormControl>
     </Box>

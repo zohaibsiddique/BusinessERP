@@ -17,6 +17,8 @@ import {
 import { useState } from "react";
 
 export default function PasswordInput({
+  value = "",
+  setValue = "",
   isRequired,
   label,
   placeholder,
@@ -41,7 +43,7 @@ export default function PasswordInput({
         <InputField size="xs"
           type={showPassword ? "text" : "password"}
           
-          onFocus={focus}
+          onFocus={focus} value={value}  onChangeText={newValue => setValue(newValue)}
         />
         <InputSlot pr="$3" onPress={handleState}>
           <InputIcon size="xs" as={showPassword ? EyeIcon : EyeOffIcon}/>
