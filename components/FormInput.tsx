@@ -10,30 +10,22 @@ import {
   FormControlErrorText,
   AlertCircleIcon,
 } from "@gluestack-ui/themed";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { TextInput } from "react-native";
 
 
 export default function FormInput({
-  control,watch,errors,rules, name,
+  control,errors,rules, name,
   type,
-  isRequired,
   label,
-  placeholder,
-  error,
   disabled = false,
-  focus = null,
   responsiveWidth
 }) {
-  
-  const watcher = watch(name)
-
   return (
 
     <Box width={responsiveWidth} p="$1">
-      <FormControl isRequired={isRequired} isDisabled={disabled}  
-        isInvalid={errors.firstName?.message != null ? true : (watcher != null ?  (watcher?.length > rules.minLength.value ? false: true) : false)}
-      >
+      <FormControl isDisabled={disabled} isInvalid={errors[name]?.message ? true : false}>
         <FormControlLabel mt="$2.5">
           <FormControlLabelText size="sm">{label}</FormControlLabelText>
         </FormControlLabel>
@@ -48,7 +40,6 @@ export default function FormInput({
                 value={value} 
                 size="sm" 
                 type={type}  
-                onFocus={focus} 
                />
              </Input> 
           )}
@@ -57,7 +48,7 @@ export default function FormInput({
         <FormControlError>
           <FormControlErrorIcon as={AlertCircleIcon} />
           <FormControlErrorText size="sm">
-              {rules.minLength.message}
+              {errors[name]?.message}
           </FormControlErrorText>
         </FormControlError>
       </FormControl>

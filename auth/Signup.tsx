@@ -40,10 +40,30 @@ export default function RegisterBusiness() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const {control,watch,handleSubmit,formState: { errors },} = useForm({
+  // const {control,watch,handleSubmit,formState: { errors },} = useForm({
     
-  })
-  const onSubmit = (data) => console.log(data)
+  // })
+  // const onSubmit = (data) => console.log(data)
+
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+      firstname: "",
+      lastname:""
+    }, 
+    mode: "onTouched"
+  });
+  const onSubmit = (data) => {
+    const output = {
+      ...data,
+      others: {
+        key: "zohaib",
+        skdfj: "arshad"
+      }
+    }
+    console.log(output)
+  }
 
   return (
       <Box mt="$2" bg="white" borderWidth="$1" borderColor="lightgray" p="$2" width = {isLargeScreen ?  "$1/2" : "$full" }  marginRight="auto" marginLeft="auto">
@@ -51,95 +71,62 @@ export default function RegisterBusiness() {
         <Text>{t('signup')}</Text>
         <Link><Text>Already have an account?</Text></Link>
         <Divider mt="$4" mb="$4"/>
-
-        <FormInput
-            watch={watch}
+        
+        <Box>
+          <FormInput
+              control = {control} errors={errors} 
+              responsiveWidth="$full"
+              name={"email"}
+              type={"text"}
+              label={"Email address"}
+              rules={{
+                required: "The field is required",
+                pattern: {
+                  value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/,
+                  message: "Invalid email address",
+                }
+              }}
+            />
+          <FormInput
+              control = {control} errors={errors} 
+              responsiveWidth="$full"
+              name={"firstname"}
+              type={"text"}
+              label={"First Name"}
+              rules={{
+                required: "The field is required",
+              }}
+            />
+            <FormInput
+              control = {control} errors={errors} 
+              responsiveWidth="$full"
+              name={"lastname"}
+              type={"text"}
+              label={"Last Name"}
+              rules={{
+                required: "The field is required",
+              }}
+            />
+          <PasswordInput
             control = {control} errors={errors} 
-            name={"firstName"}
-            type={"text"}
-            isRequired={true}
-            label={"Email address"}
-            placeholder={"Email address"}
-            error={"Please specify your Email address"}
-            disabled={false}
-            focus={null}
-            responsiveWidth="$full"
+            name1={"password"}
+            name2={"confirm_password"}
+            label1={"Password"}
+            label2={"Confirm Password"}
             rules={{
-              required: "Field is required",
-              minLength: {
-                value: 4,
-                message: "Min. length is 5"
+              required: "The field is required",
+              pattern: {
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+                message: "Password must be alpha numberic with one special character and min 8 characters long",
               }
             }}
-          />
-        <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-        
-        {/* <Box>
-          <FormInput
-            value={email}
-            setValue={setEmail}
-            type={"text"}
-            isRequired={true}
-            label={"Email address"}
-            placeholder={"Email address"}
-            error={"Please specify your Email address"}
-            disabled={false}
-            focus={null}
             responsiveWidth="$full"
           />
-          <Text>{email}</Text>
-          <FormInput
-            type={"text"}
-            value={firstName}
-            setValue={setFirstName}
-            isRequired={false}
-            label={"First name"}
-            placeholder={"First name"}
-            error={"Please specify your First name"}
-            disabled={false}
-            focus={null}
-            responsiveWidth="$full"
-          />
-
-          <FormInput
-            type={"text"}
-            value={lastName}
-            setValue={setLastName}
-            isRequired={false}
-            label={"Last name"}
-            placeholder={"Last name"}
-            error={"Please specify your Last name"}
-            disabled={false}
-            focus={null}
-            responsiveWidth="$full"
-          />
-          <PasswordInput
-            isRequired={false}
-            value={password}
-            setValue={setPassword}
-            label={"Password"}
-            placeholder={"Password"}
-            error={"Please specify Password"}
-            disabled={false}
-            focus={null}
-            responsiveWidth="$full"
-          />
-           <PasswordInput
-            isRequired={false}
-            value={confirmPassword}
-            setValue={setConfirmPassword}
-            label={"Confirm Password"}
-            placeholder={"Confirm Password"}
-            error={"Please specify Confirm Password"}
-            disabled={false}
-            focus={null}
-            responsiveWidth="$full"
-          />
-          <Button onPress={() => navigation.navigate('RegisterBusiness')}
+          <Button onPress={handleSubmit(onSubmit)}
              mt="$6" size="sm" width="100%" bg="$red600" sx={{ borderRadius: "$none" }}>
               <ButtonText>START</ButtonText>
           </Button>
-        </Box> */}
+        </Box>
       </Box>
   );
 }

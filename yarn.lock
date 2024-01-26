@@ -8986,6 +8986,11 @@ react-native-pager-view@6.2.0:
   resolved "https://registry.npmjs.org/react-native-pager-view/-/react-native-pager-view-6.2.0.tgz"
   integrity sha512-pf9OnL/Tkr+5s4Gjmsn7xh91PtJLDa6qxYa/bmtUhd/+s4cQdWQ8DIFoOFghwZIHHHwVdWtoXkp6HtpjN+r20g==
 
+react-native-password-validate-checklist@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/react-native-password-validate-checklist/-/react-native-password-validate-checklist-0.0.11.tgz#8ea95f178a9e3e2257f769a2ff329019959de9a0"
+  integrity sha512-fAG1+L8I0u3KOyOdZKPbMai7+4barV30K7ymEHt/LKFghdIG0T6whn6mONuSXX7y6wA6PXbtegHuGz4HO332Gg==
+
 react-native-reanimated@^3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.6.1.tgz#5add41efafac6d0befd9786e752e7f26dbe903b7"
