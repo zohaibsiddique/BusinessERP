@@ -2,5 +2,22 @@
 {
     "welcome": "Welcome to our app!",
     "register_business": "Register Business",
-    "signup": "Signup"
+    "signup": "Signup",
+    "email_address": "Email Address",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "already_an_account": "Already have an account?",
+    "login": "Login",
+    "required_field": "The field is required",
+    "invalid_email": "Invalid Email Address",
+    "invalid_password_message": "Password must be alpha numberic with one special character and min 8 characters long",
+    "password_min_length_message": "Password contains more than 8 characters",
+    "password_lowercase_message": "Password contains at least one lowercase letter",
+    "password_uppercase_message": "Password contains at least one uppercase letter",
+    "password_numeric_message": "Password contains at least one numeric",
+    "password_matching_message": "Entered passwords are matching",
+    "password_special_character_message": "Password contains at least one special character"
+
 }

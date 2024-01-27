@@ -18,12 +18,12 @@ import FormInput from "../components/FormInput";
 import React, { useState } from "react";
 import SearchDropDown from "../components/SearchDropDown";
 import { GetCountryList, GetCurrencyList, GetStockAccountMethodList, GetTimeZoneList, GetYearList } from "../utils/Utils";
-import PasswordInput from "../components/PasswordInput";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from 'react-i18next';
 import '../translation/i18n';
 import { useForm, Controller } from "react-hook-form"
 import { TextInput } from "react-native";
+import PasswordConfirmationInput from "../components/PasswordConfirmationInput";
 
 export default function RegisterBusiness() {
 
@@ -31,45 +31,21 @@ export default function RegisterBusiness() {
     minWidth: 720
   });
   const { t, i18n } = useTranslation();
-
   const navigation = useNavigation()
 
-  const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  // const {control,watch,handleSubmit,formState: { errors },} = useForm({
-    
-  // })
-  // const onSubmit = (data) => console.log(data)
-
   const { control, handleSubmit, formState: { errors } } = useForm({
-    defaultValues: {
-      email: "",
-      password: "",
-      firstname: "",
-      lastname:""
-    }, 
+    defaultValues: {email: "",password: "",firstname: "",lastname:""}, 
     mode: "onTouched"
   });
   const onSubmit = (data) => {
-    const output = {
-      ...data,
-      others: {
-        key: "zohaib",
-        skdfj: "arshad"
-      }
-    }
-    console.log(output)
+    navigation.navigate("Dashboard")
   }
 
   return (
       <Box mt="$2" bg="white" borderWidth="$1" borderColor="lightgray" p="$2" width = {isLargeScreen ?  "$1/2" : "$full" }  marginRight="auto" marginLeft="auto">
         
         <Text>{t('signup')}</Text>
-        <Link><Text>Already have an account?</Text></Link>
+        <Link><Text>{t('already_an_account')}</Text></Link>
         <Divider mt="$4" mb="$4"/>
         
         <Box>
@@ -78,12 +54,12 @@ export default function RegisterBusiness() {
               responsiveWidth="$full"
               name={"email"}
               type={"text"}
-              label={"Email address"}
+              label={t('email_address')}
               rules={{
-                required: "The field is required",
+                required: t('required_field'),
                 pattern: {
                   value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/,
-                  message: "Invalid email address",
+                  message: t('invalid_email'),
                 }
               }}
             />
@@ -92,9 +68,9 @@ export default function RegisterBusiness() {
               responsiveWidth="$full"
               name={"firstname"}
               type={"text"}
-              label={"First Name"}
+              label={t('first_name')}
               rules={{
-                required: "The field is required",
+                required: t('required_field'),
               }}
             />
             <FormInput
@@ -102,22 +78,22 @@ export default function RegisterBusiness() {
               responsiveWidth="$full"
               name={"lastname"}
               type={"text"}
-              label={"Last Name"}
+              label={t('last_name')}
               rules={{
-                required: "The field is required",
+                required: t('required_field'),
               }}
             />
-          <PasswordInput
+          <PasswordConfirmationInput
             control = {control} errors={errors} 
             name1={"password"}
             name2={"confirm_password"}
-            label1={"Password"}
-            label2={"Confirm Password"}
+            label1={t('password')}
+            label2={t('confirm_password')}
             rules={{
-              required: "The field is required",
+              required: t('required_field'),
               pattern: {
                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-                message: "Password must be alpha numberic with one special character and min 8 characters long",
+                message: t('invalid_password_message'),
               }
             }}
             responsiveWidth="$full"

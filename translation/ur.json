@@ -1,5 +1,22 @@
 {
     "welcome": "ہماری ایپ میں خوش آمدید!",
     "register_business": "کاروبار رجسٹر کریں",
-    "signup": "سائن اپ"
+    "signup": "سائن اپ",
+    "email_address": "ای میل اڈریس",
+    "first_name": "پہلا نام",
+    "last_name": "آخری نام",
+    "password": "پاس ورڈ",
+    "confirm_password": "پاس ورڈ کی تصدیق کریں۔",
+    "already_an_account": "پہلے سے ہی اکاؤنٹ ہے؟",
+    "login": "لاگ ان کریں",
+    "required_field": "فیلڈ درکار ہے۔",
+    "invalid_email": "غلط ای میل ایڈریس",
+    "invalid_password_message": "پاس ورڈ ایک خاص حرف اور کم از کم 8 حروف کے ساتھ حروف نمبری ہونا چاہیے۔",
+    "password_min_length_message": "پاس ورڈ 8 سے زیادہ حروف پر مشتمل ہے۔",
+    "password_lowercase_message": "پاس ورڈ میں کم از کم ایک چھوٹے حروف پر مشتمل ہے۔",
+    "password_uppercase_message": "پاس ورڈ کم از کم ایک بڑے حروف پر مشتمل ہے۔",
+    "password_numeric_message": "پاس ورڈ کم از کم ایک عددی پر مشتمل ہے۔",
+    "password_matching_message": "درج کردہ پاس ورڈز مماثل ہیں۔",
+    "password_special_character_message": "پاس ورڈ میں کم از کم ایک خاص حرف ہے۔"
+
   }
