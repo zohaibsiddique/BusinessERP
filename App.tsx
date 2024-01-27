@@ -32,7 +32,7 @@ export default function App() {
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Signup" component={SignUp} 
+      <Stack.Screen name="Signup" component={RegisterBusiness} 
         options={{
           title: "",
           headerStyle: {

@@ -22,6 +22,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from 'react-i18next';
 import '../translation/i18n';
 import SignatureCanvas from "../components/SignatureCanvas";
+import { useForm } from "react-hook-form";
 
 export default function RegisterBusiness() {
   const { t, i18n } = useTranslation();
@@ -30,14 +31,20 @@ export default function RegisterBusiness() {
     minWidth: 720
   });
   const navigation = useNavigation()
-
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    defaultValues: {}, 
+    mode: "onTouched"
+  });
+  const onSubmit = (data) => {
+    console.log(data)
+  }
 
   return (
     <ScrollView>
       <Box  p="$2" bg="$white"  width = {isLargeScreen ?  "$1/2" : "$full" }  marginRight="auto" marginLeft="auto">
         
         <Text>{t('register_business')}</Text>
-        <Text>Welcome to Invenup - A comprehensive Business ERP to automate your business processes</Text>
+        <Text>{t('welcome_msg')}</Text>
         <Divider mt="$4"/>
 
         <Center mt="$8" mb="$6">
@@ -47,145 +54,191 @@ export default function RegisterBusiness() {
         <Box flexDirection={isLargeScreen ?  "row" : "column" } flexWrap="wrap" alignItems="flex-start">
           
           <FormInput
-            type={"text"}
-            isRequired={true}
-            label={"Business Name"}
-            placeholder={"Business Name"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
+            control = {control} errors={errors}
+            name={"business_name"}
+            isRequired= {true}
+            label={t('business_name')}
+            rules={{
+              required: t('required_field'),
+            }} 
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
           
-          <SearchDropDown list={GetBusinessCategory()} keyLabel={"category"} values={"category"} label={"Business Category"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
+          <SearchDropDown control = {control} errors={errors}  
+            isRequired= {true}
+            name={"business_category"} 
+            rules={{
+              required: t('required_field'),
+            }} 
+            list={GetBusinessCategory()} keyLabel={"category"} values={"category"} 
+            label={t('business_category')} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
 
-          <CustomDatePicker responsiveWidthh={isLargeScreen ?  "$1/2" : "$full" }/>
+          <CustomDatePicker 
+            control = {control} errors={errors}
+            name={"starting_date"}
+            isRequired= {true}
+            label={t('starting_date')}
+            rules={{
+              required: t('required_field'),
+            }} 
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" } 
+          />
           
           <FormInput
-            type={"text"}
-            isRequired={false}
-            label={"Website"}
-            placeholder={"Website"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
+            control = {control} errors={errors}
+            name={"website"}
+            label={t('website')}
+            rules={{
+              required: t('required_field'),
+            }} 
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
           <FormInput
-            type={"text"}
-            isRequired={false}
-            label={"Business Contact Number"}
-            placeholder={"Business Contact Number"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
+            control = {control} errors={errors}
+            name={"business_contact_no"}
+            isRequired= {true}
+            label={t('business_contact_no')}
+            rules={{
+              required: t('required_field'),
+            }} 
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
           <FormInput
-            type={"text"}
-            isRequired={false}
-            label={"Alternate Contact Number"}
-            placeholder={"Alternate Contact Number"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
+            control = {control} errors={errors}
+            name={"alternate_contact_no"}
+            isRequired= {true}
+            label={t('alternate_contact_no')}
+            rules={{
+              required: t('required_field'),
+            }} 
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <SearchDropDown isRequired= {true} control = {control} errors={errors}  name={"country"} 
+            rules={{
+              required: t('required_field'),
+            }} 
+            list={GetCountryList()} keyLabel={"countryName"} values={"countryName"} 
+            label={t('country')} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          
+          <FormInput
+            control = {control} errors={errors}
+            name={"state"}
+            isRequired= {true}
+            label={t('state')}
+            rules={{
+              required: t('required_field'),
+            }} 
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            control = {control} errors={errors}
+            name={"city"}
+            isRequired= {true}
+            label={t('city')}
+            rules={{
+              required: t('required_field'),
+            }} 
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            control = {control} errors={errors}
+            name={"zipcode"}
+            isRequired= {true}
+            label={t('zipcode')}
+            rules={{
+              required: t('required_field'),
+            }} 
+            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
+          <FormInput
+            control = {control} errors={errors}
+            name={"land_mark"}
+            isRequired= {true}
+            label={t('land_mark')}
+            rules={{
+              required: t('required_field'),
+            }} 
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
 
-          <SearchDropDown list={GetCountryList()} keyLabel={"countryName"} values={"countryName"} label={"Country"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
-
-          <FormInput
-            type={"text"}
-            isRequired={true}
-            label={"State"}
-            placeholder={"State"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
-            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
-          />
-          <FormInput
-            type={"text"}
-            isRequired={true}
-            label={"City"}
-            placeholder={"City"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
-            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
-          />
-          <FormInput
-            type={"text"}
-            isRequired={true}
-            label={"Zip Code"}
-            placeholder={"Zip Code"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
-            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
-          />
-          <FormInput
-            type={"text"}
-            isRequired={true}
-            label={"Land Mark"}
-            placeholder={"Land Mark"}
-            error={"Please specify your business name"}
-            disabled={false}
-            focus={null}
-            responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          <SearchDropDown isRequired= {true} control = {control} errors={errors}  name={"timezone"} 
+            rules={{
+              required: t('required_field'),
+            }} 
+            list={GetTimeZoneList()} keyLabel={"label"} values={"label"} 
+            label={t('timezone')} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
 
-          <SearchDropDown list={GetTimeZoneList()} keyLabel={"label"} values={"label"} label={"TimeZone"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
-
-          <SearchDropDown list={GetCurrencyList()} keyLabel={"currency"} values={"currency"} label={"Currency"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
+          <SearchDropDown isRequired= {true} control = {control} errors={errors}  name={"currency"} 
+            rules={{
+              required: t('required_field'),
+            }} 
+            list={GetCurrencyList()} keyLabel={"currency"} values={"currency"} 
+            label={t('currency')} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
         
           <FormInput
-            type={'text'}
-            isRequired={false}
-            label={'Tax 1 Name'}
-            placeholder={'Tax 1 Name'}
-            error={'Please specify your business name'}
-            disabled={false}
-            focus={null}
+            control = {control} errors={errors}
+            name={"tax_one_name"}
+            isRequired= {true}
+            label={t('tax_one_name')}
+            rules={{
+              required: t('required_field'),
+            }} 
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
           <FormInput
-            type={'text'}
-            isRequired={false}
-            label={'Tax 1 No'}
-            placeholder={'Tax 1 No'}
-            error={'Please specify your business name'}
-            disabled={false}
-            focus={null}
+            control = {control} errors={errors}
+            name={"tax_one_no"}
+            isRequired= {true}
+            label={t('tax_one_no')}
+            rules={{
+              required: t('required_field'),
+            }} 
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
           <FormInput
-            type={'text'}
-            isRequired={false}
-            label={'Tax 2 Name'}
-            placeholder={'Tax 2 Name'}
-            error={'Please specify your business name'}
-            disabled={false}
-            focus={null}
+            control = {control} errors={errors}
+            name={"tax_two_name"}
+            isRequired= {true}
+            label={t('tax_two_name')}
+            rules={{
+              required: t('required_field'),
+            }} 
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
           <FormInput
-            type={'text'}
-            isRequired={false}
-            label={'Tax 2 No'}
-            placeholder={'Tax 2 No'}
-            error={'Please specify your business name'}
-            disabled={false}
-            focus={null}
+            control = {control} errors={errors}
+            name={"tax_two_no"}
+            isRequired= {true}
+            label={t('tax_two_no')}
+            rules={{
+              required: t('required_field'),
+            }} 
             responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
 
-          <SearchDropDown list={GetStockAccountMethodList()} keyLabel={"label"} values={"label"} label={"Stock Account Method"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
+          <SearchDropDown isRequired= {true} control = {control} errors={errors}  name={"stock_accounting_method"} 
+            rules={{
+              required: t('required_field'),
+            }} 
+            list={GetStockAccountMethodList()} keyLabel={"label"} values={"label"} 
+            label={t('stock_accounting_method')} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
           
-          <SearchDropDown list={GetYearList()} keyLabel={"label"} values={"label"} label={"Financial year start month"} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }/>
+          <SearchDropDown isRequired= {true} control = {control} errors={errors}  name={"financial_year_start_month"} 
+            rules={{
+              required: t('required_field'),
+            }} 
+            list={GetYearList()} keyLabel={"label"} values={"label"} 
+            label={t('financial_year_start_month')} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
+          />
 
           <SignatureCanvas/>
         </Box>
+        //TODO: Extract styles 
         <HStack paddingTop="$6" justifyContent="space-between">
             <Button onPress={() => navigation.navigate("Signup")}
               width="50%"
@@ -195,12 +248,12 @@ export default function RegisterBusiness() {
               sx={{ borderRadius: "$none", borderWidth: "$0" }}
             >
               <ButtonText  sx={{ color: "$backgroundLight700" }}>
-                Back
+                  {t('back')}
               </ButtonText>
             </Button>
-            <Button onPress={() => navigation.navigate("Dashboard")}
+            <Button onPress={handleSubmit(onSubmit)}
               size="sm" width="50%" bg="$red600" sx={{ borderRadius: "$none" }}>
-              <ButtonText>Register</ButtonText>
+              <ButtonText> {t('register')}</ButtonText>
             </Button>
           </HStack>
       </Box>

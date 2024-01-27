@@ -17,15 +17,16 @@ import { TextInput } from "react-native";
 
 export default function FormInput({
   control,errors,rules, name,
-  type,
+  inputType = "text",
   label,
+  isRequired = false,
   disabled = false,
   responsiveWidth
 }) {
   return (
 
     <Box width={responsiveWidth} p="$1">
-      <FormControl isDisabled={disabled} isInvalid={errors[name]?.message ? true : false}>
+      <FormControl isRequired={isRequired} isDisabled={disabled} isInvalid={errors[name]?.message ? true : false}>
         <FormControlLabel mt="$2.5">
           <FormControlLabelText size="sm">{label}</FormControlLabelText>
         </FormControlLabel>
@@ -39,7 +40,7 @@ export default function FormInput({
                 onChangeText={onChange} 
                 value={value} 
                 size="sm" 
-                type={type}  
+                type={inputType}  
                />
              </Input> 
           )}

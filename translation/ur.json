@@ -17,6 +17,29 @@
     "password_uppercase_message": "پاس ورڈ کم از کم ایک بڑے حروف پر مشتمل ہے۔",
     "password_numeric_message": "پاس ورڈ کم از کم ایک عددی پر مشتمل ہے۔",
     "password_matching_message": "درج کردہ پاس ورڈز مماثل ہیں۔",
-    "password_special_character_message": "پاس ورڈ میں کم از کم ایک خاص حرف ہے۔"
+    "password_special_character_message": "پاس ورڈ میں کم از کم ایک خاص حرف ہے۔",
+    "business_name": "کاروبار کا نام",
+    "business_category": "کاروباری قسم",
+    "website": "ویب سائٹ",
+    "business_contact_no": "کاروباری رابطہ نمبر",
+    "alternate_contact_no": "متبادل رابطہ نمبر",
+    "state": "اسٹیٹ",
+    "city": "City",
+    "zipcode": "زپ کوڈ",
+    "tax_one_name": "ٹیکس 1 نام",
+    "tax_one_no": "ٹیکس نمبر 1",
+    "tax_two_name": "ٹیکس 2 کا نام",
+    "tax_two_no": "ٹیکس نمبر 2",
+    "country": "ملک",
+    "timezone": "ٹائم زون",
+    "back": "پیچھے",
+    "register": "رجسٹر کریں۔",
+    "welcome_msg": "خوش آمدید",
+    "currency": "کرنسی",
+    "starting_date": "شروع ہونے کی تاریخ",
+    "stock_accounting_method": "اسٹاک اکاؤنٹنگ کا طریقہ",
+    "financial_year_start_month": "مالی سال کا آغاز مہینہ",
+    "land_mark": "لینڈ مارک"
+
 
   }

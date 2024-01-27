@@ -26,8 +26,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function PasswordConfirmationInput({
   control,errors,rules, name1, name2, label1, label2,
-  type = "password",
-  label,
+  isRequired = true,
   disabled = false,
   responsiveWidth
 }) {
@@ -61,7 +60,7 @@ export default function PasswordConfirmationInput({
   };
   return (
     <Box width={responsiveWidth} p="$1">
-      <FormControl isDisabled={disabled} isInvalid={errors[name1]?.message ? true : false}>
+      <FormControl isRequired={isRequired} isDisabled={disabled} isInvalid={errors[name1]?.message ? true : false}>
         <FormControlLabel mt="$2.5">
           <FormControlLabelText size="xs">{label1}</FormControlLabelText>
         </FormControlLabel>
@@ -94,7 +93,7 @@ export default function PasswordConfirmationInput({
         </FormControlError>
       </FormControl>
 
-      <FormControl isDisabled={disabled} isInvalid={errors[name2]?.message ? true : false}>
+      <FormControl isRequired={isRequired} isDisabled={disabled} isInvalid={errors[name2]?.message ? true : false}>
         <FormControlLabel mt="$2.5">
           <FormControlLabelText size="xs">{label2}</FormControlLabelText>
         </FormControlLabel>

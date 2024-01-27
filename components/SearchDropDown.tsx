@@ -1,40 +1,73 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Dropdown } from 'react-native-searchable-dropdown-kj';
-import { View,FormControlLabel,FormControlLabelText } from "@gluestack-ui/themed";
+import {
+  Input,
+  InputField,
+  FormControl,
+  FormControlError,
+  FormControlLabel,
+  FormControlLabelText,
+  FormControlErrorIcon,
+  FormControlErrorText,
+  AlertCircleIcon,
+  InputSlot,
+  InputIcon,
+  EyeOffIcon,
+  EyeIcon,
+  Box,
+  Text
+} from "@gluestack-ui/themed";
+import { Controller, useForm } from "react-hook-form";
 
-const DropdownComponent = ({list, keyLabel, values, responsiveWidth, label}) => {
+const DropdownComponent = ({
+    control,errors,rules, name, isRequired = false, disabled = false,
+    list, keyLabel, values, responsiveWidth, label, 
+  }) => {
 
-  const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
   return (
-    <View  width={responsiveWidth} p="$1">
-      <FormControlLabel mt="$2.5">
-          <FormControlLabelText size="sm">{label}</FormControlLabelText>
-      </FormControlLabel>
-      <Dropdown
-        style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={styles.selectedTextStyle}
-        inputSearchStyle={styles.inputSearchStyle}
-        iconStyle={styles.iconStyle}
-        data={list}
-        search
-        maxHeight={300}
-        labelField={keyLabel}
-        valueField={values}
-        placeholder={!isFocus ? 'Select' : '...'}
-        searchPlaceholder="Search..."
-        value={value}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        onChange={item => {
-          setValue(item[keyLabel]);
-          setIsFocus(false);
-        }}
-      />
-    </View>
+    <Box width={responsiveWidth} p="$1">
+      <FormControl isRequired={isRequired} isDisabled={disabled} isInvalid={errors[name]?.message ? true : false}>
+
+        <FormControlLabel mt="$2.5">
+            <FormControlLabelText size="sm">{label}</FormControlLabelText>
+        </FormControlLabel>
+        <Controller
+            control={control}
+            rules={rules}
+            render={({ field: { onChange, onBlur, value } }) => (
+
+              <Dropdown
+                style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={list}
+                search
+                maxHeight={300}
+                labelField={keyLabel}
+                valueField={values}
+                placeholder={!isFocus ? 'Select' : '...'}
+                searchPlaceholder="Search..."
+                value={value}
+                onFocus={() => setIsFocus(true)}
+                onBlur={onBlur}
+                onChange={item => {onChange(item[keyLabel])}}
+              />
+        )}
+          name={name}
+        />
+         <FormControlError>
+          <FormControlErrorIcon as={AlertCircleIcon} />
+          <FormControlErrorText size="sm">
+              {errors[name]?.message}
+          </FormControlErrorText>
+        </FormControlError>
+      </FormControl>
+    </Box>
   );
 };
 

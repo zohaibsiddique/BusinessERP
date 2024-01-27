@@ -53,7 +53,7 @@ export default function RegisterBusiness() {
               control = {control} errors={errors} 
               responsiveWidth="$full"
               name={"email"}
-              type={"text"}
+              isRequired= {true}
               label={t('email_address')}
               rules={{
                 required: t('required_field'),
@@ -67,7 +67,7 @@ export default function RegisterBusiness() {
               control = {control} errors={errors} 
               responsiveWidth="$full"
               name={"firstname"}
-              type={"text"}
+              isRequired= {true}
               label={t('first_name')}
               rules={{
                 required: t('required_field'),
@@ -77,7 +77,7 @@ export default function RegisterBusiness() {
               control = {control} errors={errors} 
               responsiveWidth="$full"
               name={"lastname"}
-              type={"text"}
+              isRequired= {true}
               label={t('last_name')}
               rules={{
                 required: t('required_field'),
