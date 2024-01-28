@@ -24,8 +24,15 @@ import '../translation/i18n';
 import { useForm, Controller } from "react-hook-form"
 import { TextInput } from "react-native";
 import PasswordConfirmationInput from "../components/PasswordConfirmationInput";
+import { useFonts } from "expo-font";
 
 export default function RegisterBusiness() {
+
+  const fontName = 'urduFont'
+
+  const [loaded] = useFonts({
+    fontName: require("../assets/fonts/urdu_jameel.ttf"),
+  });
 
   const [isLargeScreen] = useMediaQuery({
     minWidth: 720
@@ -44,8 +51,8 @@ export default function RegisterBusiness() {
   return (
       <Box mt="$2" bg="white" borderWidth="$1" borderColor="lightgray" p="$2" width = {isLargeScreen ?  "$1/2" : "$full" }  marginRight="auto" marginLeft="auto">
         
-        <Text>{t('signup')}</Text>
-        <Link><Text>{t('already_an_account')}</Text></Link>
+        <Text fontFamily={fontName}>{t('signup')}</Text>
+        <Link><Text fontFamily={fontName}>{t('already_an_account')}</Text></Link>
         <Divider mt="$4" mb="$4"/>
         
         <Box>
@@ -106,3 +113,4 @@ export default function RegisterBusiness() {
       </Box>
   );
 }
+

@@ -238,7 +238,6 @@ export default function RegisterBusiness() {
 
           <SignatureCanvas/>
         </Box>
-        //TODO: Extract styles 
         <HStack paddingTop="$6" justifyContent="space-between">
             <Button onPress={() => navigation.navigate("Signup")}
               width="50%"

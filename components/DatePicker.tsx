@@ -84,7 +84,7 @@ export default function DatePicker({
                         <DateTimePicker
                           value={dateValue}
                           onValueChange={(date) => {onChange(date), setShowModal(false)}}
-                          selectedItemColor="#dc2626"//TODO: Extract styles 
+                          selectedItemColor="#dc2626"
                         />
                       </View>
                     </ModalBody>
