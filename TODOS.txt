@@ -1,0 +1,3 @@
+//TODO: Extract styles, fonts settings, fonts for multi language, multi langague settings 
+//TODO: Save signature into storage and load into signature component 
+//TODO: Select and save logo

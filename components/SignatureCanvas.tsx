@@ -4,41 +4,26 @@ import { ReactSketchCanvas } from "react-sketch-canvas"
 import SignatureScreen from 'react-native-signature-canvas';
 import { ButtonText,Modal,Text, Button, Center, CloseIcon, Heading, Icon, ModalBackdrop, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, View } from "@gluestack-ui/themed";
 
-export default function SignatureCanvas(){
+export default function SignatureCanvas({title, saveText, cancelText, clearText, addSignText}){
 
     const [showModal, setShowModal] = useState(false);
     const ref = useRef();
     const canvasRef = React.createRef();
 
-    // Called after ref.current.readSignature() reads a non-empty base64 string
-    const handleOK = (signature) => {
-      console.log(signature);
-    };
-
-    // Called after ref.current.readSignature() reads an empty string
-    const handleEmpty = () => {
-      console.log("Empty");
+    // Called after ref.current.getData()
+    const handleData = (data) => {
+      console.log(data);
     };
 
     // Called after ref.current.clearSignature()
     const handleClear = () => {
-      //ref.current?.clearSignature()
-      console.log("clear success!");
-    };
-
-    // Called after end of stroke
-    const handleEnd = () => {
-    };
-
-    // Called after ref.current.getData()
-    const handleData = (data) => {
-      console.log(data);
+      {Platform.OS == 'android' ? canvasRef.current.clearSignature() : canvasRef.current.clearCanvas()}
     };
     
     return (
       <Center>
         <Button onPress={() => setShowModal(true)} ref={ref}>
-          <ButtonText>Add Signature</ButtonText>
+          <ButtonText>{addSignText}</ButtonText>
         </Button>
         <Modal
           isOpen={showModal}
@@ -50,22 +35,17 @@ export default function SignatureCanvas(){
           <ModalBackdrop />
           <ModalContent>
             <ModalHeader>
-              <Heading size='lg'>Draw Signature</Heading>
+              <Heading size='lg'>{title}</Heading>
               <ModalCloseButton>
                 <Icon as={CloseIcon} />
               </ModalCloseButton>
             </ModalHeader>
             <ModalBody>
                {Platform.OS == 'android' ? <View style={{ width: 300, height: 200 }}>
-                    <SignatureScreen
-                      ref={canvasRef}
-                      onEnd={handleEnd}
-                      onOK={handleOK}
-                      onEmpty={handleEmpty}
-                      onClear={handleClear}
-                      onGetData={handleData}
-                      autoClear={true}
-                    />
+                      <SignatureScreen ref={canvasRef}   
+                        onGetData={handleData}
+                        autoClear={true}
+                      />
                   </View> 
                 : <ReactSketchCanvas ref={canvasRef}/>
               }
@@ -80,7 +60,7 @@ export default function SignatureCanvas(){
                   setShowModal(false);
                 }}
               >
-                <ButtonText>Cancel</ButtonText>
+                <ButtonText>{cancelText}</ButtonText>
               </Button>
               <Button
                 size="sm"
@@ -88,20 +68,27 @@ export default function SignatureCanvas(){
                 borderWidth='$0'
                 mr="$3"
                 onPress={() => {
-                  {Platform.OS == 'android' ? canvasRef.current.clearSignature() : canvasRef.current.clearCanvas()}
+                  handleClear()
                 }}
               >
-                <ButtonText>Reset</ButtonText>
+                <ButtonText>{clearText}</ButtonText>
               </Button>
               <Button
                 size="sm"
                 action="positive"
                 borderWidth='$0'
                 onPress={() => {
+                  {Platform.OS == 'android' ? canvasRef.current.getData() : canvasRef.current.exportImage("png")
+                      .then((data) => {
+                        console.log(data);
+                      })
+                      .catch((e) => {
+                        console.log(e);
+                      });}
                   setShowModal(false);
                 }}
               >
-                <ButtonText>Save</ButtonText>
+                <ButtonText>{saveText}</ButtonText>
               </Button>
               
             </ModalFooter>

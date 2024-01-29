@@ -40,6 +40,11 @@
     "starting_date": "Starting Date",
     "stock_accounting_method": "Stock Accounting Method",
     "financial_year_start_month": "Financial Year Start Month",
-    "land_mark": "Land Mark"
+    "land_mark": "Land Mark",
+    "cancel": "Cancel",
+    "clear": "Clear",
+    "save": "Save",
+    "draw_signature": "Draw Signature",
+    "add_signature": "Add Signature"
 
 }

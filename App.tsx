@@ -9,7 +9,6 @@ import Dashboard from "./home/Dashboard";
 
 const Stack = createNativeStackNavigator();
 
-//TODO: Extract styles, fonts settings, fonts for multi language, multi langague settings 
 export default function App() {
   return (
     <GluestackUIProvider config={config}>

@@ -236,7 +236,7 @@ export default function RegisterBusiness() {
             label={t('financial_year_start_month')} responsiveWidth={isLargeScreen ?  "$1/2" : "$full" }
           />
 
-          <SignatureCanvas/>
+          <SignatureCanvas title={t('draw_signature')} addSignText={t('add_signature')} saveText={t('save')} cancelText={t('cancel')} clearText={t('clear')}/>
         </Box>
         <HStack paddingTop="$6" justifyContent="space-between">
             <Button onPress={() => navigation.navigate("Signup")}

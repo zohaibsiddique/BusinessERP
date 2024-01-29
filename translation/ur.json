@@ -39,7 +39,12 @@
     "starting_date": "شروع ہونے کی تاریخ",
     "stock_accounting_method": "اسٹاک اکاؤنٹنگ کا طریقہ",
     "financial_year_start_month": "مالی سال کا آغاز مہینہ",
-    "land_mark": "لینڈ مارک"
+    "land_mark": "لینڈ مارک",
+    "cancel": "منسوخ کریں۔",
+    "clear": "صاف",
+    "save": "محفوظ کریں",
+    "draw_signature": "دستخط بنائیں",
+    "add_signature": "دستخط شامل کریں"
 
 
   }
