@@ -26,7 +26,7 @@ export default function FormInput({
   responsiveWidth,
 }) {
   return (
-    <Box width={responsiveWidth} p="$1">
+    <Box width={responsiveWidth} >
       <FormControl
         isRequired={isRequired}
         isDisabled={disabled}
@@ -39,12 +39,13 @@ export default function FormInput({
           control={control}
           rules={rules}
           render={({ field: { onChange, onBlur, value } }) => (
-            <Input sx={{ height: 30 }}>
+            <Input sx={{ height: 40 }}>
               <InputField
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
                 size="sm"
+               
               />
             </Input>
           )}

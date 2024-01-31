@@ -18,6 +18,25 @@ export function GetBusinessCategory() {
       ];
 }
 
+export function GetDurationCategory() {
+  return [
+    { id: 1, category: "Days" },
+    { id: 2, category: "Months" },
+    { id: 3, category: "Years" },
+  ];
+}
+
+export function GetEntries() {
+  return [
+    { id: 1, category: 25 },
+    { id: 2, category: 50 },
+    { id: 3, category: 100 },
+    { id: 4, category: 200 },
+    { id: 5, category: 500 },
+    { id: 6, category: "All" },
+  ];
+}
+
 export function GetCurrencyList() {
     var currencyList = require('country-currency-list');
     return currencyList();

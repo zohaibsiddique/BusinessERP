@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import { Dropdown } from 'react-native-searchable-dropdown-kj';
+import React, { useState } from "react";
+import { StyleSheet } from "react-native";
+import { Dropdown } from "react-native-searchable-dropdown-kj";
 import {
   Input,
   InputField,
@@ -16,54 +16,66 @@ import {
   EyeOffIcon,
   EyeIcon,
   Box,
-  Text
+  Text,
 } from "@gluestack-ui/themed";
 import { Controller, useForm } from "react-hook-form";
 
 const DropdownComponent = ({
-    control,errors,rules, name, isRequired = false, disabled = false,
-    list, keyLabel, values, responsiveWidth, label, 
-  }) => {
-
+  control,
+  errors,
+  rules,
+  name,
+  isRequired = false,
+  disabled = false,
+  list,
+  keyLabel,
+  values,
+  responsiveWidth,
+  label,
+}) => {
   const [isFocus, setIsFocus] = useState(false);
 
   return (
     <Box width={responsiveWidth} p="$1">
-      <FormControl isRequired={isRequired} isDisabled={disabled} isInvalid={errors[name]?.message ? true : false}>
-
+      <FormControl
+        isRequired={isRequired}
+        isDisabled={disabled}
+        isInvalid={errors[name]?.message ? true : false}
+      >
         <FormControlLabel mt="$2.5">
-            <FormControlLabelText size="sm">{label}</FormControlLabelText>
+          <FormControlLabelText size="sm">{label}</FormControlLabelText>
         </FormControlLabel>
         <Controller
-            control={control}
-            rules={rules}
-            render={({ field: { onChange, onBlur, value } }) => (
-
-              <Dropdown
-                style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-                placeholderStyle={styles.placeholderStyle}
-                selectedTextStyle={styles.selectedTextStyle}
-                inputSearchStyle={styles.inputSearchStyle}
-                iconStyle={styles.iconStyle}
-                data={list}
-                search
-                maxHeight={300}
-                labelField={keyLabel}
-                valueField={values}
-                placeholder={!isFocus ? 'Select' : '...'}
-                searchPlaceholder="Search..."
-                value={value}
-                onFocus={() => setIsFocus(true)}
-                onBlur={onBlur}
-                onChange={item => {onChange(item[keyLabel])}}
-              />
-        )}
+          control={control}
+          rules={rules}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Dropdown
+              style={[styles.dropdown, isFocus && { borderColor: "blue" }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={list}
+              search
+              maxHeight={300}
+              labelField={keyLabel}
+              valueField={values}
+              placeholder={!isFocus ? "Select" : "..."}
+              searchPlaceholder="Search..."
+              value={value}
+              onFocus={() => setIsFocus(true)}
+              onBlur={onBlur}
+              onChange={(item) => {
+                onChange(item[keyLabel]);
+              }}
+            />
+          )}
           name={name}
         />
-         <FormControlError>
+        <FormControlError>
           <FormControlErrorIcon as={AlertCircleIcon} />
           <FormControlErrorText size="sm">
-              {errors[name]?.message}
+            {errors[name]?.message}
           </FormControlErrorText>
         </FormControlError>
       </FormControl>
@@ -76,7 +88,7 @@ export default DropdownComponent;
 const styles = StyleSheet.create({
   dropdown: {
     height: 30,
-    borderColor: 'lightgray',
+    borderColor: "lightgray",
     borderWidth: 1,
     borderRadius: 3,
     paddingHorizontal: 8,
@@ -85,8 +97,8 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   label: {
-    position: 'absolute',
-    backgroundColor: 'white',
+    position: "absolute",
+    backgroundColor: "white",
     left: 22,
     top: 8,
     zIndex: 999,
