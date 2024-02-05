@@ -12,6 +12,19 @@ import {
   useMediaQuery,
   View,
   Divider,
+  Link,
+  LinkText,
+  Icon,
+  SunIcon,
+  ClockIcon,
+  EyeIcon,
+  SettingsIcon,
+  MoonIcon,
+  Input,
+  InputField,
+  InputIcon,
+  InputSlot,
+  SearchIcon,
 } from "@gluestack-ui/themed";
 import FormInput from "../components/FormInput";
 import React from "react";
@@ -35,7 +48,8 @@ import { useForm } from "react-hook-form";
 import ModalButton from "../components/ModalButton";
 import ModalSelect from "../components/ModalSelect";
 
-export default function Warranties() {
+import TableComponent from "../components/TableComponent";
+export default function Warranties({ responsiveWidth }) {
   const { t, i18n } = useTranslation();
 
   const [isLargeScreen] = useMediaQuery({
@@ -56,12 +70,7 @@ export default function Warranties() {
 
   return (
     <ScrollView bg="#f8f9fe">
-      <Box
-        p="$2"
-        width={isLargeScreen ? "$1/2" : "$full"}
-        marginRight="auto"
-        marginLeft="auto"
-      >
+      <Box width={responsiveWidth} p="$2" marginRight="auto" marginLeft="auto">
         <Text fontSize={"$2xl"}>{t("Warranties")}</Text>
 
         <Box
@@ -88,23 +97,107 @@ export default function Warranties() {
           <Center>
             <HStack space="sm" alignItems="center">
               <Text pt={13}>Show</Text>
-              <SearchDropDown
-                control={control}
-                errors={errors}
-                isRequired={false}
-                name={"business_category"}
-                rules={{
-                  required: t("required_field"),
-                }}
-                list={GetEntries()}
-                keyLabel={"category"}
-                values={"category"}
-                label={t("")}
-                responsiveWidth={isLargeScreen ? "$1/2" : "$3/5"}
-              />
+              <Box>
+                <SearchDropDown
+                  control={control}
+                  errors={errors}
+                  isRequired={false}
+                  name={""}
+                  rules={{
+                    required: t("required_field"),
+                  }}
+                  list={GetEntries()}
+                  keyLabel={"category"}
+                  values={"category"}
+                  label={t("")}
+                  responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
+                />
+              </Box>
               <Text pt={13}>entries</Text>
             </HStack>
           </Center>
+          <Box mt={"$1"}>
+            <Center>
+              <HStack pb="$2" space="xs">
+                <Link href="https://gluestack.io/" isHovered>
+                  <HStack
+                    alignItems="center"
+                    borderWidth={"$1"}
+                    px="$1"
+                    bg="$secondary0"
+                  >
+                    <Icon as={MoonIcon} m="$1" w="$3" />
+                    <LinkText color="#000" size="sm">
+                      Export to CSV
+                    </LinkText>
+                  </HStack>
+                </Link>
+                <Link href="https://gluestack.io/" isHovered>
+                  <HStack
+                    alignItems="center"
+                    borderWidth={"$1"}
+                    px="$1"
+                    bg="$secondary0"
+                  >
+                    <Icon as={SunIcon} m="$1" w="$3" />
+                    <LinkText color="#000" size="sm">
+                      Export to Excel
+                    </LinkText>
+                  </HStack>
+                </Link>
+                <Link href="https://gluestack.io/" isHovered>
+                  <HStack
+                    alignItems="center"
+                    borderWidth={"$1"}
+                    px="$1"
+                    bg="$secondary0"
+                  >
+                    <Icon as={MoonIcon} m="$1" w="$3" />
+                    <LinkText color="#000" size="sm">
+                      Print
+                    </LinkText>
+                  </HStack>
+                </Link>
+                <Link href="https://gluestack.io/" isHovered>
+                  <HStack
+                    alignItems="center"
+                    borderWidth={"$1"}
+                    px="$1"
+                    bg="$secondary0"
+                  >
+                    <Icon as={ClockIcon} m="$1" w="$3" />
+                    <LinkText color="#000" size="sm">
+                      Colunm visibility
+                    </LinkText>
+                  </HStack>
+                </Link>
+                <Link href="https://gluestack.io/" isHovered>
+                  <HStack
+                    alignItems="center"
+                    borderWidth={"$1"}
+                    px="$1"
+                    bg="$secondary0"
+                  >
+                    <Icon as={MoonIcon} m="$1" w="$3" />
+                    <LinkText color="#000" size="sm">
+                      Export to PDF
+                    </LinkText>
+                  </HStack>
+                </Link>
+              </HStack>
+              <Input>
+                <InputSlot>
+                  <InputIcon as={SearchIcon} />
+                </InputSlot>
+                <InputField placeholder="Search..." />
+              </Input>
+            </Center>
+            <Center>
+              <Box w={"$4/5"} >
+                <TableComponent />
+              </Box>
+            </Center>
+          </Box>
         </Box>
       </Box>
     </ScrollView>

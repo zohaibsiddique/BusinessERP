@@ -10,6 +10,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import Dashboard from "./home/Dashboard";
 import { useWindowDimensions } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import MyDrawer from "./components/MyDrawer";
+import DrawerNav from "./Drawer_submenu/navigation/DrawerNav";
+import DrawerSrc from "./DrawerSrc/DrawerSrc";
 
 
 const Stack = createStackNavigator();
@@ -21,7 +24,7 @@ export default function App() {
   return (
     <GluestackUIProvider config={config}>
       <NavigationContainer>
-        <Drawer.Navigator
+        {/* <Drawer.Navigator
           screenOptions={{
             drawerType: dimensions.width >= 768 ? "permanent" : "front",
             drawerStyle: dimensions.width >= 768 ? null : { width: "100%" },
@@ -31,7 +34,9 @@ export default function App() {
           <Drawer.Screen name="Warranties >" component={Warranties} />
           <Drawer.Screen name="Dashboard" component={MyStack} />
           <Drawer.Screen name="Warranties" component={Warranties} />
-        </Drawer.Navigator>
+        </Drawer.Navigator> */}
+        <DrawerNav /> 
+        
       </NavigationContainer>
     </GluestackUIProvider>
   );
