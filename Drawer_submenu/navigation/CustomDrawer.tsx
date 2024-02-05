@@ -13,6 +13,7 @@ import { DrawerDescriptorMap, DrawerNavigationHelpers } from '@react-navigation/
 import Icon from '../components/Icons'
 import Warranties from '../../register_business/Warranties'
 import { Button } from '@gluestack-ui/themed';
+import DynamicSubObjectScreen from "./DynamicSubObjectScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -27,8 +28,12 @@ type Props = {
   
 };
 
-const CustomDrawer = (props: Props,navigation) => {
-  
+const CustomDrawer = (props: Props) => {
+  const { navigation } = props;
+  const handleSubObjectClick = (subObject) => {
+    
+    navigation.navigate( subObject.label,{subObject});
+  };
   const [menuIndex, setMenuIndex] = useState(-1);
   return (
     <Container>
@@ -80,12 +85,32 @@ const CustomDrawer = (props: Props,navigation) => {
                   backgroundColor: item.bg,
                 }}
               >
-                {item.menuList.map((subMenu, index) => (
-                  <TouchableNativeFeedback key={index} >
-                    <View style={styles.subMenu}>
-                      <Text>{subMenu.title}</Text>
-                    </View>
-                  </TouchableNativeFeedback>
+                {item.menuList.map((subObject, index) => (
+                  // <TouchableNativeFeedback key={index}
+                  // onPress={()=>handleSubObjectClick(subMenu)}>
+                  //   <View style={styles.subMenu}>
+                  //     <Text>{subMenu.label}</Text>
+                  //   </View>
+                  // </TouchableNativeFeedback>
+                  <TouchableOpacity
+                    key={index}
+                    onPress={() => handleSubObjectClick(subObject)}
+                  >
+                    <Row style={styles.item}>
+                      <Icon type={item.type} name={subObject.icon} size={18} />
+                      <Text
+                        style={[
+                          styles.text,
+                          {
+                            color:
+                              menuIndex === index ? Colors.black : Colors.gray,
+                          },
+                        ]}
+                      >
+                        {subObject.label}
+                      </Text>
+                    </Row>
+                  </TouchableOpacity>
                 ))}
               </View>
             )}

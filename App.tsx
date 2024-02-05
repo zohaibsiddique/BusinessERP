@@ -7,20 +7,19 @@ import Warranties from "./register_business/Warranties";
 import SignUp from "./auth/Signup";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import Dashboard from "./home/Dashboard";
+import Dashboard from "./abdul-khaliq-nav/Dashboard";
 import { useWindowDimensions } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import MyDrawer from "./components/MyDrawer";
 import DrawerNav from "./Drawer_submenu/navigation/DrawerNav";
 import DrawerSrc from "./DrawerSrc/DrawerSrc";
 
-
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 //TODO: Extract styles, fonts settings, fonts for multi language, multi langague settings
 export default function App() {
-    const dimensions = useWindowDimensions();
+  const dimensions = useWindowDimensions();
   return (
     <GluestackUIProvider config={config}>
       <NavigationContainer>
@@ -36,37 +35,37 @@ export default function App() {
           <Drawer.Screen name="Warranties" component={Warranties} />
         </Drawer.Navigator> */}
         <DrawerNav /> 
-        
+        {/* <Dashboard /> */}
       </NavigationContainer>
     </GluestackUIProvider>
   );
 }
 
-function MyStack() {
-  const dimensions = useWindowDimensions();
-   const isLargeScreen = dimensions.width >= 768;
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="RegisterBusiness"
-        component={RegisterBusiness}
-        options={{
-          title: "Register Business",
-          headerStyle: {
-            backgroundColor: "white",
-          },
-        }}
-      />
-      <Stack.Screen
-        name="warranties"
-        component={Warranties}
-        options={{
-          title: "Warranties",
-          headerStyle: {
-            backgroundColor: "white",
-          },
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
+// function MyStack() {
+//   const dimensions = useWindowDimensions();
+//   const isLargeScreen = dimensions.width >= 768;
+//   return (
+//     <Stack.Navigator>
+//       <Stack.Screen
+//         name="RegisterBusiness"
+//         component={RegisterBusiness}
+//         options={{
+//           title: "Register Business",
+//           headerStyle: {
+//             backgroundColor: "white",
+//           },
+//         }}
+//       />
+//       <Stack.Screen
+//         name="warranties"
+//         component={Warranties}
+//         options={{
+//           title: "Warranties",
+//           headerStyle: {
+//             backgroundColor: "white",
+//           },
+//         }}
+//       />
+//     </Stack.Navigator>
+//   );
+// }

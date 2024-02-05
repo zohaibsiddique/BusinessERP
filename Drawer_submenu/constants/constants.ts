@@ -6,6 +6,9 @@ import { Icons } from "../components/Icons";
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Colors from "./Colors";
+import DetailsScreen from "../../DrawerSrc/screens/shop/DetailsScreen";
+import DatePicker from "../../components/DatePicker";
+import ProductsList from "../../DrawerSrc/screens/shop/ProductsList";
 
 export const constant = {
   SPACING: 16,
@@ -18,8 +21,8 @@ export const constant = {
 
 export const ScreensArray = [
   {
-    route: "Home",
-    label: "Home",
+    route: "RegisterBusiness",
+    label: "RegisterBusiness",
     type: Icons.Feather,
     icon: "home",
     component: RegisterBusiness,
@@ -31,6 +34,13 @@ export const ScreensArray = [
     icon: "user",
     component: Dashboard,
   },
+  {
+    route: "Warranties",
+    label: "Warranties",
+    type: Icons.AntDesign,
+    icon: "user",
+    component: Warranties,
+  },
 ];
 
 export const drawerMenu = [
@@ -39,21 +49,21 @@ export const drawerMenu = [
     bg: Colors.menu1,
     type: Icons.Feather,
     icon: "settings",
-    route: "Settings",
+
     menuList: [
       {
-        route: "Home",
-        label: "Home",
+        route: "Warranties",
+        label: "Warranties",
+        type: Icons.AntDesign,
+        icon: "user",
+        component: Warranties,
+      },
+      {
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
         type: Icons.Feather,
         icon: "home",
         component: RegisterBusiness,
-      },
-      {
-        route: "Dashboard",
-        label: "Home",
-        type: Icons.Feather,
-        icon: "home",
-        component: Dashboard,
       },
     ],
   },
@@ -63,18 +73,37 @@ export const drawerMenu = [
     type: Icons.Feather,
     icon: "check-square",
     route: "Todo",
-    menuList: [{ title: "Eat" }, { title: "Code" }, { title: "Sleep" }],
+    menuList: [
+      {
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+        type: Icons.Feather,
+        icon: "home",
+        component: RegisterBusiness,
+      },
+      {
+        route: "Profile",
+        label: "Profile",
+        type: Icons.AntDesign,
+        icon: "user",
+        component: Dashboard,
+      },
+    ],
   },
   {
     title: "Projects",
     bg: Colors.menu3,
     type: Icons.Octicons,
-    icon: "project",
+    icon: "map",
     route: "Project",
     menuList: [
-      { title: "Portfolio" },
-      { title: "Note-APP" },
-      { title: "RN-Ui" },
+      {
+        route: "Warranties",
+        label: "Warranties",
+        type: Icons.FontAwesome5,
+        icon: "school",
+        component: Warranties,
+      },
     ],
   },
 ];

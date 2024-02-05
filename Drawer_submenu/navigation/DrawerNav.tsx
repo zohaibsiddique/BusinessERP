@@ -1,11 +1,13 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { createDrawerNavigator } from '@react-navigation/drawer'
-import { ScreensArray, constant, drawerMenu } from '../constants/constants';
-import Colors from '../constants/Colors';
-import CustomDrawer from './CustomDrawer';
-import Icon from '../components/Icons';
-const Drawer = createDrawerNavigator()
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { ScreensArray, constant, drawerMenu } from "../constants/constants";
+import Colors from "../constants/Colors";
+import CustomDrawer from "./CustomDrawer";
+import Icon from "../components/Icons";
+import Warranties from "../../register_business/Warranties";
+import CustomDrawerContent from "../../abdul-khaliq-nav/CustomDrawerContent";
+const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {
   return (
@@ -20,6 +22,7 @@ const DrawerNav = () => {
         drawerLabelStyle: styles.drawerLabelStyles,
       }}
       drawerContent={(props) => <CustomDrawer {...props} />}
+      
     >
       {ScreensArray.map((item, index) => {
         return (
@@ -28,7 +31,6 @@ const DrawerNav = () => {
             name={item.route}
             component={item.component}
             options={{
-              item,
               drawerIcon: ({ color, size, focused }) => (
                 <Icon
                   type={item.type}
@@ -41,11 +43,12 @@ const DrawerNav = () => {
           />
         );
       })}
+     
     </Drawer.Navigator>
   );
-}
+};
 
-export default DrawerNav
+export default DrawerNav;
 
 const styles = StyleSheet.create({
   drawerStyle: {
@@ -58,4 +61,4 @@ const styles = StyleSheet.create({
     fontSize: constant.textFontSize,
     marginHorizontal: -constant.SPACING,
   },
-})
+});
