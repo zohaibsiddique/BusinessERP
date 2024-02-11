@@ -1,7 +1,6 @@
 import {
   Button,
   ButtonText,
-  Center,
   Heading,
   Modal,
   ModalBackdrop,
@@ -13,21 +12,34 @@ import {
   useMediaQuery,
   ModalCloseButton,
   Box,
-  View,
 } from "@gluestack-ui/themed";
 import { useState } from "react";
 import FormInput from "./FormInput";
 import { useForm } from "react-hook-form";
 import { t } from "i18next";
 import ModalTextarea from "./ModalTextarea";
-import ModalSelect from "./ModalSelect";
 import SearchDropDown from "./SearchDropDown";
 import { GetDurationCategory } from "../utils/Utils";
 import React from "react";
-import { FlatList } from "react-native-gesture-handler";
 
-
-export default function ModalButton(value) {
+export default function ModalButton({
+  textArea,
+  textInput1,
+  textInput2,
+  buttonHeading,
+  searchDrop,
+  halfInput,
+  dynamicName1,
+  dynamicName2,
+  dynamicName3,
+  searchDropLabel,
+  searchDropName,
+  dynamicLabel3,
+  dynamicLabel1,
+  dynamicLabel2,
+  placeholder,
+  description,
+}) {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
@@ -42,22 +54,12 @@ export default function ModalButton(value) {
     defaultValues: {},
     mode: "onTouched",
   });
-  const [formData, setFormData] = useState({}); // State to hold form data
-  const [dataArray, setDataArray] = useState([]); // State to hold the array of form data
-    const handleInputChange = (name, value) => {
-      setFormData({ ...formData, [name]: value });
-    };
 
-    const handleFormSubmit = () => {
-      setDataArray([...dataArray, formData]);
-      setFormData({}); // Clear form data after submission
-    };
   return (
     <>
       <Button onPress={() => setShowModal(true)}>
         <ButtonText>+Add</ButtonText>
       </Button>
-
       {isOpen && (
         <Modal
           isOpen={showModal}
@@ -76,56 +78,77 @@ export default function ModalButton(value) {
                   padding: 10,
                 }}
               >
-                <Heading size="lg">Add Warranty</Heading>
+                <Heading size="lg">{buttonHeading}</Heading>
                 <ModalCloseButton>&times;</ModalCloseButton>
               </HStack>
             </ModalHeader>
             <ModalBody>
-              <FormInput
-                control={control}
-                errors={errors}
-                name={"Name"}
-                isRequired={true}
-                label={t("Name")}
-                inputType="text"
-              
-                rules={{
-                  required: t("required_field"),
-                }}
-                responsiveWidth={"$full"}
-              />
-              <ModalTextarea />
-              <HStack>
+              {textInput1 && (
                 <FormInput
                   control={control}
                   errors={errors}
-                  name={"Duration"}
+                  name={dynamicName1}
                   isRequired={true}
-                  label={t("Duration")}
+                  label={t(dynamicLabel1)}
                   inputType="text"
-              
                   rules={{
                     required: t("required_field"),
                   }}
-                  responsiveWidth={isLargeScreen ? "$1/2" : "$2/5"}
+                  responsiveWidth={"$full"}
                 />
+              )}
+              {textInput2 && (
+                <FormInput
+                  control={control}
+                  errors={errors}
+                  name={dynamicName2}
+                  isRequired={true}
+                  label={t(dynamicLabel2)}
+                  inputType="text"
+                  rules={{
+                    required: t("required_field"),
+                  }}
+                  responsiveWidth={"$full"}
+                />
+              )}
+              {textArea && (
+                <ModalTextarea
+                  description={description}
+                  placeholder={placeholder}
+                />
+              )}
+              <HStack>
+                {halfInput && (
+                  <FormInput
+                    control={control}
+                    errors={errors}
+                    name={dynamicName3}
+                    isRequired={false}
+                    label={t(dynamicLabel3)}
+                    inputType="text"
+                    rules={{
+                      required: t("required_field"),
+                    }}
+                    responsiveWidth={isLargeScreen ? "$1/2" : "$2/5"}
+                  />
+                )}
 
-                <Box mt={22} ml={"-$2"} w={"$full"}>
+                {searchDrop && (
                   <SearchDropDown
                     control={control}
                     errors={errors}
                     isRequired={false}
-                    name={"business_category"}
+                    name={searchDropName}
                     rules={{
                       required: t("required_field"),
                     }}
                     list={GetDurationCategory()}
                     keyLabel={"category"}
                     values={"category"}
-                    label={t("")}
+                    label={t(searchDropLabel)}
                     responsiveWidth={isLargeScreen ? "$1/2" : "$3/5"}
                   />
-                </Box>
+                )}
               </HStack>
             </ModalBody>
             <ModalFooter borderTopWidth="$0">
@@ -138,19 +161,9 @@ export default function ModalButton(value) {
                 >
                   <ButtonText>Save</ButtonText>
                 </Button>
-                <Button
-                  action="secondary"
-                  variant="solid"
-                  size="sm"
-                  onPress={() => {
-                    
-                      handleFormSubmit;
-                    
-                  }}
-                >
+                <Button action="secondary" variant="solid" size="sm">
                   <ButtonText>Close</ButtonText>
                 </Button>
-                
               </HStack>
             </ModalFooter>
           </ModalContent>

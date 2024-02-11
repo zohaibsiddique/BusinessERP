@@ -1,14 +1,10 @@
 // DynamicSubObjectScreen.js
 import React from "react";
 import { View, Text } from "react-native";
-import Warranties from "../../register_business/Warranties";
-import RegisterBusiness from "../../register_business/RegisterBusiness";
-import { Icons } from "../components/Icons";
-import Colors from "../../DrawerSrc/constants/Colors";
 
 const DynamicSubObjectScreen = ({ route }) => {
   const { subObject } = route.params;
-//   const drawerMenu = [
+
 //     {
 //       title: "Products",
 //       bg: Colors.menu1,

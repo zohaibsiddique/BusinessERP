@@ -25,6 +25,7 @@
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
     "@react-navigation/stack": "^6.3.20",
+    "awesome": "^0.0.7",
     "axios": "^1.6.7",
     "country-currency-list": "^1.0.1",
     "expo": "^50.0.6",

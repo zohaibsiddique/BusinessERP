@@ -1,4 +1,5 @@
 import Dashboard from "../../home/Dashboard";
+import Brands from "../../register_business/Brands";
 import RegisterBusiness from "../../register_business/RegisterBusiness";
 import Warranties from "../../register_business/Warranties";
 import { Icons } from "../components/Icons";
@@ -95,53 +96,31 @@ export const IconSize = {
 };
 export const ScreensArray = [
   {
+    route: "Brands",
+    label: "Brands",
+    type: Icons.Feather,
+    icon: "home",
+    component: Brands,
+  },
+  {
     route: "Warranties",
     label: "Warranties",
     type: Icons.Feather,
     icon: "home",
     component: Warranties,
   },
-  {
-    route: "RegisterBusiness",
-    label: "RegisterBusiness",
-    type: Icons.Feather,
-    icon: "home",
-    component: RegisterBusiness,
-  },
 ];
 
 export const drawerMenu = [
   {
-    title: "Products",
+    title: "Settings",
     bg: Colors.menu1,
     type: Icons.Feather,
     icon: "settings",
-
+    route: "Settings",
     menuList: [
       {
-        route: "Warranties",
-        label: "Warranties",
-        type: Icons.AntDesign,
-        icon: "user",
-        component: Warranties,
-      },
-      {
-        route: "RegisterBusiness",
-        label: "RegisterBusiness",
-        type: Icons.Feather,
-        icon: "home",
-        component: RegisterBusiness,
-      },
-    ],
-  },
-  {
-    title: "Todo's",
-    bg: Colors.menu2,
-    type: Icons.Feather,
-    icon: "check-square",
-    route: "Todo",
-    menuList: [
-      {
+        title: "Warranties",
         route: "RegisterBusiness",
         label: "RegisterBusiness",
         type: Icons.Feather,
@@ -149,28 +128,33 @@ export const drawerMenu = [
         component: RegisterBusiness,
       },
       {
-        route: "Profile",
-        label: "Profile",
-        type: Icons.AntDesign,
-        icon: "user",
-        component: Dashboard,
+        title: "Brands",
+        route: "Brands",
+        label: "Brands",
+        type: Icons.Feather,
+        icon: "home",
+        component: Brands,
       },
     ],
   },
-  {
-    title: "Projects",
-    bg: Colors.menu3,
-    type: Icons.Octicons,
-    icon: "map",
-    route: "Project",
-    menuList: [
-      {
-        route: "Warranties",
-        label: "Warranties",
-        type: Icons.FontAwesome5,
-        icon: "school",
-        component: Warranties,
-      },
-    ],
-  },
+  // {
+  //   title: "Todo's",
+  //   bg: Colors.menu2,
+  //   type: Icons.Feather,
+  //   icon: "check-square",
+  //   route: "Todo",
+  //   menuList: [{ title: "Eat" }, { title: "Code" }, { title: "Sleep" }],
+  // },
+  // {
+  //   title: "Projects",
+  //   bg: Colors.menu3,
+  //   type: Icons.Octicons,
+  //   icon: "project",
+  //   route: "Project",
+  //   menuList: [
+  //     { title: "Portfolio" },
+  //     { title: "Note-APP" },
+  //     { title: "RN-Ui" },
+  //   ],
+  // },
 ];

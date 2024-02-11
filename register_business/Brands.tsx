@@ -7,7 +7,7 @@ import {
   Text,
   useMediaQuery,
 } from "@gluestack-ui/themed";
-import React, { useState } from "react";
+import React from "react";
 import SearchDropDown from "../components/SearchDropDown";
 import { GetEntries } from "../utils/Utils";
 import { useTranslation } from "react-i18next";
@@ -17,8 +17,7 @@ import ModalButton from "../components/ModalButton";
 
 import DTable from "../components/DTable";
 import { DummyTable } from "../Drawer_submenu/constants/constants";
-
-export default function Warranties({ dynamicName, setDynamicName }) {
+export default function Brands() {
   const { t } = useTranslation();
 
   const [isLargeScreen] = useMediaQuery({
@@ -61,16 +60,26 @@ export default function Warranties({ dynamicName, setDynamicName }) {
   return (
     <ScrollView>
       <Box bg="#f8f9fe">
-        {/* Warranties */}
+        {/* brands */}
         <Box width={isLargeScreen ? "$1/2" : "$full"}>
-          <Text
-            alignItems="flex-start"
-            fontSize={"$3xl"}
-            fontWeight="$medium"
-            padding="$3"
-          >
-            {t("Warranties")}
-          </Text>
+          <HStack space="xs" p={"$3"}>
+            <Text
+              alignItems="flex-start"
+              fontSize={"$3xl"}
+              fontWeight="$medium"
+            >
+              {t("Brands")}
+            </Text>
+            <Text
+              alignItems="center"
+              justifyContent="flex-start"
+              fontSize={"$md"}
+              fontWeight="$normal"
+             
+            >
+              {t("Manage your brands")}
+            </Text>
+          </HStack>
         </Box>
 
         {/* sub-warranties */}
@@ -89,24 +98,24 @@ export default function Warranties({ dynamicName, setDynamicName }) {
 
           <Box>
             <HStack justifyContent="space-between">
-              <Text fontSize={"$xl"}>{t(" All Warranties")}</Text>
+              <Text fontSize={"$xl"}>{t(" All Your Brands")}</Text>
               <ModalButton
-                buttonHeading={" Add Warranty"}
+                buttonHeading="Add Brand"
                 textInput1
-                textInput2={false}
-                halfInput
-                searchDrop
-                textArea
-                dynamicName1="name"
-                dynamicName2={" "}
-                dynamicName3={"duration"}
-                searchDropLabel={" "}
-                searchDropName={" "}
-                dynamicLabel3={"Duration"}
-                dynamicLabel1={"Name"}
-                dynamicLabel2={" "}
-                placeholder={"Description"}
-                description={"Description:"}
+                textInput2
+                halfInput={false}
+                searchDrop={false}
+                textArea={false}
+                dynamicName1={"brand-name"}
+                dynamicName2={"short-description"}
+                dynamicName3={""}
+                searchDropLabel={""}
+                searchDropName={""}
+                dynamicLabel3={""}
+                dynamicLabel1={"Brand Name"}
+                dynamicLabel2={"Short Description"}
+                placeholder={""}
+                description={""}
               />
             </HStack>
           </Box>

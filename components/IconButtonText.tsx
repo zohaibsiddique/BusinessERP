@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, ButtonText } from "@gluestack-ui/themed";
+import { Button, ButtonText } from "@gluestack-ui/themed";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 function IconButtonText({ text, icon }) {
