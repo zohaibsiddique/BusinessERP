@@ -5,12 +5,9 @@ import {
   Center,
   HStack,
   Image,
-  KeyboardAvoidingView,
   ScrollView,
-  VStack,
   Text,
   useMediaQuery,
-  View,
   Divider,
 } from "@gluestack-ui/themed";
 import FormInput from "../components/FormInput";

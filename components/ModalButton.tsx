@@ -13,6 +13,7 @@ import {
   useMediaQuery,
   ModalCloseButton,
   Box,
+  View,
 } from "@gluestack-ui/themed";
 import { useState } from "react";
 import FormInput from "./FormInput";
@@ -22,7 +23,11 @@ import ModalTextarea from "./ModalTextarea";
 import ModalSelect from "./ModalSelect";
 import SearchDropDown from "./SearchDropDown";
 import { GetDurationCategory } from "../utils/Utils";
-export default function ModalButton() {
+import React from "react";
+import { FlatList } from "react-native-gesture-handler";
+
+
+export default function ModalButton(value) {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
@@ -37,10 +42,19 @@ export default function ModalButton() {
     defaultValues: {},
     mode: "onTouched",
   });
+  const [formData, setFormData] = useState({}); // State to hold form data
+  const [dataArray, setDataArray] = useState([]); // State to hold the array of form data
+    const handleInputChange = (name, value) => {
+      setFormData({ ...formData, [name]: value });
+    };
 
+    const handleFormSubmit = () => {
+      setDataArray([...dataArray, formData]);
+      setFormData({}); // Clear form data after submission
+    };
   return (
     <>
-      <Button onPress={() => setShowModal(true)} >
+      <Button onPress={() => setShowModal(true)}>
         <ButtonText>+Add</ButtonText>
       </Button>
 
@@ -74,6 +88,7 @@ export default function ModalButton() {
                 isRequired={true}
                 label={t("Name")}
                 inputType="text"
+              
                 rules={{
                   required: t("required_field"),
                 }}
@@ -88,6 +103,7 @@ export default function ModalButton() {
                   isRequired={true}
                   label={t("Duration")}
                   inputType="text"
+              
                   rules={{
                     required: t("required_field"),
                   }}
@@ -127,11 +143,14 @@ export default function ModalButton() {
                   variant="solid"
                   size="sm"
                   onPress={() => {
-                    setShowModal(false);
+                    
+                      handleFormSubmit;
+                    
                   }}
                 >
                   <ButtonText>Close</ButtonText>
                 </Button>
+                
               </HStack>
             </ModalFooter>
           </ModalContent>

@@ -2,17 +2,11 @@ import "react-native-gesture-handler";
 import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
 import React from "react";
-import RegisterBusiness from "./register_business/RegisterBusiness";
-import Warranties from "./register_business/Warranties";
-import SignUp from "./auth/Signup";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import Dashboard from "./abdul-khaliq-nav/Dashboard";
 import { useWindowDimensions } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import MyDrawer from "./components/MyDrawer";
 import DrawerNav from "./Drawer_submenu/navigation/DrawerNav";
-import DrawerSrc from "./DrawerSrc/DrawerSrc";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -34,7 +28,8 @@ export default function App() {
           <Drawer.Screen name="Dashboard" component={MyStack} />
           <Drawer.Screen name="Warranties" component={Warranties} />
         </Drawer.Navigator> */}
-        <DrawerNav /> 
+        <DrawerNav />
+
         {/* <Dashboard /> */}
       </NavigationContainer>
     </GluestackUIProvider>

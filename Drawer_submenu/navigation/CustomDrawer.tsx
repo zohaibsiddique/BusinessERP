@@ -1,52 +1,61 @@
-import { Image, LayoutAnimation, Platform, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, UIManager, View } from 'react-native'
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React, { useState } from 'react'
-import { Container } from '../components/Container'
-import { Row } from '../components/Row'
-import { constant, drawerMenu } from '../constants/constants'
-import Colors from '../constants/Colors'
-import { DrawerNavigationState, ParamListBase, useNavigation } from '@react-navigation/native'
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import Styles from '../common/Styles'
-import { DrawerItemList } from '@react-navigation/drawer'
-import { DrawerDescriptorMap, DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types'
-import Icon from '../components/Icons'
-import Warranties from '../../register_business/Warranties'
-import { Button } from '@gluestack-ui/themed';
-import DynamicSubObjectScreen from "./DynamicSubObjectScreen";
+import {
+  Image,
+  LayoutAnimation,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  UIManager,
+  View,
+} from "react-native";
+import React, { useState } from "react";
+import { Container } from "../components/Container";
+import { Row } from "../components/Row";
+import { constant, drawerMenu } from "../constants/constants";
+import Colors from "../constants/Colors";
+import { DrawerNavigationState, ParamListBase } from "@react-navigation/native";
+import Styles from "../common/Styles";
+import { DrawerItemList } from "@react-navigation/drawer";
+import {
+  DrawerDescriptorMap,
+  DrawerNavigationHelpers,
+} from "@react-navigation/drawer/lib/typescript/src/types";
+import Icon from "../components/Icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { Pressable } from "@gluestack-ui/themed";
 
-const Drawer = createDrawerNavigator();
-const Stack = createNativeStackNavigator();
-if (Platform.OS === 'android') {
-  UIManager.setLayoutAnimationEnabledExperimental(true)
+if (Platform.OS === "android") {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
 type Props = {
   state: DrawerNavigationState<ParamListBase>;
   navigation: DrawerNavigationHelpers;
   descriptors: DrawerDescriptorMap;
-  
 };
 
 const CustomDrawer = (props: Props) => {
   const { navigation } = props;
   const handleSubObjectClick = (subObject) => {
-    
-    navigation.navigate( subObject.label,{subObject});
+    navigation.navigate(subObject.label, { subObject });
   };
   const [menuIndex, setMenuIndex] = useState(-1);
   return (
     <Container>
       {/* profile header */}
-      <TouchableNativeFeedback onPress={() => navigation.navigate('Dashboard')}>
+      <Pressable onPress={() => navigation.navigate("Dashboard")}>
         <View style={styles.header}>
-          <Image source={require('../assets/images/avatar.png')} style={styles.avatar} />
+          <Image
+            source={require("../assets/images/avatar.png")}
+            style={styles.avatar}
+          />
           <View style={styles.textContainer}>
-            <Text style={styles.name} >Habib</Text>
+            <Text style={styles.name}>Habib</Text>
             <Text>Software Engineer</Text>
           </View>
         </View>
-      </TouchableNativeFeedback>
+      </Pressable>
       {/* DrawerList */}
       <DrawerItemList {...props} />
       <View style={styles.spacer} />
@@ -58,7 +67,6 @@ const CustomDrawer = (props: Props) => {
             key={index}
             style={[styles.menu, { backgroundColor: item.bg + "99" }]}
             onPress={() => {
-              // LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
               LayoutAnimation.configureNext(
                 LayoutAnimation.create(200, "easeInEaseOut", "opacity")
               );
@@ -67,6 +75,7 @@ const CustomDrawer = (props: Props) => {
           >
             <Row style={styles.item}>
               <Icon type={item.type} name={item.icon} size={22} />
+
               <Text
                 style={[
                   styles.text,
@@ -86,17 +95,11 @@ const CustomDrawer = (props: Props) => {
                 }}
               >
                 {item.menuList.map((subObject, index) => (
-                  // <TouchableNativeFeedback key={index}
-                  // onPress={()=>handleSubObjectClick(subMenu)}>
-                  //   <View style={styles.subMenu}>
-                  //     <Text>{subMenu.label}</Text>
-                  //   </View>
-                  // </TouchableNativeFeedback>
                   <TouchableOpacity
                     key={index}
                     onPress={() => handleSubObjectClick(subObject)}
                   >
-                    <Row style={styles.item}>
+                    <Row style={styles.subItem}>
                       <Icon type={item.type} name={subObject.icon} size={18} />
                       <Text
                         style={[
@@ -118,10 +121,10 @@ const CustomDrawer = (props: Props) => {
         );
       })}
     </Container>
-  )
-}
+  );
+};
 
-export default CustomDrawer
+export default CustomDrawer;
 
 const styles = StyleSheet.create({
   textContainer: {
@@ -149,6 +152,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: constant.SPACING / 1.5,
     paddingVertical: constant.SPACING / 1.2,
   },
+  subItem: {
+    paddingHorizontal: constant.SPACING / 2,
+    paddingVertical: constant.SPACING / 2,
+    marginLeft: 40,
+   
+  },
   text: {
     fontSize: constant.textFontSize,
     paddingHorizontal: constant.SPACING,
@@ -159,9 +168,10 @@ const styles = StyleSheet.create({
   },
   spacer: {
     marginVertical: constant.SPACING,
-    width: '90%',
+    width: "90%",
     height: 1,
     backgroundColor: Colors.light,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
-})
+});
+

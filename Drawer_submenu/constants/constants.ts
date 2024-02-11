@@ -1,14 +1,8 @@
-import { Route } from "lucide-react-native";
 import Dashboard from "../../home/Dashboard";
 import RegisterBusiness from "../../register_business/RegisterBusiness";
 import Warranties from "../../register_business/Warranties";
 import { Icons } from "../components/Icons";
-import Home from "../screens/Home";
-import Profile from "../screens/Profile";
 import Colors from "./Colors";
-import DetailsScreen from "../../DrawerSrc/screens/shop/DetailsScreen";
-import DatePicker from "../../components/DatePicker";
-import ProductsList from "../../DrawerSrc/screens/shop/ProductsList";
 
 export const constant = {
   SPACING: 16,
@@ -16,30 +10,103 @@ export const constant = {
   titleFontSize: 24,
   textFontSize: 16,
   subTextFontSize: 14,
-  IconSize: 24,
 };
 
+export const DummyTable = [
+  {
+    name: "Miranda Mcleod",
+    phone: "1-424-311-2211",
+    email: "duis.sit.amet@protonmail.org",
+  },
+  {
+    name: "Carl Marquez",
+    phone: "(813) 452-3904",
+    email: "ullamcorper.viverra@google.org",
+  },
+  {
+    name: "Yael Gonzalez",
+    phone: "(103) 268-3828",
+    email: "litora.torquent@aol.org",
+  },
+  {
+    name: "Samantha Sampson",
+    phone: "(274) 158-8319",
+    email: "sed@outlook.couk",
+  },
+  {
+    name: "Cameron Crosby",
+    phone: "1-316-554-1668",
+    email: "in.faucibus@outlook.org",
+  },
+  {
+    name: "Erasmus Sheppard",
+    phone: "1-201-294-0305",
+    email: "aenean@icloud.net",
+  },
+  {
+    name: "Julian Byrd",
+    phone: "1-657-928-1782",
+    email: "sed.et.libero@aol.org",
+  },
+  {
+    name: "Ishmael Padilla",
+    phone: "(873) 827-9413",
+    email: "dis.parturient.montes@hotmail.net",
+  },
+  {
+    name: "Paki Larson",
+    phone: "(727) 195-6557",
+    email: "in.ornare@yahoo.ca",
+  },
+  {
+    name: "Russell Ward",
+    phone: "(663) 446-9474",
+    email: "aliquet.phasellus@icloud.org",
+  },
+  {
+    name: "Erasmus Sheppard",
+    phone: "1-201-294-0305",
+    email: "aenean@icloud.net",
+  },
+  {
+    name: "Julian Byrd",
+    phone: "1-657-928-1782",
+    email: "sed.et.libero@aol.org",
+  },
+  {
+    name: "Ishmael Padilla",
+    phone: "(873) 827-9413",
+    email: "dis.parturient.montes@hotmail.net",
+  },
+  {
+    name: "Paki Larson",
+    phone: "(727) 195-6557",
+    email: "in.ornare@yahoo.ca",
+  },
+  {
+    name: "Russell Ward",
+    phone: "(663) 446-9474",
+    email: "aliquet.phasellus@icloud.org",
+  },
+];
+
+export const IconSize = {
+  size: 22,
+};
 export const ScreensArray = [
+  {
+    route: "Warranties",
+    label: "Warranties",
+    type: Icons.Feather,
+    icon: "home",
+    component: Warranties,
+  },
   {
     route: "RegisterBusiness",
     label: "RegisterBusiness",
     type: Icons.Feather,
     icon: "home",
     component: RegisterBusiness,
-  },
-  {
-    route: "Profile",
-    label: "Profile",
-    type: Icons.AntDesign,
-    icon: "user",
-    component: Dashboard,
-  },
-  {
-    route: "Warranties",
-    label: "Warranties",
-    type: Icons.AntDesign,
-    icon: "user",
-    component: Warranties,
   },
 ];
 

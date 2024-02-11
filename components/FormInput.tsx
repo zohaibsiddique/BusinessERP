@@ -10,6 +10,7 @@ import {
   FormControlErrorText,
   AlertCircleIcon,
 } from "@gluestack-ui/themed";
+import React from "react";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { TextInput } from "react-native";
@@ -24,7 +25,9 @@ export default function FormInput({
   isRequired = false,
   disabled = false,
   responsiveWidth,
+
 }) {
+   
   return (
     <Box width={responsiveWidth} p="$1">
       <FormControl
@@ -44,6 +47,7 @@ export default function FormInput({
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                
                 size="sm"
               />
             </Input>

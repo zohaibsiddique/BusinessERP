@@ -1,12 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { ScreensArray, constant, drawerMenu } from "../constants/constants";
+import { ScreensArray, constant } from "../constants/constants";
 import Colors from "../constants/Colors";
 import CustomDrawer from "./CustomDrawer";
 import Icon from "../components/Icons";
-import Warranties from "../../register_business/Warranties";
-import CustomDrawerContent from "../../abdul-khaliq-nav/CustomDrawerContent";
 const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {
@@ -31,6 +29,7 @@ const DrawerNav = () => {
             name={item.route}
             component={item.component}
             options={{
+              item,
               drawerIcon: ({ color, size, focused }) => (
                 <Icon
                   type={item.type}
