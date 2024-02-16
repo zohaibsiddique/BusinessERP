@@ -1,13 +1,26 @@
+import {
+  faAddressBook,
+  faArrowCircleUp,
+  faCalendarCheck,
+  faCircleArrowDown,
+  faCopyright,
+  faCubes,
+  faRegistered,
+  faTruck,
+  faTruckPickup,
+  faUser,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 import Dashboard from "../../home/Dashboard";
 import Brands from "../../register_business/Brands";
 import RegisterBusiness from "../../register_business/RegisterBusiness";
 import Warranties from "../../register_business/Warranties";
-import { Icons } from "../components/Icons";
+
 import Colors from "./Colors";
 
 export const constant = {
   SPACING: 16,
-  borderRadius: 10,
+  borderRadius: 5,
   titleFontSize: 24,
   textFontSize: 16,
   subTextFontSize: 14,
@@ -92,69 +105,218 @@ export const DummyTable = [
 ];
 
 export const IconSize = {
-  size: 22,
+  size: 24,
 };
 export const ScreensArray = [
   {
     route: "Brands",
     label: "Brands",
-    type: Icons.Feather,
-    icon: "home",
+
     component: Brands,
   },
   {
     route: "Warranties",
     label: "Warranties",
-    type: Icons.Feather,
-    icon: "home",
+
     component: Warranties,
+  },
+  {
+    route: "RegisterBusiness",
+    label: "RegisterBusiness",
+
+    component: RegisterBusiness,
   },
 ];
 
 export const drawerMenu = [
   {
-    title: "Settings",
-    bg: Colors.menu1,
-    type: Icons.Feather,
-    icon: "settings",
-    route: "Settings",
+    title: "Products",
+    bg: Colors.transparant,
+    icon: faCubes,
+
     menuList: [
       {
-        title: "Warranties",
+        title: "Register Business",
         route: "RegisterBusiness",
         label: "RegisterBusiness",
-        type: Icons.Feather,
-        icon: "home",
+        icon: faRegistered,
         component: RegisterBusiness,
       },
       {
         title: "Brands",
         route: "Brands",
         label: "Brands",
-        type: Icons.Feather,
-        icon: "home",
+        icon: faCopyright,
         component: Brands,
+      },
+      {
+        title: "Warranties",
+        route: "Warranties",
+        label: "Warranties",
+        icon: faCalendarCheck,
+        component: Warranties,
       },
     ],
   },
-  // {
-  //   title: "Todo's",
-  //   bg: Colors.menu2,
-  //   type: Icons.Feather,
-  //   icon: "check-square",
-  //   route: "Todo",
-  //   menuList: [{ title: "Eat" }, { title: "Code" }, { title: "Sleep" }],
-  // },
-  // {
-  //   title: "Projects",
-  //   bg: Colors.menu3,
-  //   type: Icons.Octicons,
-  //   icon: "project",
-  //   route: "Project",
-  //   menuList: [
-  //     { title: "Portfolio" },
-  //     { title: "Note-APP" },
-  //     { title: "RN-Ui" },
-  //   ],
-  // },
+  {
+    title: "Purchases",
+    bg: Colors.transparant,
+    icon: faCircleArrowDown,
+
+    menuList: [
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+      {
+        title: "Brands",
+        route: "Brands",
+        label: "Brands",
+        icon: faRegistered,
+        component: Brands,
+      },
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+    ],
+  },
+  {
+    title: "Sell",
+    bg: Colors.transparant,
+
+    icon: faArrowCircleUp,
+
+    menuList: [
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+      {
+        title: "Brands",
+        route: "Brands",
+        label: "Brands",
+
+        icon: faRegistered,
+        component: Brands,
+      },
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+    ],
+  },
+  {
+    title: "User Management",
+    bg: Colors.transparant,
+
+    icon: faUsers,
+
+    menuList: [
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+      {
+        title: "Brands",
+        route: "Brands",
+        label: "Brands",
+
+        icon: faRegistered,
+        component: Brands,
+      },
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+    ],
+  },
+  {
+    title: "Contacts",
+    bg: Colors.transparant,
+
+    icon: faAddressBook,
+
+    menuList: [
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+      {
+        title: "Brands",
+        route: "Brands",
+        label: "Brands",
+
+        icon: faRegistered,
+        component: Brands,
+      },
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+    ],
+  },
+  {
+    title: "Stock Transfers",
+    bg: Colors.transparant,
+
+    icon: faTruck,
+
+    menuList: [
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+      {
+        title: "Brands",
+        route: "Brands",
+        label: "Brands",
+
+        icon: faRegistered,
+        component: Brands,
+      },
+      {
+        title: "Register Business",
+        route: "RegisterBusiness",
+        label: "RegisterBusiness",
+
+        icon: faRegistered,
+        component: RegisterBusiness,
+      },
+    ],
+  },
 ];

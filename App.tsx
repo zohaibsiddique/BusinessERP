@@ -2,18 +2,11 @@ import "react-native-gesture-handler";
 import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { useWindowDimensions } from "react-native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerNav from "./Drawer_submenu/navigation/DrawerNav";
 
-const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
 
-//TODO: Extract styles, fonts settings, fonts for multi language, multi langague settings
 export default function App() {
-  const dimensions = useWindowDimensions();
   return (
     <GluestackUIProvider config={config}>
       <NavigationContainer>
@@ -29,7 +22,8 @@ export default function App() {
           <Drawer.Screen name="Warranties" component={Warranties} />
         </Drawer.Navigator> */}
         <DrawerNav />
-
+        {/* <CustomDrawerNavigator /> */}
+        {/* <NextDrawerApp /> */}
         {/* <Dashboard /> */}
       </NavigationContainer>
     </GluestackUIProvider>

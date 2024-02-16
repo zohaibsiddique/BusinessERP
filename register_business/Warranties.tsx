@@ -60,9 +60,14 @@ export default function Warranties({ dynamicName, setDynamicName }) {
 
   return (
     <ScrollView>
-      <Box bg="#f8f9fe">
+      <Box
+        bg="#f8f9fe"
+        width={isLargeScreen ? "$1/2" : "$full"}
+        marginRight={"auto"}
+        marginLeft={"auto"}
+      >
         {/* Warranties */}
-        <Box width={isLargeScreen ? "$1/2" : "$full"}>
+        <Box>
           <Text
             alignItems="flex-start"
             fontSize={"$3xl"}

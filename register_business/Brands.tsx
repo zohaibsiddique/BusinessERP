@@ -59,9 +59,9 @@ export default function Brands() {
 
   return (
     <ScrollView>
-      <Box bg="#f8f9fe">
+      <Box bg="#f8f9fe" width={isLargeScreen ? "$1/2" :"$full" } marginRight={"auto"} marginLeft={"auto"}>
         {/* brands */}
-        <Box width={isLargeScreen ? "$1/2" : "$full"}>
+        <Box>
           <HStack space="xs" p={"$3"}>
             <Text
               alignItems="flex-start"
@@ -71,6 +71,7 @@ export default function Brands() {
               {t("Brands")}
             </Text>
             <Text
+              pt={"$1"}
               alignItems="center"
               justifyContent="flex-start"
               fontSize={"$md"}

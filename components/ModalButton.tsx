@@ -48,7 +48,6 @@ export default function ModalButton({
   });
   const {
     control,
-    handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: {},

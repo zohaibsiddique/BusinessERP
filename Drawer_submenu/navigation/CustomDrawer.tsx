@@ -1,37 +1,15 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  Image,
-  LayoutAnimation,
-  Platform,
-  StyleSheet,
-  Text,
-  Pressable,
-  TouchableOpacity,
-  UIManager,
-  View,
-} from "react-native";
+import { LayoutAnimation, StyleSheet, View } from "react-native";
 import React, { useState } from "react";
-import { Container } from "../components/Container";
-import { Row } from "../components/Row";
 import { constant, drawerMenu } from "../constants/constants";
 import Colors from "../constants/Colors";
-import {
-  DrawerNavigationState,
-  ParamListBase,
-  useNavigation,
-} from "@react-navigation/native";
-import Styles from "../common/Styles";
-import { DrawerItemList } from "@react-navigation/drawer";
+import { DrawerNavigationState, ParamListBase } from "@react-navigation/native";
+
 import {
   DrawerDescriptorMap,
   DrawerNavigationHelpers,
 } from "@react-navigation/drawer/lib/typescript/src/types";
-import Icon from "../components/Icons";
-
-if (Platform.OS === "android") {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
+import Icon from "../../components/Icons";
+import {Text, Box, HStack, Pressable } from "@gluestack-ui/themed";
 
 type Props = {
   state: DrawerNavigationState<ParamListBase>;
@@ -41,58 +19,47 @@ type Props = {
 
 const CustomDrawer = (props: Props) => {
   const { navigation } = props;
-
-  const handleSubMenuClick = (subMenu) => {
-    navigation.navigate(subMenu.label, { subMenu });
+  const handleSubObjectClick = (subObject) => {
+    navigation.navigate(subObject.label, { subObject });
   };
-
   const [menuIndex, setMenuIndex] = useState(-1);
   return (
-    <Container>
+    <Box>
       {/* profile header */}
-      <Pressable onPress={() => navigation.navigate("Profile")}>
-        <View style={styles.header}>
-          <Image
-            source={require("../assets/images/avatar.png")}
-            style={styles.avatar}
-          />
-          <View style={styles.textContainer}>
-            <Text style={styles.name}>Alice Parker</Text>
-            <Text>Software Engineer</Text>
-          </View>
-        </View>
+      <Pressable onPress={() => navigation.navigate("Dashboard")}>
+       <Box pl={"$3"} pb={"$3.5"} borderBottomColor="#f9f9f9" borderBottomWidth={"$2"} pt={"$4"}><Text size="2xl" fontWeight="$black">Business ERP</Text></Box>
       </Pressable>
-      {/* DrawerList */}
-      <DrawerItemList {...props} />
-      <View style={styles.spacer} />
+
       {/* Menu */}
       {drawerMenu.map((item, index) => {
         return (
-          <TouchableOpacity
-            activeOpacity={0.8}
+          <Pressable
+            $active-bg="#f4f4f4"
+            $hover-bg="#f4f4f4"
             key={index}
-            style={[styles.menu, { backgroundColor: item.bg + "99" }]}
+            style={[styles.menu]}
             onPress={() => {
-              // LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
               LayoutAnimation.configureNext(
                 LayoutAnimation.create(200, "easeInEaseOut", "opacity")
               );
               setMenuIndex(menuIndex === index ? -1 : index);
             }}
           >
-            <Row style={styles.item}>
-              <Icon type={item.type} name={item.icon} size={22} />
-              <Text
-                style={[
-                  styles.text,
-                  {
-                    color: menuIndex === index ? Colors.black : Colors.gray,
-                  },
-                ]}
-              >
-                {item.title}
-              </Text>
-            </Row>
+            <Box style={styles.item}>
+              <HStack>
+                <Icon icon={item.icon} />
+                <Text
+                  style={[
+                    styles.text,
+                    {
+                      color: menuIndex === index ? Colors.black : Colors.gray,
+                    },
+                  ]}
+                >
+                  {item.title}
+                </Text>
+              </HStack>
+            </Box>
             {menuIndex === index && (
               <View
                 style={{
@@ -100,33 +67,27 @@ const CustomDrawer = (props: Props) => {
                   backgroundColor: item.bg,
                 }}
               >
-                {item.menuList.map((subMenu, index) => (
-                  <TouchableOpacity
+                {item.menuList.map((subObject, index) => (
+                  <Pressable
+                    $active-bg="#fff"
+                    $hover-bg="#f9f9f9"
                     key={index}
-                    onPress={() => handleSubMenuClick(subMenu)}
+                    onPress={() => handleSubObjectClick(subObject)}
                   >
-                    <Row style={styles.subMenu}>
-                      <Icon type={subMenu.type} name={subMenu.icon} size={18} />
-                      <Text
-                        style={[
-                          styles.text,
-                          {
-                            color:
-                              menuIndex === index ? Colors.black : Colors.gray,
-                          },
-                        ]}
-                      >
-                        {subMenu.title}
-                      </Text>
-                    </Row>
-                  </TouchableOpacity>
+                    <Box style={styles.subMenu}>
+                      <HStack>
+                        <Icon icon={subObject.icon} />
+                        <Text style={[styles.text]}>{subObject.title}</Text>
+                      </HStack>
+                    </Box>
+                  </Pressable>
                 ))}
               </View>
             )}
-          </TouchableOpacity>
+          </Pressable>
         );
       })}
-    </Container>
+    </Box>
   );
 };
 
@@ -142,7 +103,7 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: constant.SPACING,
-    ...Styles.rowView,
+    
     borderBottomWidth: 1,
     borderBottomColor: Colors.light,
   },
@@ -156,16 +117,18 @@ const styles = StyleSheet.create({
   },
   item: {
     paddingHorizontal: constant.SPACING / 1.5,
-    paddingVertical: constant.SPACING / 1.2,
+    paddingVertical: constant.SPACING / 2,
   },
   text: {
     fontSize: constant.textFontSize,
     paddingHorizontal: constant.SPACING,
   },
   subMenu: {
-    paddingHorizontal: constant.SPACING,
-    paddingVertical: constant.SPACING / 1.5,
+    marginLeft: constant.SPACING / 0.5,
+
+    paddingVertical: constant.SPACING / 3,
   },
+
   spacer: {
     marginVertical: constant.SPACING,
     width: "90%",
