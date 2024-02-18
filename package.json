@@ -43,6 +43,7 @@
     "react-i18next": "^14.0.0",
     "react-native": "0.73.4",
     "react-native-datatable-component": "^2.1.14",
+    "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "~2.14.0",
     "react-native-locale-detector": "^1.0.1",
     "react-native-pager-view": "6.2.3",

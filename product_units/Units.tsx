@@ -7,18 +7,19 @@ import {
   Text,
   useMediaQuery,
 } from "@gluestack-ui/themed";
-import React, { useState } from "react";
+import React from "react";
 import SearchDropDown from "../components/SearchDropDown";
 import { GetEntries } from "../utils/Utils";
 import { useTranslation } from "react-i18next";
 import "../translation/i18n";
 import { useForm } from "react-hook-form";
-import ModalButton from "../components/ModalButton";
 
-import DTable from "../components/DTable";
-import { DummyTable } from "../Drawer_submenu/constants/constants";
-
-export default function Warranties({ dynamicName, setDynamicName }) {
+import { DummyTable } from "../components/constants";
+import ModalButtonCategory from "./ModalButtonUnits";
+import CategoryTable from "./UnitsTable";
+import ModalButtonUnits from "./ModalButtonUnits";
+import UnitsTable from "./UnitsTable";
+export default function Units() {
   const { t } = useTranslation();
 
   const [isLargeScreen] = useMediaQuery({
@@ -34,26 +35,42 @@ export default function Warranties({ dynamicName, setDynamicName }) {
 
   const columns = [
     {
-      name: "Country Name",
+      name: "Name",
       selector: (row) => row.name,
       sortable: true,
     },
     {
-      name: "Capital",
+      name: "Short Name",
       selector: (row) => row.phone,
       sortable: true,
     },
     {
-      name: "Region",
+      name: "Allow decimal",
       selector: (row) => row.email,
       sortable: true,
     },
     {
       name: "Action",
       cell: (row) => (
-        <Button size="xs" variant="outline" onPress={() => alert(row.name)}>
-          Edit
-        </Button>
+        <HStack space="xs" >
+          <Button
+           
+            size="xs"
+            borderColor="$secondary300"
+            variant="outline"
+            onPress={() => alert(row.name)}
+          >
+            Edit
+          </Button>
+          <Button
+            size="xs"
+            borderColor="$secondary300"
+            variant="outline"
+            onPress={() => alert(row.name)}
+          >
+            Delete
+          </Button>
+        </HStack>
       ),
     },
   ];
@@ -66,16 +83,26 @@ export default function Warranties({ dynamicName, setDynamicName }) {
         marginRight={"auto"}
         marginLeft={"auto"}
       >
-        {/* Warranties */}
+        {/* brands */}
         <Box>
-          <Text
-            alignItems="flex-start"
-            fontSize={"$3xl"}
-            fontWeight="$medium"
-            padding="$3"
-          >
-            {t("Warranties")}
-          </Text>
+          <HStack space="xs" p={"$3"}>
+            <Text
+              alignItems="flex-start"
+              fontSize={"$3xl"}
+              fontWeight="$medium"
+            >
+              {t("Units")}
+            </Text>
+            <Text
+              pt={"$1"}
+              alignItems="center"
+              justifyContent="flex-start"
+              fontSize={"$md"}
+              fontWeight="$normal"
+            >
+              {t("Manage your units")}
+            </Text>
+          </HStack>
         </Box>
 
         {/* sub-warranties */}
@@ -90,29 +117,12 @@ export default function Warranties({ dynamicName, setDynamicName }) {
           marginRight="auto"
           marginLeft="auto"
         >
-          {/* modal button */}
+          {/* category-modal button */}
 
           <Box>
             <HStack justifyContent="space-between">
-              <Text fontSize={"$xl"}>{t(" All Warranties")}</Text>
-              <ModalButton
-                buttonHeading={" Add Warranty"}
-                textInput1
-                textInput2={false}
-                halfInput
-                searchDrop
-                textArea
-                dynamicName1="name"
-                dynamicName2={" "}
-                dynamicName3={"duration"}
-                searchDropLabel={" "}
-                searchDropName={" "}
-                dynamicLabel3={"Duration"}
-                dynamicLabel1={"Name"}
-                dynamicLabel2={" "}
-                placeholder={"Description"}
-                description={"Description:"}
-              />
+              <Text fontSize={"$xl"}>{t("All Your units ")}</Text>
+              <ModalButtonUnits />
             </HStack>
           </Box>
           {/* Search Drop Down */}
@@ -143,7 +153,7 @@ export default function Warranties({ dynamicName, setDynamicName }) {
 
           {/*  Data table*/}
           <Box>
-            <DTable
+            <UnitsTable
               columns={columns}
               data={DummyTable}
               responsiveWidth={isLargeScreen ? "$1/2" : "$full"}

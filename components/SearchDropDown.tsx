@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Dropdown } from "react-native-searchable-dropdown-kj";
 import {
-  Input,
-  InputField,
   FormControl,
   FormControlError,
   FormControlLabel,
@@ -11,14 +9,9 @@ import {
   FormControlErrorIcon,
   FormControlErrorText,
   AlertCircleIcon,
-  InputSlot,
-  InputIcon,
-  EyeOffIcon,
-  EyeIcon,
   Box,
-  Text,
 } from "@gluestack-ui/themed";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 
 const DropdownComponent = ({
   control,

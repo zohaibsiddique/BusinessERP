@@ -9,7 +9,7 @@ import React from "react";
 
 export default function ModalTextarea({description,placeholder}) {
   return (
-    <FormControl>
+    <FormControl size="sm">
       <FormControlLabel mt={"$2.5"}>
         <FormControlLabelText>{description}</FormControlLabelText>
       </FormControlLabel>

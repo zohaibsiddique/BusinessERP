@@ -2,21 +2,25 @@ import {
   faAddressBook,
   faArrowCircleUp,
   faCalendarCheck,
+  faCalendarDay,
   faCircleArrowDown,
   faCopyright,
   faCubes,
+  faLayerGroup,
+  faOm,
   faRegistered,
   faTruck,
   faTruckPickup,
   faUser,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import Dashboard from "../../home/Dashboard";
-import Brands from "../../register_business/Brands";
-import RegisterBusiness from "../../register_business/RegisterBusiness";
-import Warranties from "../../register_business/Warranties";
+import Dashboard from "../home/Dashboard";
+import Brands from "../product_brands/Brands";
+import RegisterBusiness from "../register_business/RegisterBusiness";
+import Warranties from "../product_warranties/Warranties";
 
-import Colors from "./Colors";
+import Categories from "../product_categories/Categories";
+import Units from "../product_units/Units";
 
 export const constant = {
   SPACING: 16,
@@ -109,6 +113,12 @@ export const IconSize = {
 };
 export const ScreensArray = [
   {
+    route: "Dashboard",
+    label: "Dashboard",
+
+    component: Units,
+  },
+  {
     route: "Brands",
     label: "Brands",
 
@@ -126,12 +136,23 @@ export const ScreensArray = [
 
     component: RegisterBusiness,
   },
+  {
+    route: "Categories",
+    label: "Categories",
+
+    component: Categories,
+  },
+  {
+    route: "Units",
+    label: "Units",
+
+    component: Units,
+  },
 ];
 
 export const drawerMenu = [
   {
     title: "Products",
-    bg: Colors.transparant,
     icon: faCubes,
 
     menuList: [
@@ -156,11 +177,25 @@ export const drawerMenu = [
         icon: faCalendarCheck,
         component: Warranties,
       },
+      {
+        title: "Categories",
+        route: "Categories",
+        label: "Categories",
+        icon: faLayerGroup,
+        component: Categories,
+      },
+      {
+        title: "Units",
+        route: "Units",
+        label: "Units",
+        icon: faCalendarDay,
+        component: Units,
+      },
     ],
   },
   {
     title: "Purchases",
-    bg: Colors.transparant,
+
     icon: faCircleArrowDown,
 
     menuList: [
@@ -189,7 +224,6 @@ export const drawerMenu = [
   },
   {
     title: "Sell",
-    bg: Colors.transparant,
 
     icon: faArrowCircleUp,
 
@@ -222,7 +256,6 @@ export const drawerMenu = [
   },
   {
     title: "User Management",
-    bg: Colors.transparant,
 
     icon: faUsers,
 
@@ -255,7 +288,6 @@ export const drawerMenu = [
   },
   {
     title: "Contacts",
-    bg: Colors.transparant,
 
     icon: faAddressBook,
 
@@ -288,7 +320,6 @@ export const drawerMenu = [
   },
   {
     title: "Stock Transfers",
-    bg: Colors.transparant,
 
     icon: faTruck,
 

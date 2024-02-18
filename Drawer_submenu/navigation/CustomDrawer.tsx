@@ -1,7 +1,7 @@
-import { LayoutAnimation, StyleSheet, View } from "react-native";
+import { LayoutAnimation, View } from "react-native";
 import React, { useState } from "react";
-import { constant, drawerMenu } from "../constants/constants";
-import Colors from "../constants/Colors";
+import { drawerMenu } from "../../components/constants";
+
 import { DrawerNavigationState, ParamListBase } from "@react-navigation/native";
 
 import {
@@ -9,7 +9,7 @@ import {
   DrawerNavigationHelpers,
 } from "@react-navigation/drawer/lib/typescript/src/types";
 import Icon from "../../components/Icons";
-import {Text, Box, HStack, Pressable } from "@gluestack-ui/themed";
+import { Text, Box, HStack, Pressable } from "@gluestack-ui/themed";
 
 type Props = {
   state: DrawerNavigationState<ParamListBase>;
@@ -27,17 +27,27 @@ const CustomDrawer = (props: Props) => {
     <Box>
       {/* profile header */}
       <Pressable onPress={() => navigation.navigate("Dashboard")}>
-       <Box pl={"$3"} pb={"$3.5"} borderBottomColor="#f9f9f9" borderBottomWidth={"$2"} pt={"$4"}><Text size="2xl" fontWeight="$black">Business ERP</Text></Box>
+        <Box
+          pl={"$3"}
+          pb={"$3.5"}
+          borderBottomColor="#f9f9f9"
+          borderBottomWidth={"$2"}
+          pt={"$4"}
+        >
+          <Text size="2xl" fontWeight="$black">
+            Business ERP
+          </Text>
+        </Box>
       </Pressable>
 
       {/* Menu */}
       {drawerMenu.map((item, index) => {
         return (
           <Pressable
-            $active-bg="#f4f4f4"
-            $hover-bg="#f4f4f4"
+            $active-bg="$secondary100"
+            $hover-bg="$secondary200"
             key={index}
-            style={[styles.menu]}
+            mt={"$2"}
             onPress={() => {
               LayoutAnimation.configureNext(
                 LayoutAnimation.create(200, "easeInEaseOut", "opacity")
@@ -45,39 +55,36 @@ const CustomDrawer = (props: Props) => {
               setMenuIndex(menuIndex === index ? -1 : index);
             }}
           >
-            <Box style={styles.item}>
-              <HStack>
+            <Box
+              paddingVertical={"$1.5"}
+              ml={"$3"}
+              borderBottomWidth={"$1"}
+              borderBottomColor="$white"
+            >
+              <HStack space="xs" alignItems="center" mb={"-$2"}>
                 <Icon icon={item.icon} />
-                <Text
-                  style={[
-                    styles.text,
-                    {
-                      color: menuIndex === index ? Colors.black : Colors.gray,
-                    },
-                  ]}
-                >
-                  {item.title}
-                </Text>
+                <Text>{item.title}</Text>
               </HStack>
             </Box>
             {menuIndex === index && (
-              <View
-                style={{
-                  borderRadius: constant.borderRadius,
-                  backgroundColor: item.bg,
-                }}
-              >
+              <View>
                 {item.menuList.map((subObject, index) => (
                   <Pressable
-                    $active-bg="#fff"
-                    $hover-bg="#f9f9f9"
+                    $active-bg="$secondary0"
+                    $hover-bg="$white"
+                    $hover-borderBottomColor="$secondary900"
                     key={index}
                     onPress={() => handleSubObjectClick(subObject)}
                   >
-                    <Box style={styles.subMenu}>
-                      <HStack>
+                    <Box
+                      borderBottomWidth={"$1"}
+                      borderColor="$white"
+                      paddingVertical={"$1.5"}
+                      ml={"$8"}
+                    >
+                      <HStack space="xs" alignItems="center">
                         <Icon icon={subObject.icon} />
-                        <Text style={[styles.text]}>{subObject.title}</Text>
+                        <Text>{subObject.title}</Text>
                       </HStack>
                     </Box>
                   </Pressable>
@@ -92,48 +99,3 @@ const CustomDrawer = (props: Props) => {
 };
 
 export default CustomDrawer;
-
-const styles = StyleSheet.create({
-  textContainer: {
-    paddingHorizontal: constant.SPACING,
-  },
-  avatar: {
-    width: 50,
-    height: 50,
-  },
-  header: {
-    padding: constant.SPACING,
-    
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.light,
-  },
-  name: {
-    fontSize: constant.titleFontSize,
-  },
-  menu: {
-    marginHorizontal: constant.SPACING / 1.7,
-    marginVertical: constant.SPACING / 2.5,
-    borderRadius: constant.borderRadius,
-  },
-  item: {
-    paddingHorizontal: constant.SPACING / 1.5,
-    paddingVertical: constant.SPACING / 2,
-  },
-  text: {
-    fontSize: constant.textFontSize,
-    paddingHorizontal: constant.SPACING,
-  },
-  subMenu: {
-    marginLeft: constant.SPACING / 0.5,
-
-    paddingVertical: constant.SPACING / 3,
-  },
-
-  spacer: {
-    marginVertical: constant.SPACING,
-    width: "90%",
-    height: 1,
-    backgroundColor: Colors.light,
-    alignSelf: "center",
-  },
-});

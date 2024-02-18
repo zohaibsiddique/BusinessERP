@@ -1,10 +1,9 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { ScreensArray, constant } from "../constants/constants";
-import Colors from "../constants/Colors";
+import { ScreensArray, constant } from "../../components/constants";
+
 import CustomDrawer from "./CustomDrawer";
-import Icon from "../../components/Icons";
 const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {
@@ -13,11 +12,11 @@ const DrawerNav = () => {
       screenOptions={{
         drawerType: "slide",
         overlayColor: "transparent",
-        drawerStyle: styles.drawerStyle,
-        drawerActiveBackgroundColor: Colors.primary,
-        drawerItemStyle: styles.drawerItemStyles,
-        drawerActiveTintColor: Colors.black,
-        drawerLabelStyle: styles.drawerLabelStyles,
+        drawerStyle: {width: 240},
+        drawerActiveBackgroundColor: "green",
+        drawerItemStyle: {borderRadius: 10},
+        drawerActiveTintColor: "red",
+        drawerLabelStyle: {fontSize: 24, marginHorizontal: 30},
       }}
       drawerContent={(props) => <CustomDrawer {...props} />}
     >
@@ -39,15 +38,4 @@ const DrawerNav = () => {
 
 export default DrawerNav;
 
-const styles = StyleSheet.create({
-  drawerStyle: {
-    width: 240,
-  },
-  drawerItemStyles: {
-    borderRadius: constant.borderRadius,
-  },
-  drawerLabelStyles: {
-    fontSize: constant.textFontSize,
-    marginHorizontal: -constant.SPACING,
-  },
-});
+

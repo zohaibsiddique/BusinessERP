@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import ModalButton from "../components/ModalButton";
 
 import DTable from "../components/DTable";
-import { DummyTable } from "../Drawer_submenu/constants/constants";
+import { DummyTable } from "../components/constants";
 export default function Brands() {
   const { t } = useTranslation();
 
@@ -59,7 +59,12 @@ export default function Brands() {
 
   return (
     <ScrollView>
-      <Box bg="#f8f9fe" width={isLargeScreen ? "$1/2" :"$full" } marginRight={"auto"} marginLeft={"auto"}>
+      <Box
+        bg="#f8f9fe"
+        width={isLargeScreen ? "$1/2" : "$full"}
+        marginRight={"auto"}
+        marginLeft={"auto"}
+      >
         {/* brands */}
         <Box>
           <HStack space="xs" p={"$3"}>
@@ -76,7 +81,6 @@ export default function Brands() {
               justifyContent="flex-start"
               fontSize={"$md"}
               fontWeight="$normal"
-             
             >
               {t("Manage your brands")}
             </Text>
