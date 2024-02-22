@@ -21,6 +21,7 @@ import Warranties from "../product_warranties/Warranties";
 
 import Categories from "../product_categories/Categories";
 import Units from "../product_units/Units";
+import PriceGroup from "../product_prices/PriceGroup";
 
 export const constant = {
   SPACING: 16,
@@ -116,7 +117,7 @@ export const ScreensArray = [
     route: "Dashboard",
     label: "Dashboard",
 
-    component: Units,
+    component: PriceGroup,
   },
   {
     route: "Brands",
