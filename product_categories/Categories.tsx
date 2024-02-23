@@ -1,15 +1,12 @@
 import {
   Box,
   Button,
-  Center,
   HStack,
   ScrollView,
   Text,
   useMediaQuery,
 } from "@gluestack-ui/themed";
 import React from "react";
-import SearchDropDown from "../components/SearchDropDown";
-import { GetEntries } from "../utils/Utils";
 import { useTranslation } from "react-i18next";
 import "../translation/i18n";
 import { useForm } from "react-hook-form";
@@ -112,8 +109,7 @@ export default function Categories() {
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-          marginRight="auto"
-          marginLeft="auto"
+       
         >
           {/* category-modal button */}
 
@@ -123,32 +119,7 @@ export default function Categories() {
               <ModalButtonCategory />
             </HStack>
           </Box>
-          {/* Search Drop Down */}
-          <Box>
-            <Center>
-              <HStack justifyContent="center" alignItems="center">
-                <Text pt={13}>Show</Text>
-
-                <SearchDropDown
-                  control={control}
-                  errors={errors}
-                  isRequired={false}
-                  name={""}
-                  rules={{
-                    required: t("required_field"),
-                  }}
-                  list={GetEntries()}
-                  keyLabel={"category"}
-                  values={"category"}
-                  label={t("")}
-                  responsiveWidth={isLargeScreen ? "$3/5" : "$full"}
-                />
-
-                <Text pt={13}>entries</Text>
-              </HStack>
-            </Center>
-          </Box>
-
+      
           {/*  Data table*/}
           <Box>
             <CategoryTable

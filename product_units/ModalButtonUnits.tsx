@@ -90,8 +90,7 @@ export default function ModalButtonUnits() {
                 rules={{
                   required: t("required_field"),
                 }}
-                responsiveWidth={"$full"}
-              />
+                responsiveWidth={"$full"} placeholder={"Name"}              />
 
               <FormInput
                 control={control}
@@ -103,8 +102,7 @@ export default function ModalButtonUnits() {
                 rules={{
                   required: t("required_field"),
                 }}
-                responsiveWidth={"$full"}
-              />
+                responsiveWidth={"$full"} placeholder={"Short Name"}              />
 
               <SelectUnit />
 

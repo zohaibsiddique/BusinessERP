@@ -1,22 +1,17 @@
 import {
   Box,
   Button,
-  Center,
   HStack,
   ScrollView,
   Text,
   useMediaQuery,
 } from "@gluestack-ui/themed";
 import React from "react";
-import SearchDropDown from "../components/SearchDropDown";
-import { GetEntries } from "../utils/Utils";
 import { useTranslation } from "react-i18next";
 import "../translation/i18n";
 import { useForm } from "react-hook-form";
 
 import { DummyTable } from "../components/constants";
-import ModalButtonCategory from "./ModalButtonUnits";
-import CategoryTable from "./UnitsTable";
 import ModalButtonUnits from "./ModalButtonUnits";
 import UnitsTable from "./UnitsTable";
 export default function Units() {
@@ -109,48 +104,22 @@ export default function Units() {
         <Box
           bg="#fff"
           py="$4"
-          px="$3"
+        
           mt={16}
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-          marginRight="auto"
-          marginLeft="auto"
+       
         >
           {/* category-modal button */}
 
           <Box>
-            <HStack justifyContent="space-between">
+            <HStack justifyContent="space-between" px={"$3"}>
               <Text fontSize={"$xl"}>{t("All Your units ")}</Text>
               <ModalButtonUnits />
             </HStack>
           </Box>
-          {/* Search Drop Down */}
-          <Box>
-            <Center>
-              <HStack justifyContent="center" alignItems="center">
-                <Text pt={13}>Show</Text>
-
-                <SearchDropDown
-                  control={control}
-                  errors={errors}
-                  isRequired={false}
-                  name={""}
-                  rules={{
-                    required: t("required_field"),
-                  }}
-                  list={GetEntries()}
-                  keyLabel={"category"}
-                  values={"category"}
-                  label={t("")}
-                  responsiveWidth={isLargeScreen ? "$3/5" : "$full"}
-                />
-
-                <Text pt={13}>entries</Text>
-              </HStack>
-            </Center>
-          </Box>
-
+       
           {/*  Data table*/}
           <Box>
             <UnitsTable

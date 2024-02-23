@@ -82,18 +82,17 @@ export default function Warranties({ dynamicName, setDynamicName }) {
         <Box
           bg="#fff"
           py="$4"
-          px="$3"
+        
           mt={16}
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-          marginRight="auto"
-          marginLeft="auto"
+      
         >
           {/* modal button */}
 
           <Box>
-            <HStack justifyContent="space-between">
+            <HStack justifyContent="space-between" px={"$3"}>
               <Text fontSize={"$xl"}>{t(" All Warranties")}</Text>
               <ModalButton
                 buttonHeading={" Add Warranty"}

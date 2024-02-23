@@ -91,18 +91,17 @@ export default function Brands() {
         <Box
           bg="#fff"
           py="$4"
-          px="$3"
+         
           mt={16}
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-          marginRight="auto"
-          marginLeft="auto"
+         
         >
           {/* modal button */}
 
-          <Box>
-            <HStack justifyContent="space-between">
+          <Box >
+            <HStack justifyContent="space-between" px={"$3"}>
               <Text fontSize={"$xl"}>{t(" All Your Brands")}</Text>
               <ModalButton
                 buttonHeading="Add Brand"

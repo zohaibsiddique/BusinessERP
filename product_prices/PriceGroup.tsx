@@ -81,9 +81,14 @@ export default function PriceGroup() {
 
   return (
     <ScrollView>
-      <Box bg="#f8f9fe" marginRight={"auto"} marginLeft={"auto"} px={"$3"}>
+      <Box
+        bg="#f8f9fe"
+        marginRight={"auto"}
+        marginLeft={"auto"}
+        width={isLargeScreen ? "$1/2" : "$full"}
+      >
         {/* Price group  */}
-        <Box width={isLargeScreen ? "$1/2" : "$full"}>
+        <Box>
           <HStack space="xs" p={"$3"}>
             <Text alignItems="flex-start" fontSize={"$2xl"} fontWeight="$bold">
               {t("Selling Price Group")}
@@ -99,7 +104,6 @@ export default function PriceGroup() {
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-         
         >
           {/* Import/Export Selling Price Group Prices heading */}
 
@@ -113,24 +117,24 @@ export default function PriceGroup() {
 
           {/*  Export Selling Price Group Prices*/}
           <Box>
-            <VStack space="xs">
+            <VStack space="xs" px={"$3"}>
               {/*Export Selling Price Group Prices button  */}
-              <Box px={"$3"}>
+              <Box>
                 <Button size="xs" mt={"$10"} alignSelf="flex-start">
                   <ButtonText> Export Selling Price Group Prices</ButtonText>
                 </Button>
               </Box>
 
-              <Box px={"$3"}>
+              <Box>
                 <FileUploader />
               </Box>
-              <Box px={"$3"}>
-                <Button alignSelf="flex-start" size="xs" px={"$3"}>
+              <Box>
+                <Button alignSelf="flex-start" size="xs">
                   <ButtonText>Submit</ButtonText>
                 </Button>
               </Box>
               {/* instruction section */}
-              <VStack mt={"$3"} px={"$3"}>
+              <VStack mt={"$3"}>
                 <Text fontWeight="$bold" letterSpacing={"$md"}>
                   Instruction:{" "}
                 </Text>
@@ -165,8 +169,7 @@ export default function PriceGroup() {
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-          marginRight="auto"
-          marginLeft="auto"
+       
         >
           {/* category-modal button */}
 
@@ -177,18 +180,6 @@ export default function PriceGroup() {
               </Text>
               <ModalButtonUnits />
             </HStack>
-          </Box>
-          {/* Search Drop Down */}
-          <Box>
-            <Center>
-              <HStack justifyContent="center" alignItems="center">
-                <Text pt={13}>Show</Text>
-
-                <SelectPrice />
-
-                <Text pt={13}>entries</Text>
-              </HStack>
-            </Center>
           </Box>
 
           {/*  Data table*/}
