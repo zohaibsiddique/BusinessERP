@@ -11,22 +11,14 @@ import {
   HStack,
   useMediaQuery,
   ModalCloseButton,
-  Text,
-  Pressable,
-  Box,
 } from "@gluestack-ui/themed";
 import { useState } from "react";
 import FormInput from "../components/FormInput";
-import { CheckBox } from "react-native";
 import { useForm } from "react-hook-form";
 import { t } from "i18next";
 import React from "react";
 
-import SelectUnit from "./SelectPrice";
-import CheckBoxUnit from "./CheckBoxPrice";
-import AddMultipleUnit from "./AddMultiplePrice";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import ModalTextarea from "../components/ModalTextarea";
 
 export default function ModalButtonPrice() {
   const [showModal, setShowModal] = useState(false);
@@ -73,7 +65,7 @@ export default function ModalButtonPrice() {
                   padding: 10,
                 }}
               >
-                <Heading size="lg">Add Units</Heading>
+                <Heading size="lg">Add Selling Price Group</Heading>
                 <ModalCloseButton>&times;</ModalCloseButton>
               </HStack>
             </ModalHeader>
@@ -81,60 +73,21 @@ export default function ModalButtonPrice() {
               <FormInput
                 control={control}
                 errors={errors}
-                name={"unit-name"}
+                name={"price-name"}
                 isRequired={true}
                 label={t("Name")}
                 inputType="text"
+                placeholder="Name"
                 rules={{
                   required: t("required_field"),
                 }}
                 responsiveWidth={"$full"}
               />
 
-              <FormInput
-                control={control}
-                errors={errors}
-                name={"short-name"}
-                isRequired={true}
-                label={t("Short Name")}
-                inputType="text"
-                rules={{
-                  required: t("required_field"),
-                }}
-                responsiveWidth={"$full"}
+              <ModalTextarea
+                description={"Description"}
+                placeholder={"Description"}
               />
-
-              <SelectUnit />
-
-              <HStack space="sm" alignItems="center" mt="$3">
-                <CheckBox
-                  value={isChecked}
-                  onValueChange={handleCheckboxChange}
-                />
-                <Text size="sm">Add as multiple of other unit </Text>
-                <Pressable
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                >
-                  <FontAwesomeIcon icon={faCircleInfo} />
-                  {isHovering && (
-                    <Box
-                      position="relative"
-                      bg="$white"
-                      p={"$1.5"}
-                      borderRadius={"$sm"}
-                      mt={"$1.5"}
-                    >
-                      <Text>
-                        Define this unit is as the multiple of other units
-                      </Text>
-                      <Text fontWeight="$bold">Ex: 1 dozen = 12 pieces</Text>
-                    </Box>
-                  )}
-                </Pressable>
-              </HStack>
-
-              {isChecked && <AddMultipleUnit />}
             </ModalBody>
             <ModalFooter borderTopWidth="$0">
               <HStack space="sm">

@@ -61,7 +61,7 @@ export default function PriceTable({ columns, data, responsiveWidth }) {
         highlightOnHover
         subHeader
         subHeaderComponent={
-          <Input height={30}>
+          <Input height={25}>
             <InputSlot>
               <InputIcon pl={"$1.5"} as={SearchIcon} />
             </InputSlot>

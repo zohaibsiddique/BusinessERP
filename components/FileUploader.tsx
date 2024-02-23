@@ -3,16 +3,6 @@ import React, { useCallback, useState } from "react";
 import DocumentPicker from "react-native-document-picker";
 
 function FileUploader() {
-    const [fileResponse, setFileResponse] = useState([]);
-
-    const handleDocumentSelection = useCallback(async () => {
-      try {
-        const response = await DocumentPicker.pick();
-        setFileResponse(response);
-      } catch (err) {
-        console.warn(err);
-      }
-    }, []);
 
   return (
     <Box>
@@ -20,15 +10,7 @@ function FileUploader() {
         File To Impot :
       </Text>
       <HStack space="sm" alignItems="center" marginVertical={"$2"}>
-        {fileResponse.map((file, index) => (
-          <Text
-            key={index.toString()}
-            numberOfLines={1}
-            ellipsizeMode={"middle"}
-          >
-            {file?.uri}
-          </Text>
-        ))}
+      
         <Button
           borderRadius={"$xs"}
           bg="$secondary0"
@@ -37,10 +19,11 @@ function FileUploader() {
           borderWidth={"$1"}
           paddingVertical="$0"
           paddingHorizontal={"$0.5"}
-          onPress={handleDocumentSelection}
+        height={"$6"}
         >
           Choose File 📑
         </Button>
+        <Text>No file chosen</Text>
       </HStack>
     </Box>
   );

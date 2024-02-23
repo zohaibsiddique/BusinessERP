@@ -7,6 +7,7 @@ import {
   faCopyright,
   faCubes,
   faLayerGroup,
+  faMoneyCheckDollar,
   faOm,
   faRegistered,
   faTruck,
@@ -149,6 +150,12 @@ export const ScreensArray = [
 
     component: Units,
   },
+  {
+    route: "PriceGroup",
+    label: "PriceGroup",
+
+    component: PriceGroup,
+  },
 ];
 
 export const drawerMenu = [
@@ -191,6 +198,13 @@ export const drawerMenu = [
         label: "Units",
         icon: faCalendarDay,
         component: Units,
+      },
+      {
+        title: "Selling Price Group",
+        route: "PriceGroup",
+        label: "PriceGroup",
+        icon: faMoneyCheckDollar,
+        component: PriceGroup,
       },
     ],
   },

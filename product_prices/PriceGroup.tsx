@@ -1,7 +1,9 @@
 import {
   Box,
   Button,
+  ButtonText,
   Center,
+  FlatList,
   HStack,
   ScrollView,
   Text,
@@ -21,6 +23,8 @@ import ModalButtonUnits from "./ModalButtonPrice";
 import UnitsTable from "./PriceTable";
 import IconButtonText from "../components/IconButtonText";
 import FileUploader from "../components/FileUploader";
+import SelectPrice from "./SelectPrice";
+import PriceTable from "./PriceTable";
 
 // Selling Price group function
 
@@ -44,13 +48,9 @@ export default function PriceGroup() {
       selector: (row) => row.name,
       sortable: true,
     },
+ 
     {
-      name: "Short Name",
-      selector: (row) => row.phone,
-      sortable: true,
-    },
-    {
-      name: "Allow decimal",
+      name: "Description",
       selector: (row) => row.email,
       sortable: true,
     },
@@ -81,20 +81,11 @@ export default function PriceGroup() {
 
   return (
     <ScrollView>
-      <Box
-        bg="#f8f9fe"
-        width={isLargeScreen ? "$1/2" : "$full"}
-        marginRight={"auto"}
-        marginLeft={"auto"}
-      >
+      <Box bg="#f8f9fe" marginRight={"auto"} marginLeft={"auto"} px={"$3"}>
         {/* Price group  */}
-        <Box>
+        <Box width={isLargeScreen ? "$1/2" : "$full"}>
           <HStack space="xs" p={"$3"}>
-            <Text
-              alignItems="flex-start"
-              fontSize={"$2xl"}
-              fontWeight="$medium"
-            >
+            <Text alignItems="flex-start" fontSize={"$2xl"} fontWeight="$bold">
               {t("Selling Price Group")}
             </Text>
           </HStack>
@@ -104,17 +95,15 @@ export default function PriceGroup() {
         <Box
           bg="#fff"
           py="$4"
-          px="$3"
           mt={16}
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-          marginRight="auto"
-          marginLeft="auto"
+         
         >
-          {/* category-modal button */}
+          {/* Import/Export Selling Price Group Prices heading */}
 
-          <Box>
+          <Box px={"$3"}>
             <HStack justifyContent="space-between">
               <Text fontWeight="$bold" fontSize={"$lg"}>
                 {t("Import/Export Selling Price Group Prices ")}
@@ -122,22 +111,49 @@ export default function PriceGroup() {
             </HStack>
           </Box>
 
-          {/*  Data table*/}
+          {/*  Export Selling Price Group Prices*/}
           <Box>
             <VStack space="xs">
-              <Button
-                size="xs"
-                mt={"$10"}
-                bgColor="$white"
-                width={isLargeScreen ? "$1/2" : "$2/3"}
-              >
-                Export Selling Price Group Prices
-              </Button>
-              {/* <FileUploader /> */}
-              <Button alignSelf="flex-start" size="xs" color="$secondary0">
-                Submit
-              </Button>
-              <Text><Text>Instruction: </Text></Text>
+              {/*Export Selling Price Group Prices button  */}
+              <Box px={"$3"}>
+                <Button size="xs" mt={"$10"} alignSelf="flex-start">
+                  <ButtonText> Export Selling Price Group Prices</ButtonText>
+                </Button>
+              </Box>
+
+              <Box px={"$3"}>
+                <FileUploader />
+              </Box>
+              <Box px={"$3"}>
+                <Button alignSelf="flex-start" size="xs" px={"$3"}>
+                  <ButtonText>Submit</ButtonText>
+                </Button>
+              </Box>
+              {/* instruction section */}
+              <VStack mt={"$3"} px={"$3"}>
+                <Text fontWeight="$bold" letterSpacing={"$md"}>
+                  Instruction:{" "}
+                </Text>
+                <FlatList
+                  data={[
+                    { key: "Export Selling price group prices." },
+                    {
+                      key: "Update the exported file and import the same file.",
+                    },
+                    {
+                      key: "Only selling price group prices of the product will be updated. Any blank price will be skipped.",
+                    },
+                  ]}
+                  renderItem={({ item }) => {
+                    return (
+                      <Box p={"$1.5"}>
+                        <Text fontSize={"$xs"}>{`\u2022 ${item.key}`}</Text>
+                      </Box>
+                    );
+                  }}
+                />
+              </VStack>
+              {/* all selling table and button */}
             </VStack>
           </Box>
         </Box>
@@ -156,7 +172,9 @@ export default function PriceGroup() {
 
           <Box>
             <HStack justifyContent="space-between">
-              <Text fontSize={"$xl"}>{t("All Your units ")}</Text>
+              <Text fontSize={"$lg"} fontWeight="$bold">
+                {t("All Selling Price Group ")}
+              </Text>
               <ModalButtonUnits />
             </HStack>
           </Box>
@@ -166,20 +184,7 @@ export default function PriceGroup() {
               <HStack justifyContent="center" alignItems="center">
                 <Text pt={13}>Show</Text>
 
-                <SearchDropDown
-                  control={control}
-                  errors={errors}
-                  isRequired={false}
-                  name={""}
-                  rules={{
-                    required: t("required_field"),
-                  }}
-                  list={GetEntries()}
-                  keyLabel={"category"}
-                  values={"category"}
-                  label={t("")}
-                  responsiveWidth={isLargeScreen ? "$3/5" : "$full"}
-                />
+                <SelectPrice />
 
                 <Text pt={13}>entries</Text>
               </HStack>
@@ -188,7 +193,7 @@ export default function PriceGroup() {
 
           {/*  Data table*/}
           <Box>
-            <UnitsTable
+            <PriceTable
               columns={columns}
               data={DummyTable}
               responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
