@@ -123,31 +123,7 @@ export default function Brands() {
               />
             </HStack>
           </Box>
-          {/* Search Drop Down */}
-          <Box>
-            <Center>
-              <HStack justifyContent="center" alignItems="center">
-                <Text pt={13}>Show</Text>
 
-                <SearchDropDown
-                  control={control}
-                  errors={errors}
-                  isRequired={false}
-                  name={""}
-                  rules={{
-                    required: t("required_field"),
-                  }}
-                  list={GetEntries()}
-                  keyLabel={"category"}
-                  values={"category"}
-                  label={t("")}
-                  responsiveWidth={isLargeScreen ? "$3/5" : "$full"}
-                />
-
-                <Text pt={13}>entries</Text>
-              </HStack>
-            </Center>
-          </Box>
 
           {/*  Data table*/}
           <Box>

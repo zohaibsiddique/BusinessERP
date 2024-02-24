@@ -169,11 +169,10 @@ export default function PriceGroup() {
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-       
         >
           {/* category-modal button */}
 
-          <Box>
+          <Box py={"$3"}>
             <HStack justifyContent="space-between">
               <Text fontSize={"$lg"} fontWeight="$bold">
                 {t("All Selling Price Group ")}
@@ -183,7 +182,7 @@ export default function PriceGroup() {
           </Box>
 
           {/*  Data table*/}
-          <Box>
+          <Box >
             <PriceTable
               columns={columns}
               data={DummyTable}

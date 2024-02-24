@@ -72,9 +72,11 @@ export default function PriceTable({ columns, data, responsiveWidth }) {
             />
           </Input>
         }
-        subHeaderAlign="center"
+        wrap={true}
         customStyles={customStyles}
         actions={<TableActionButton />}
+        subHeaderAlign="center"
+        subHeaderWrap={true}
       ></DataTable>
     </Box>
   );
