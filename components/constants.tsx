@@ -7,16 +7,11 @@ import {
   faCopyright,
   faCubes,
   faLayerGroup,
-  faMoneyCheckDollar,
-  faOm,
   faRegistered,
   faTags,
   faTruck,
-  faTruckPickup,
-  faUser,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
-import Dashboard from "../home/Dashboard";
 import Brands from "../product_brands/Brands";
 import RegisterBusiness from "../register_business/RegisterBusiness";
 import Warranties from "../product_warranties/Warranties";
@@ -24,6 +19,8 @@ import Warranties from "../product_warranties/Warranties";
 import Categories from "../product_categories/Categories";
 import Units from "../product_units/Units";
 import PriceGroup from "../product_prices/PriceGroup";
+import Dashboard from "../home/Dashboard";
+import AddProduct from "../product_add_product/AddProduct";
 
 export const constant = {
   SPACING: 16,
@@ -119,7 +116,7 @@ export const ScreensArray = [
     route: "Dashboard",
     label: "Dashboard",
 
-    component: PriceGroup,
+    component: AddProduct,
   },
   {
     route: "Brands",

@@ -22,17 +22,20 @@ import {
 import React, { useState } from "react";
 
 function SelectPrice() {
-  const [selectedValue, setSelectedValue] = useState("25");
+  
   return (
     <FormControl
       mt={"$3"}
-      isRequired={false}
+      isRequired={true}
       isInvalid={false}
       paddingHorizontal={"$0.5"}
     >
+      <FormControlLabel>
+        <FormControlLabelText>Allow decimal:</FormControlLabelText>
+      </FormControlLabel>
       <Select justifyContent="center">
         <SelectTrigger height={25}>
-          <SelectInput placeholder="Select " value={selectedValue} />
+          <SelectInput placeholder="Please Select " />
           <SelectIcon>
             <Icon as={ChevronDownIcon} />
           </SelectIcon>
@@ -43,12 +46,8 @@ function SelectPrice() {
             <SelectDragIndicatorWrapper>
               <SelectDragIndicator />
             </SelectDragIndicatorWrapper>
-            <SelectItem label="25" value="25" />
-            <SelectItem label="50" value="50" />
-            <SelectItem label="100" value="100" />
-            <SelectItem label="200" value="200" />
-            <SelectItem label="500" value="500" />
-            <SelectItem label="All" value="All" />
+            <SelectItem label="Yes" value="yes" />
+            <SelectItem label="No" value="no" />
           </SelectContent>
         </SelectPortal>
       </Select>

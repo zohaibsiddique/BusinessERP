@@ -2,12 +2,12 @@ import { Box, ChevronDownIcon, Icon, Input, InputField, Select, SelectBackdrop, 
 import React from 'react'
 
 
-function AddMultipleUnit() {
+function AddMultiplePrice() {
   return (
-    <HStack space='sm' p={"$1"}>
+    <HStack space="md" p={"$1"}>
       <Text>1 Unit = </Text>
       <Input sx={{ height: 30 }}>
-        <InputField size="sm" placeholder='times base unit' />
+        <InputField size="sm" placeholder="times base unit" />
       </Input>
       <Select>
         <SelectTrigger size="sm" height={30}>
@@ -31,4 +31,4 @@ function AddMultipleUnit() {
   );
 }
 
-export default AddMultipleUnit
+export default AddMultiplePrice;

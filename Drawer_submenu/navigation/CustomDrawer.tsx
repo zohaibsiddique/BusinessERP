@@ -44,8 +44,8 @@ const CustomDrawer = (props: Props) => {
       {drawerMenu.map((item, index) => {
         return (
           <Pressable
-            $active-bg="$secondary100"
-            $hover-bg="$secondary200"
+            $active-bg="$secondary200"
+            $hover-bg="$secondary100"
             key={index}
             mt={"$2"}
             onPress={() => {
@@ -70,9 +70,8 @@ const CustomDrawer = (props: Props) => {
               <View>
                 {item.menuList.map((subObject, index) => (
                   <Pressable
+                    $hover-bg="$secondary200"
                     $active-bg="$secondary0"
-                    $hover-bg="$white"
-                    $hover-borderBottomColor="$secondary900"
                     key={index}
                     onPress={() => handleSubObjectClick(subObject)}
                   >
@@ -82,9 +81,13 @@ const CustomDrawer = (props: Props) => {
                       paddingVertical={"$1.5"}
                       ml={"$8"}
                     >
-                      <HStack space="xs" alignItems="center">
+                      <HStack
+                        
+                        space="xs"
+                        alignItems="center"
+                      >
                         <Icon icon={subObject.icon} />
-                        <Text>{subObject.title}</Text>
+                        <Text >{subObject.title}</Text>
                       </HStack>
                     </Box>
                   </Pressable>

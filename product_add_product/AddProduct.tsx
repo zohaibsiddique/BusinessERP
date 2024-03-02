@@ -1,12 +1,9 @@
 import {
   Box,
   Button,
-  ButtonText,
-  FlatList,
   HStack,
   ScrollView,
   Text,
-  VStack,
   useMediaQuery,
 } from "@gluestack-ui/themed";
 
@@ -17,12 +14,16 @@ import { useForm } from "react-hook-form";
 
 import { DummyTable } from "../components/constants";
 import ModalButtonUnits from "./ModalButtonPrice";
-import FileUploader from "../components/FileUploader";
-import PriceTable from "./PriceTable";
+import ProductTable from "./ProductTable";
+import FormInput from "../components/FormInput";
+import ProductSelectOption from "./ProductSelectOption";
+import ProductSelectOptionUnit from "./ProductSelectOptionUnit";
+import ProductUnitButton from "./ProductUnitButton";
+import ProductSelectOptionBrand from "./ProductSelectOptionBrand";
 
 // Selling Price group function
 
-export default function PriceGroup() {
+export default function AddProduct() {
   const { t } = useTranslation();
 
   const [isLargeScreen] = useMediaQuery({
@@ -42,7 +43,7 @@ export default function PriceGroup() {
       selector: (row) => row.name,
       sortable: true,
     },
- 
+
     {
       name: "Description",
       selector: (row) => row.email,
@@ -81,11 +82,11 @@ export default function PriceGroup() {
         marginLeft={"auto"}
         width={isLargeScreen ? "$1/2" : "$full"}
       >
-        {/* Price group  */}
+        {/* Product group  */}
         <Box>
-          <HStack space="xs" p={"$3"}>
-            <Text alignItems="flex-start" fontSize={"$2xl"} fontWeight="$bold">
-              {t("Selling Price Group")}
+          <HStack space="xs" p={"$2"}>
+            <Text alignItems="flex-start" fontSize={"$xl"} fontWeight="$bold">
+              {t("Add new product")}
             </Text>
           </HStack>
         </Box>
@@ -93,66 +94,46 @@ export default function PriceGroup() {
         {/* instruction */}
         <Box
           bg="#fff"
-          py="$4"
+          py="$3"
           mt={16}
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
+          mx="$2.5"
+          shadowRadius={"$0.5"}
         >
-          {/* Import/Export Selling Price Group Prices heading */}
-
-          <Box px={"$3"}>
-            <HStack justifyContent="space-between">
-              <Text fontWeight="$bold" fontSize={"$lg"}>
-                {t("Import/Export Selling Price Group Prices ")}
-              </Text>
-            </HStack>
-          </Box>
-
-          {/*  Export Selling Price Group Prices*/}
-          <Box>
-            <VStack space="xs" px={"$3"}>
-              {/*Export Selling Price Group Prices button  */}
-              <Box>
-                <Button size="xs" mt={"$10"} alignSelf="flex-start">
-                  <ButtonText> Export Selling Price Group Prices</ButtonText>
-                </Button>
-              </Box>
-
-              <Box>
-                <FileUploader />
-              </Box>
-              <Box>
-                <Button alignSelf="flex-start" size="xs">
-                  <ButtonText>Submit</ButtonText>
-                </Button>
-              </Box>
-              {/* instruction section */}
-              <VStack mt={"$3"}>
-                <Text fontWeight="$bold" letterSpacing={"$md"}>
-                  Instruction:{" "}
-                </Text>
-                <FlatList
-                  data={[
-                    { key: "Export Selling price group prices." },
-                    {
-                      key: "Update the exported file and import the same file.",
-                    },
-                    {
-                      key: "Only selling price group prices of the product will be updated. Any blank price will be skipped.",
-                    },
-                  ]}
-                  renderItem={({ item }) => {
-                    return (
-                      <Box p={"$1.5"}>
-                        <Text fontSize={"$xs"}>{`\u2022 ${item.key}`}</Text>
-                      </Box>
-                    );
-                  }}
-                />
-              </VStack>
-              {/* all selling table and button */}
-            </VStack>
+          <Box mx="$4">
+            <FormInput
+              control={control}
+              errors={errors}
+              name={"product-name"}
+              isRequired={true}
+              label={t("Product Name")}
+              inputType="text"
+              placeholder="Product Name"
+              rules={{
+                required: t("required_field"),
+              }}
+              responsiveWidth={"$full"}
+            />
+            <FormInput
+              control={control}
+              errors={errors}
+              name={"sku"}
+              isRequired={false}
+              label={t("SKU: ")}
+              inputType="text"
+              placeholder="SKU"
+              rules={{
+                required: t("required_field"),
+              }}
+              responsiveWidth={"$full"}
+            />
+            <ProductSelectOption />
+            <ProductSelectOptionUnit
+              responsiveWidth={ "$full"}
+            />
+            <ProductSelectOptionBrand />
           </Box>
         </Box>
         <Box
@@ -160,6 +141,7 @@ export default function PriceGroup() {
           py="$4"
           px="$3"
           mt={16}
+          mx="$2"
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
@@ -176,8 +158,8 @@ export default function PriceGroup() {
           </Box>
 
           {/*  Data table*/}
-          <Box >
-            <PriceTable
+          <Box>
+            <ProductTable
               columns={columns}
               data={DummyTable}
               responsiveWidth={isLargeScreen ? "$1/2" : "$full"}

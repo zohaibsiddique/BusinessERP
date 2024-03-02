@@ -11,26 +11,22 @@ import {
   HStack,
   useMediaQuery,
   ModalCloseButton,
-  Text,
-  Pressable,
-  Box,
 } from "@gluestack-ui/themed";
 import { useState } from "react";
 import FormInput from "../components/FormInput";
-import { CheckBox } from "react-native";
+
 import { useForm } from "react-hook-form";
 import { t } from "i18next";
 import React from "react";
 
-import SelectUnit from "./SelectUnit";
-import CheckBoxUnit from "./CheckBoxUnit";
-import AddMultipleUnit from "./AddMultipleUnit";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import SelectUnit from "../product_units/SelectUnit";
 
-export default function ModalButtonUnits() {
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+
+export default function ProductUnitButton() {
   const [showModal, setShowModal] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
+const [isHovering, setIsHovering] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [isLargeScreen] = useMediaQuery({
     minWidth: 720,
@@ -42,19 +38,28 @@ export default function ModalButtonUnits() {
     defaultValues: {},
     mode: "onTouched",
   });
-  const [isChecked, setChecked] = useState(false);
 
-  const handleCheckboxChange = () => {
-    setChecked(!isChecked);
-  };
-
-  // hovering effect 
-   const [isHovering, setIsHovering] = useState(false);
   return (
     <>
-      <Button onPress={() => setShowModal(true)}>
-        <ButtonText>+Add</ButtonText>
+      <Button
+        height={30}
+        variant="outline"
+        onPress={() => setShowModal(true)}
+        mt="$6"
+        borderBottomLeftRadius={0}
+        borderTopLeftRadius={0}
+        borderColor="$secondary200"
+        p={"$0"}
+        onPressIn={() => setIsHovering(true)}
+        onPressOut={() => setIsHovering(false)}
+      >
+        <FontAwesomeIcon
+          icon={faCirclePlus}
+          style={{ color: "#3b82f6" }}
+          size={18}
+        />
       </Button>
+
       {isOpen && (
         <Modal
           isOpen={showModal}
@@ -64,22 +69,20 @@ export default function ModalButtonUnits() {
         >
           <ModalBackdrop />
           <ModalContent>
-            <ModalHeader >
+            <ModalHeader>
               <HStack
                 style={{
                   flex: 2,
                   flexDirection: "row",
                   justifyContent: "space-between",
                   padding: 10,
-                
                 }}
-                
               >
                 <Heading size="lg">Add Units</Heading>
-                <ModalCloseButton >&times;</ModalCloseButton>
+                <ModalCloseButton>&times;</ModalCloseButton>
               </HStack>
             </ModalHeader>
-            <ModalBody >
+            <ModalBody>
               <FormInput
                 control={control}
                 errors={errors}
@@ -90,7 +93,9 @@ export default function ModalButtonUnits() {
                 rules={{
                   required: t("required_field"),
                 }}
-                responsiveWidth={"$full"} placeholder={"Name"}              />
+                responsiveWidth={"$full"}
+                placeholder={"Name"}
+              />
 
               <FormInput
                 control={control}
@@ -102,42 +107,11 @@ export default function ModalButtonUnits() {
                 rules={{
                   required: t("required_field"),
                 }}
-                responsiveWidth={"$full"} placeholder={"Short Name"}              />
+                responsiveWidth={"$full"}
+                placeholder={"Short Name"}
+              />
 
               <SelectUnit />
-
-              <HStack space="sm" alignItems="center" mt="$3">
-                <CheckBox
-                  value={isChecked}
-                  onValueChange={handleCheckboxChange}
-                />
-                <Text size="sm">Add as multiple of other unit </Text>
-                <Pressable
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                  
-                >
-                  
-                  <FontAwesomeIcon icon={faCircleInfo}  />
-                    {isHovering && (
-                      <Box
-                        position="relative"
-                        bg="$white"
-                        p={"$1.5"}
-                        borderRadius={"$sm"}
-                        mt={"$1.5"}
-                      >
-                        <Text>
-                          Define this unit is as the multiple of other units
-                        </Text>
-                        <Text fontWeight="$bold">Ex: 1 dozen = 12 pieces</Text>
-                      </Box>
-                    )}
-                 
-                </Pressable>
-              </HStack>
-
-              {isChecked && <AddMultipleUnit />}
             </ModalBody>
             <ModalFooter borderTopWidth="$0">
               <HStack space="sm">
