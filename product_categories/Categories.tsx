@@ -47,9 +47,8 @@ export default function Categories() {
     {
       name: "Action",
       cell: (row) => (
-        <HStack space="xs" >
+        <HStack space="xs">
           <Button
-           
             size="xs"
             borderColor="$secondary300"
             variant="outline"
@@ -109,7 +108,6 @@ export default function Categories() {
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-       
         >
           {/* category-modal button */}
 
@@ -119,7 +117,7 @@ export default function Categories() {
               <ModalButtonCategory />
             </HStack>
           </Box>
-      
+
           {/*  Data table*/}
           <Box>
             <CategoryTable

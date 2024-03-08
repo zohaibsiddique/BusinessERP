@@ -34,7 +34,7 @@ function SelectPrice() {
         <FormControlLabelText>Allow decimal:</FormControlLabelText>
       </FormControlLabel>
       <Select justifyContent="center">
-        <SelectTrigger height={25}>
+        <SelectTrigger height={30}>
           <SelectInput placeholder="Please Select " />
           <SelectIcon>
             <Icon as={ChevronDownIcon} />

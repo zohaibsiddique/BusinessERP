@@ -29,8 +29,8 @@ function ProductSelectOptionBrand({ responsiveWidth }) {
     <Box p="$1" width={responsiveWidth}>
       <HStack space={"none"}>
         <Box width={"90%"}>
-          <FormControl isRequired={true} isInvalid={false} size="sm">
-            <FormControlLabel>
+          <FormControl isRequired={false} isInvalid={false} size="sm">
+            <FormControlLabel mt="$2.5">
               <FormControlLabelText>Brand: </FormControlLabelText>
             </FormControlLabel>
             <Select>
@@ -61,7 +61,7 @@ function ProductSelectOptionBrand({ responsiveWidth }) {
             </FormControlError>
           </FormControl>
         </Box>
-        <Box width={"10%"}>
+        <Box width={"10%"} mt="$2.5">
           <ProductBrandButton />
         </Box>
       </HStack>

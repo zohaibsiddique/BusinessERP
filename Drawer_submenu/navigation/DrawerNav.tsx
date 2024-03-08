@@ -1,7 +1,6 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { ScreensArray, constant } from "../../components/constants";
+import { ScreensArray } from "../../components/constants";
 
 import CustomDrawer from "./CustomDrawer";
 const Drawer = createDrawerNavigator();

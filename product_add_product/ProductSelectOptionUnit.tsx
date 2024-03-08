@@ -30,7 +30,7 @@ function ProductSelectOptionUnit({ responsiveWidth }) {
       <HStack space={"none"}>
         <Box width={"90%"}>
           <FormControl isRequired={true} isInvalid={false} size="sm">
-            <FormControlLabel>
+            <FormControlLabel mt="$2.5">
               <FormControlLabelText>Unit: </FormControlLabelText>
             </FormControlLabel>
             <Select>
@@ -61,7 +61,7 @@ function ProductSelectOptionUnit({ responsiveWidth }) {
             </FormControlError>
           </FormControl>
         </Box>
-        <Box width={"10%"}>
+        <Box width={"10%"} mt="$2.5">
           <ProductUnitButton />
         </Box>
       </HStack>

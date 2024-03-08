@@ -116,7 +116,7 @@ export const ScreensArray = [
     route: "Dashboard",
     label: "Dashboard",
 
-    component: AddProduct,
+    component: Brands,
   },
   {
     route: "Brands",

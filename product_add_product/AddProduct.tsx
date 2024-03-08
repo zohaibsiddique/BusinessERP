@@ -20,6 +20,9 @@ import ProductSelectOption from "./ProductSelectOption";
 import ProductSelectOptionUnit from "./ProductSelectOptionUnit";
 import ProductUnitButton from "./ProductUnitButton";
 import ProductSelectOptionBrand from "./ProductSelectOptionBrand";
+import ProductSelectOptionCategory from "./ProductSelectOptionCategory";
+import ProductSelectOptionSubCategory from "./ProductSelectOptionSubCategory";
+import FormInputSKU from "./FormInputSKU";
 
 // Selling Price group function
 
@@ -91,7 +94,6 @@ export default function AddProduct() {
           </HStack>
         </Box>
 
-        {/* instruction */}
         <Box
           bg="#fff"
           py="$3"
@@ -102,7 +104,12 @@ export default function AddProduct() {
           mx="$2.5"
           shadowRadius={"$0.5"}
         >
-          <Box mx="$4">
+          <Box
+            mx="$4"
+            flexDirection={isLargeScreen ? "row" : "column"}
+            flexWrap="wrap"
+            alignItems="flex-start"
+          >
             <FormInput
               control={control}
               errors={errors}
@@ -114,9 +121,9 @@ export default function AddProduct() {
               rules={{
                 required: t("required_field"),
               }}
-              responsiveWidth={"$full"}
+              responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
             />
-            <FormInput
+            <FormInputSKU
               control={control}
               errors={errors}
               name={"sku"}
@@ -127,13 +134,24 @@ export default function AddProduct() {
               rules={{
                 required: t("required_field"),
               }}
-              responsiveWidth={"$full"}
+              responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
             />
-            <ProductSelectOption />
+            <ProductSelectOption
+              responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
+            />
             <ProductSelectOptionUnit
-              responsiveWidth={ "$full"}
+              responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
             />
-            <ProductSelectOptionBrand />
+            <ProductSelectOptionBrand
+              responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
+            />
+            <ProductSelectOptionCategory
+              responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
+            />
+
+            <ProductSelectOptionSubCategory
+              responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
+            />
           </Box>
         </Box>
         <Box

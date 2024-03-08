@@ -24,16 +24,16 @@ import {
 } from "@gluestack-ui/themed";
 import React from "react";
 
-function ProductSelectOption({responsiveWidth}) {
+function ProductSelectOptionSubCategory({ responsiveWidth }) {
   return (
-    <Box  width={responsiveWidth}>
-      <FormControl isRequired={true} isInvalid={false} p={"$1"} size="sm">
+    <Box width={responsiveWidth}>
+      <FormControl isRequired={false} isInvalid={false} p={"$1"} size="sm">
         <FormControlLabel mt="$2.5">
-          <FormControlLabelText>Barcode Type: </FormControlLabelText>
+          <FormControlLabelText>Sub Category: </FormControlLabelText>
         </FormControlLabel>
-        <Select initialLabel="Code 128 (C128)">
+        <Select>
           <SelectTrigger height={30}>
-            <SelectInput placeholder="Select option" />
+            <SelectInput placeholder="Please Select" />
             <SelectIcon>
               <Icon as={ChevronDownIcon} />
             </SelectIcon>
@@ -44,12 +44,12 @@ function ProductSelectOption({responsiveWidth}) {
               <SelectDragIndicatorWrapper>
                 <SelectDragIndicator />
               </SelectDragIndicatorWrapper>
-              <SelectItem label="Code 128 (C128)" value="c128" />
-              <SelectItem label="Code 39 (C39)" value="c39" />
-              <SelectItem label="EAN-13" value="ean13" />
-              <SelectItem label="EAN-8" value="ean8" />
-              <SelectItem label="UPC-A" value="upca" />
-              <SelectItem label="UPC-E" value="upce" />
+              <SelectItem label="Fruit" value="fruit" />
+              <SelectItem label="Groceries" value="grocery" />
+              <SelectItem label="Mobiles" value="mobile" />
+              <SelectItem label="Electronics" value="electronic" />
+              <SelectItem label="Vegetables" value="vegetables" />
+              <SelectItem label="Arhat" value="arhat" />
             </SelectContent>
           </SelectPortal>
         </Select>
@@ -62,4 +62,4 @@ function ProductSelectOption({responsiveWidth}) {
   );
 }
 
-export default ProductSelectOption;
+export default ProductSelectOptionSubCategory;

@@ -82,8 +82,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
 
           <SearchDropDown
             control={control}
@@ -120,8 +119,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
           <FormInput
             control={control}
             errors={errors}
@@ -131,8 +129,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
           <FormInput
             control={control}
             errors={errors}
@@ -142,8 +139,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
           <SearchDropDown
             isRequired={true}
             control={control}
@@ -168,8 +164,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
           <FormInput
             control={control}
             errors={errors}
@@ -179,8 +174,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
           <FormInput
             control={control}
             errors={errors}
@@ -190,8 +184,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
           <FormInput
             control={control}
             errors={errors}
@@ -201,8 +194,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
 
           <SearchDropDown
             isRequired={true}
@@ -243,8 +235,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
           <FormInput
             control={control}
             errors={errors}
@@ -254,8 +245,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
           <FormInput
             control={control}
             errors={errors}
@@ -265,8 +255,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
           <FormInput
             control={control}
             errors={errors}
@@ -276,8 +265,7 @@ export default function RegisterBusiness() {
             rules={{
               required: t("required_field"),
             }}
-            responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-          />
+            responsiveWidth={isLargeScreen ? "$1/2" : "$full"} placeholder={undefined}          />
 
           <SearchDropDown
             isRequired={true}

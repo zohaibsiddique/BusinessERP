@@ -1,23 +1,30 @@
 import {
   Box,
   Button,
-  Center,
   HStack,
   ScrollView,
   Text,
   useMediaQuery,
 } from "@gluestack-ui/themed";
-import React from "react";
-import SearchDropDown from "../components/SearchDropDown";
-import { GetEntries } from "../utils/Utils";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "../translation/i18n";
 import { useForm } from "react-hook-form";
-import ModalButton from "../components/ModalButton";
 
-import DTable from "../components/DTable";
 import { DummyTable } from "../components/constants";
+import BrandsTable from "./BrandsTable";
+import ModalButtonBrands from "./ModalButtonBrands";
+
+
 export default function Brands() {
+
+    const [items, setItems] = useState([]);
+
+    function handleAddItems(item) {
+      setItems((items) => [...items, item]);
+    }
+
+
   const { t } = useTranslation();
 
   const [isLargeScreen] = useMediaQuery({
@@ -33,26 +40,37 @@ export default function Brands() {
 
   const columns = [
     {
-      name: "Country Name",
+      name: "Brands",
       selector: (row) => row.name,
       sortable: true,
     },
     {
-      name: "Capital",
+      name: "Note",
       selector: (row) => row.phone,
       sortable: true,
     },
-    {
-      name: "Region",
-      selector: (row) => row.email,
-      sortable: true,
-    },
+
     {
       name: "Action",
       cell: (row) => (
-        <Button size="xs" variant="outline" onPress={() => alert(row.name)}>
-          Edit
-        </Button>
+        <HStack space="xs">
+          <Button
+            size="xs"
+            borderColor="$secondary300"
+            variant="outline"
+            onPress={() => alert(row.name)}
+          >
+            Edit
+          </Button>
+          <Button
+            size="xs"
+            borderColor="$secondary300"
+            variant="outline"
+            onPress={() => alert(row.name)}
+          >
+            Delete
+          </Button>
+        </HStack>
       ),
     },
   ];
@@ -76,7 +94,8 @@ export default function Brands() {
               {t("Brands")}
             </Text>
             <Text
-              pt={"$1"}
+              pt={"$3"}
+              pl={"$1"}
               alignItems="center"
               justifyContent="flex-start"
               fontSize={"$md"}
@@ -91,45 +110,25 @@ export default function Brands() {
         <Box
           bg="#fff"
           py="$4"
-         
           mt={16}
           rounded="$md"
           borderTopWidth={"$2"}
           borderColor="$primary600"
-         
         >
           {/* modal button */}
 
-          <Box >
+          <Box>
             <HStack justifyContent="space-between" px={"$3"}>
               <Text fontSize={"$xl"}>{t(" All Your Brands")}</Text>
-              <ModalButton
-                buttonHeading="Add Brand"
-                textInput1
-                textInput2
-                halfInput={false}
-                searchDrop={false}
-                textArea={false}
-                dynamicName1={"brand-name"}
-                dynamicName2={"short-description"}
-                dynamicName3={""}
-                searchDropLabel={""}
-                searchDropName={""}
-                dynamicLabel3={""}
-                dynamicLabel1={"Brand Name"}
-                dynamicLabel2={"Short Description"}
-                placeholder={""}
-                description={""}
-              />
+              <ModalButtonBrands onAddItems={handleAddItems} />
             </HStack>
           </Box>
 
-
           {/*  Data table*/}
           <Box>
-            <DTable
+            <BrandsTable
               columns={columns}
-              data={DummyTable}
+              data={items}
               responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
             />
           </Box>

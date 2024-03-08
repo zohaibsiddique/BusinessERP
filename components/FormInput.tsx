@@ -23,7 +23,7 @@ export default function FormInput({
   isRequired = false,
   disabled = false,
   responsiveWidth,
-  placeholder,
+  placeholder, 
 }) {
   return (
     <Box width={responsiveWidth} p="$1">
