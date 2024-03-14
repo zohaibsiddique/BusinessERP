@@ -108,6 +108,17 @@ export const DummyTable = [
   },
 ];
 
+export const brandsTableData = [
+  {
+    brands: "Samsung",
+    description: "This is a company",
+  },
+  {
+    brands: "Dalda",
+    description: "This is a ghee company",
+  },
+];
+
 export const IconSize = {
   size: 24,
 };

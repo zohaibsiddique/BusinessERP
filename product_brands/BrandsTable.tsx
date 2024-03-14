@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import DataTable from "react-data-table-component";
+import DataTable, { Alignment } from "react-data-table-component";
 import {
   Box,
   Input,
@@ -10,7 +10,7 @@ import {
 } from "@gluestack-ui/themed";
 import TableActionButton from "../components/TableActionButton";
 
-export default function UnitsTable({ columns, data, responsiveWidth }) {
+export default function BrandsTable({ columns, data }) {
   // for Data
   const [tableData, setTabelData] = useState([]);
   // for filter data
@@ -20,21 +20,23 @@ export default function UnitsTable({ columns, data, responsiveWidth }) {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
+    console.log("tabledata123:", data);
     setTabelData(data);
+    console.log("tabledata:", tableData);
     setFilteredTabelData(data);
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     const result = tableData.filter((tabledata) => {
-      return tabledata.name.toLowerCase().match(search.toLowerCase());
+      return tabledata.brands.toLowerCase().match(search.toLowerCase());
     });
     setFilteredTabelData(result);
   }, [search, tableData]);
-
+ 
   const customStyles = {
     headRow: {
       style: {
-        backgroundColor: "#f4f4f4",
+        backgroundColor: "#f4f4f4",justifyContent: "center",
       },
     },
     headCells: {
@@ -49,7 +51,6 @@ export default function UnitsTable({ columns, data, responsiveWidth }) {
   return (
     <Box>
       <DataTable
-        width={responsiveWidth}
         columns={columns}
         data={filteredTableData}
         pagination
@@ -58,6 +59,8 @@ export default function UnitsTable({ columns, data, responsiveWidth }) {
         selectableRows
         selectableRowsHighlight
         highlightOnHover
+        pointerOnHover
+        theme="default"
         subHeader
         subHeaderComponent={
           <Input height={30}>
@@ -71,7 +74,7 @@ export default function UnitsTable({ columns, data, responsiveWidth }) {
             />
           </Input>
         }
-        subHeaderAlign="center"
+        subHeaderAlign={Alignment.CENTER}
         customStyles={customStyles}
         actions={<TableActionButton />}
       ></DataTable>

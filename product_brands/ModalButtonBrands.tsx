@@ -3,7 +3,6 @@ import {
   ButtonText,
   Heading,
   Modal,
-  ModalBackdrop,
   ModalBody,
   ModalContent,
   ModalHeader,
@@ -18,37 +17,29 @@ import { useForm } from "react-hook-form";
 import { t } from "i18next";
 import React from "react";
 
-export default function ModalButtonBrands({ onAddItems }) {
-
-
+export default function ModalButtonBrands({ onAddBrand }) {
   const [showModal, setShowModal] = useState(false);
-  const [brands, setBrands] = useState("");
-  const [description, setDescription] = useState("");
   const [isOpen, setIsOpen] = useState(true);
   const [isLargeScreen] = useMediaQuery({
     minWidth: 720,
   });
   const {
     control,
+    handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
-    defaultValues: {},
+    defaultValues: { brands: "Bonanza", description: "Clothing Brand" },
     mode: "onTouched",
   });
 
-  // saving data in arrary
-  function handleSave(e) {
-    e.preventDefault();
-
-    if (!brands) return;
-
-    const newItem = { brands, description, id: Date.now() };
-
-    onAddItems(newItem);
-
-    setDescription("");
-    setBrands("");
-  }
+  const onSubmit = (brandsData) => {
+    // Pass data to the parent component
+    onAddBrand(brandsData);
+    setValue("brands", "");
+    setValue("description", "");
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -62,7 +53,6 @@ export default function ModalButtonBrands({ onAddItems }) {
             setShowModal(false);
           }}
         >
-          <ModalBackdrop />
           <ModalContent>
             <ModalHeader borderBottomWidth="$0">
               <HStack
@@ -74,14 +64,14 @@ export default function ModalButtonBrands({ onAddItems }) {
                 }}
               >
                 <Heading size="lg">All Your Categories</Heading>
-                <ModalCloseButton>&times;</ModalCloseButton>
+                 <ModalCloseButton>❌</ModalCloseButton> 
               </HStack>
             </ModalHeader>
             <ModalBody>
               <FormInput
                 control={control}
                 errors={errors}
-                name={brands}
+                name={"brands"}
                 isRequired={true}
                 label={t("Brand Name")}
                 inputType="text"
@@ -95,7 +85,7 @@ export default function ModalButtonBrands({ onAddItems }) {
               <FormInput
                 control={control}
                 errors={errors}
-                name={description}
+                name={"description"}
                 isRequired={false}
                 label={t("Short description:")}
                 inputType="text"
@@ -108,12 +98,7 @@ export default function ModalButtonBrands({ onAddItems }) {
             </ModalBody>
             <ModalFooter borderTopWidth="$0">
               <HStack space="sm">
-                <Button
-                  size="sm"
-                  onPress={() => {
-                    handleSave;
-                  }}
-                >
+                <Button size="sm" onPress={handleSubmit(onSubmit)}>
                   <ButtonText>Save</ButtonText>
                 </Button>
                 <Button

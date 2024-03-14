@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Button,
@@ -6,47 +8,66 @@ import {
   Text,
   useMediaQuery,
 } from "@gluestack-ui/themed";
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import "../translation/i18n";
 import { useForm } from "react-hook-form";
-
-import { DummyTable } from "../components/constants";
+import { brandsTableData as initialBrandsTableData } from "../components/constants";
 import BrandsTable from "./BrandsTable";
 import ModalButtonBrands from "./ModalButtonBrands";
-
+import ModalButtonBrandsEdit from "./ModalButtonBrandsEdit";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Brands() {
+  const [brandsTableData, setBrandsTableData] = useState(() => {
+    const storedData = localStorage.getItem("brandsTableData");
+    return storedData ? JSON.parse(storedData) : initialBrandsTableData;
+  });
 
-    const [items, setItems] = useState([]);
+  const [selectedRow, setSelectedRow] = useState(null);
 
-    function handleAddItems(item) {
-      setItems((items) => [...items, item]);
+  useEffect(() => {
+    localStorage.setItem("brandsTableData", JSON.stringify(brandsTableData));
+  }, [brandsTableData]);
+
+  const saveData = (newData) => {
+    const updatedData = [...brandsTableData, newData];
+    setBrandsTableData(updatedData);
+  };
+
+  const handleDelete = (row) => {
+    const updatedData = brandsTableData.filter((item) => item !== row);
+    setBrandsTableData(updatedData);
+  };
+
+  const handleEdit = (row) => {
+    setSelectedRow(row);
+  };
+
+  const handleAddOrEditBrand = (brandsData) => {
+    if (selectedRow) {
+      const updatedData = brandsTableData.map((item) =>
+        item === selectedRow ? { ...item, ...brandsData } : item
+      );
+      setBrandsTableData(updatedData);
+      setSelectedRow(null);
+    } else {
+      setBrandsTableData([...brandsTableData, brandsData]);
     }
-
+  };
 
   const { t } = useTranslation();
 
   const [isLargeScreen] = useMediaQuery({
     minWidth: 720,
   });
-  const {
-    control,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {},
-    mode: "onTouched",
-  });
 
   const columns = [
     {
       name: "Brands",
-      selector: (row) => row.name,
+      selector: (row) => row.brands,
       sortable: true,
     },
     {
       name: "Note",
-      selector: (row) => row.phone,
+      selector: (row) => row.description,
       sortable: true,
     },
 
@@ -58,7 +79,7 @@ export default function Brands() {
             size="xs"
             borderColor="$secondary300"
             variant="outline"
-            onPress={() => alert(row.name)}
+            onPress={() => handleEdit(row)}
           >
             Edit
           </Button>
@@ -66,7 +87,7 @@ export default function Brands() {
             size="xs"
             borderColor="$secondary300"
             variant="outline"
-            onPress={() => alert(row.name)}
+            onPress={() => handleDelete(row)}
           >
             Delete
           </Button>
@@ -83,7 +104,6 @@ export default function Brands() {
         marginRight={"auto"}
         marginLeft={"auto"}
       >
-        {/* brands */}
         <Box>
           <HStack space="xs" p={"$3"}>
             <Text
@@ -106,7 +126,6 @@ export default function Brands() {
           </HStack>
         </Box>
 
-        {/* sub-warranties */}
         <Box
           bg="#fff"
           py="$4"
@@ -115,22 +134,22 @@ export default function Brands() {
           borderTopWidth={"$2"}
           borderColor="$primary600"
         >
-          {/* modal button */}
-
           <Box>
             <HStack justifyContent="space-between" px={"$3"}>
               <Text fontSize={"$xl"}>{t(" All Your Brands")}</Text>
-              <ModalButtonBrands onAddItems={handleAddItems} />
+              {selectedRow ? (
+                <ModalButtonBrandsEdit
+                  onAddOrEditBrand={handleAddOrEditBrand}
+                  initialData={selectedRow}
+                />
+              ) : (
+                <ModalButtonBrands onAddBrand={saveData} />
+              )}
             </HStack>
           </Box>
 
-          {/*  Data table*/}
           <Box>
-            <BrandsTable
-              columns={columns}
-              data={items}
-              responsiveWidth={isLargeScreen ? "$1/2" : "$full"}
-            />
+            <BrandsTable columns={columns} data={brandsTableData} />
           </Box>
         </Box>
       </Box>
