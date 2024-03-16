@@ -76,7 +76,7 @@ export default function BrandsTable({ columns, data }) {
         }
         subHeaderAlign={Alignment.CENTER}
         customStyles={customStyles}
-        actions={<TableActionButton />}
+        actions={<TableActionButton data={filteredTableData} />}
       ></DataTable>
     </Box>
   );
