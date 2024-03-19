@@ -23,6 +23,8 @@ export default function Brands() {
 
   const [selectedRow, setSelectedRow] = useState(null);
 
+  const [selectedValue, setSelectedValue] = useState("");
+
   useEffect(() => {
     localStorage.setItem("brandsTableData", JSON.stringify(brandsTableData));
   }, [brandsTableData]);
@@ -64,15 +66,18 @@ export default function Brands() {
       name: "Brands",
       selector: (row) => row.brands,
       sortable: true,
+      omit: selectedValue === "Brands",
     },
     {
       name: "Note",
       selector: (row) => row.description,
       sortable: true,
+      omit: selectedValue === "Note",
     },
 
     {
       name: "Action",
+      omit: selectedValue === "Action",
       cell: (row) => (
         <HStack space="xs">
           <Button
@@ -149,7 +154,11 @@ export default function Brands() {
           </Box>
 
           <Box>
-            <BrandsTable columns={columns} data={brandsTableData} />
+            <BrandsTable
+              columns={columns}
+              data={brandsTableData}
+              onValueChange={setSelectedValue}
+            />
           </Box>
         </Box>
       </Box>

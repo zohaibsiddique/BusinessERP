@@ -9,8 +9,9 @@ import {
   SearchIcon,
 } from "@gluestack-ui/themed";
 import TableActionButton from "../components/TableActionButton";
+import "./printMedia.css";
 
-export default function BrandsTable({ columns, data }) {
+export default function BrandsTable({ columns, data, onValueChange }) {
   // for Data
   const [tableData, setTabelData] = useState([]);
   // for filter data
@@ -20,9 +21,7 @@ export default function BrandsTable({ columns, data }) {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    console.log("tabledata123:", data);
     setTabelData(data);
-    console.log("tabledata:", tableData);
     setFilteredTabelData(data);
   }, [data]);
 
@@ -32,11 +31,11 @@ export default function BrandsTable({ columns, data }) {
     });
     setFilteredTabelData(result);
   }, [search, tableData]);
- 
+
   const customStyles = {
     headRow: {
       style: {
-        backgroundColor: "#f4f4f4",justifyContent: "center",
+        backgroundColor: "#f4f4f4",
       },
     },
     headCells: {
@@ -76,7 +75,14 @@ export default function BrandsTable({ columns, data }) {
         }
         subHeaderAlign={Alignment.CENTER}
         customStyles={customStyles}
-        actions={<TableActionButton data={filteredTableData} />}
+        actions={
+          <TableActionButton
+            data={filteredTableData}
+            columns={columns}
+            onValueChange={onValueChange}
+          />
+        }
+        className="print-table"
       ></DataTable>
     </Box>
   );

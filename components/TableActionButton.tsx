@@ -1,3 +1,6 @@
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import { Picker } from "@react-native-picker/picker";
 import {
   faFileCsv,
   faFileExcel,
@@ -5,27 +8,29 @@ import {
   faTableColumns,
   faFilePdf,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { useMemo } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import IconButtonText from "./IconButtonText";
 import { Box, HStack, VStack, useMediaQuery } from "@gluestack-ui/themed";
 import * as XLSX from "xlsx";
+import "jspdf-autotable";
+import Select from "react-select";
 
 // -------- Function to convert data to CSV format --------
 function convertToCSV(data) {
   const csvRows = [];
   const headers = Object.keys(data[0]);
-  csvRows.push(headers.join(','));
+  csvRows.push(headers.join(","));
 
   for (const row of data) {
-    const values = headers.map(header => {
-      const escaped = ('' + row[header]).replace(/"/g, '\\"');
+    const values = headers.map((header) => {
+      const escaped = ("" + row[header]).replace(/"/g, '\\"');
       return `"${escaped}"`;
     });
-    csvRows.push(values.join(','));
+    csvRows.push(values.join(","));
   }
 
-  return csvRows.join('\n');
-} 
+  return csvRows.join("\n");
+}
 
 //--------------- for download csv file ----------------
 function downloadCSV(csvContent, filename) {
@@ -39,7 +44,12 @@ function downloadCSV(csvContent, filename) {
   document.body.removeChild(link);
 }
 
-function TableActionButton({ data }) {
+// --------------- Starting componenet function -----------
+function TableActionButton({ data, columns, onValueChange }) {
+  const [visible, setVisible] = useState(false);
+
+  const tableRef = useRef(null);
+
   const [isLgScreen] = useMediaQuery({
     minWidth: 720,
   });
@@ -53,10 +63,45 @@ function TableActionButton({ data }) {
     maxWidth: 550,
     minWidth: 200,
   });
+  //----------------- handle CSV ---------------------
   const handleExportCSV = () => {
     const csvContent = convertToCSV(data);
-    console.log("CSV Data:", csvContent);
-    downloadCSV(csvContent, "table_data.csv");
+    downloadCSV(csvContent, "Brands_Table.csv");
+  };
+
+  //----------------- handle Excel --------------------
+  const handleExportExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    XLSX.writeFile(wb, "Brands_Table.xlsx");
+  };
+
+  //------------------ handle print ----------------------
+  const handlePrint = () => {
+    window.print();
+  };
+
+  const handleExportPDF = () => {
+    const doc = new jsPDF();
+    const tableRows = [];
+    const columns = Object.keys(data[0]);
+
+    data.forEach((row) => {
+      const rowData = columns.map((column) => row[column]);
+      tableRows.push(rowData);
+    });
+
+    doc.autoTable({
+      head: [columns],
+      body: tableRows,
+    });
+
+    doc.save("table_data.pdf");
+  };
+  const handleValueChange = (itemValue, itemIndex) => {
+    onValueChange(itemValue); 
+    setVisible(!visible);
   };
   return (
     <>
@@ -71,20 +116,28 @@ function TableActionButton({ data }) {
             <IconButtonText
               text={"Export to Excel"}
               icon={faFileExcel}
-              onPress={undefined}
+              onPress={handleExportExcel}
             />
-            <IconButtonText text={"Print"} icon={faPrint} onPress={undefined} />
+            <IconButtonText
+              text={"Print"}
+              icon={faPrint}
+              onPress={handlePrint}
+            />
           </HStack>
           <HStack ml={"auto"} mr={"auto"}>
-            <IconButtonText
-              text={"Column visibility"}
-              icon={faTableColumns}
-              onPress={undefined}
-            />
+            <Box>
+              <IconButtonText
+                text={"Column visibility"}
+                icon={faTableColumns}
+                onPress={setVisible}
+              />
+              <Select options={columns} />
+            </Box>
+
             <IconButtonText
               text={"Export to PDF"}
               icon={faFilePdf}
-              onPress={undefined}
+              onPress={handleExportPDF}
             />
           </HStack>
         </VStack>
@@ -98,18 +151,29 @@ function TableActionButton({ data }) {
           <IconButtonText
             text={"Export to Excel"}
             icon={faFileExcel}
-            onPress={undefined}
+            onPress={handleExportExcel}
           />
-          <IconButtonText text={"Print"} icon={faPrint} onPress={undefined} />
-          <IconButtonText
-            text={"Column visibility"}
-            icon={faTableColumns}
-            onPress={undefined}
-          />
+          <IconButtonText text={"Print"} icon={faPrint} onPress={handlePrint} />
+          <Box>
+            <IconButtonText
+              text={"Column visibility"}
+              icon={faTableColumns}
+              onPress={setVisible}
+            />
+
+            {visible && (
+              <Picker onValueChange={handleValueChange} >
+                {columns.map((column) => (
+                  <Picker.Item label={column.name} value={column.name} />
+                ))}
+              </Picker>
+            )}
+          </Box>
+
           <IconButtonText
             text={"Export to PDF"}
             icon={faFilePdf}
-            onPress={undefined}
+            onPress={handleExportPDF}
           />
         </HStack>
       )}

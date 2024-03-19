@@ -1,0 +1,21 @@
+@media print {
+  .print-table {
+    display: block !important; /* Show the table during printing */
+    width: 100%; /* Ensure the table takes full width */
+    margin: auto; /* Center the table horizontally */
+  }
+
+  /* Optionally, you can hide other elements not related to printing */
+  body * {
+    visibility: hidden;
+  }
+  /* Hide the action column */
+.react-data-table-component .rdt_TableCol.action {
+  display: none;
+}
+
+  .print-table,
+  .print-table * {
+    visibility: visible !important; /* Ensure all content inside the table is visible */
+  }
+}
